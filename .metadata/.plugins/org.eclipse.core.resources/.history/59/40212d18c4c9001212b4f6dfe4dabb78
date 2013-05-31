@@ -1,0 +1,9 @@
+package com.example.noq;
+
+public class Receipt2 {
+
+	public Receipt2() {
+		// TODO Auto-generated constructor stub
+	}
+
+}
