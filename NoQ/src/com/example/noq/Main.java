@@ -9,6 +9,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 
+// This is Receipt1 page
 public class Main extends Activity {
 
 	@Override
@@ -16,9 +17,9 @@ public class Main extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		
-		Button b = (Button) findViewById(R.id.button1);
-	       b.setOnClickListener(new OnClickListener() {
-				
+		// to click on clear all button
+		Button b1 = (Button) findViewById(R.id.button1);
+	       b1.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View arg0) {
 					EditText et1 = (EditText) findViewById(R.id.editText1);
@@ -29,7 +30,20 @@ public class Main extends Activity {
 					et3.setText("");
 				}
 			});
+	       
+	   	// to click on submit button
+	        final EditText et = (EditText) findViewById(R.id.editText3);
+	        Button b2 = (Button) findViewById(R.id.button2);
+	        b2.setOnClickListener(new OnClickListener() {		
+				@Override
+				public void onClick(View arg0) {
+					Intent intent = new Intent(Main.this, Receipts.class);
+					intent.putExtra("amount", et.getText());
+					startActivity(intent);
+				}
+			});
 	}
+	        
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
