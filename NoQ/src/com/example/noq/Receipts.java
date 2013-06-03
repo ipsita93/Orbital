@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 public class Receipts extends Activity {
 	
-	private static final String Integer = null;
+	private static final String Integer = null; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

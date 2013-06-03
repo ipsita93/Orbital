@@ -25,7 +25,8 @@
         android:layout_alignBottom="@+id/button1"
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/textView3"
-        android:text="Submit" />
+        android:text="Submit"
+        android:filterTouchesWhenObscured="true" />
 
     <EditText
         android:id="@+id/editText1"

@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.text.TextWatcher;
 
 // This is Receipt1 page
 public class Main extends Activity {
@@ -19,7 +20,7 @@ public class Main extends Activity {
 		
 		// to click on clear all button
 		Button b1 = (Button) findViewById(R.id.button1);
-	       b1.setOnClickListener(new OnClickListener() {
+			b1.setOnClickListener(new OnClickListener() {
 				@Override
 				public void onClick(View arg0) {
 					EditText et1 = (EditText) findViewById(R.id.editText1);
@@ -32,14 +33,28 @@ public class Main extends Activity {
 			});
 	       
 	   	// to click on submit button
-	        final EditText et = (EditText) findViewById(R.id.editText3);
-	        Button b2 = (Button) findViewById(R.id.button2);
-	        b2.setOnClickListener(new OnClickListener() {		
+			final EditText et = (EditText) findViewById(R.id.editText3);
+	        Button b2 = (Button) findViewById(R.id.button2);			
+			b2.setOnClickListener(new OnClickListener() {											
 				@Override
 				public void onClick(View arg0) {
-					Intent intent = new Intent(Main.this, Receipts.class);
-					intent.putExtra("amount", et.getText());
-					startActivity(intent);
+					EditText receiptNum = (EditText) findViewById(R.id.editText1);
+					EditText shopName = (EditText) findViewById(R.id.editText2);
+					if (validateNum(receiptNum.getText().toString())){
+						receiptNum.setError(null);
+						if (validateShop(shopName.getText().toString())){
+							shopName.setError(null);
+							Intent intent = new Intent(Main.this, Receipts.class);
+							intent.putExtra("amount", et.getText());
+							startActivity(intent);
+						}
+						else{
+							shopName.setError("Invalid shop");
+						}
+					}
+					else{
+						receiptNum.setError("Invalid receipt code");
+					}
 				}
 			});
 	}
@@ -52,4 +67,35 @@ public class Main extends Activity {
 		return true;
 	}
 
+	// returns true if receipt number is valid
+	// right now assume that the first character must be a letter 
+	// followed by 3 numbers for receipt to be valid
+	// to do: research on security, hashing, etc.
+	private boolean validateNum(String receiptNum){
+		char[] CreceiptNum = receiptNum.toCharArray();
+		
+		if (CreceiptNum.length != 4)
+			return false;
+		if (!Character.isLetter(CreceiptNum[0])) 
+			return false;
+		if (!Character.isDigit(CreceiptNum[1]) || 
+			!Character.isDigit(CreceiptNum[2]) || !Character.isDigit(CreceiptNum[3]))
+			return false;
+		return true;
+	}
+	
+	// returns true if shop is valid
+	// right now assume only 3 shops called abc, def and ghi
+	// to do: make a database of shops, ignore case and enhance searching
+	private boolean validateShop(String SshopName){
+		int numShops = 3;
+		String[] shops = {"abc", "def", "ghi"};
+
+		for (int i=0; i<numShops; i++){
+			if (SshopName.equals(shops[i])){
+				return true;
+			}
+		}	
+		return false;
+	}
 }
