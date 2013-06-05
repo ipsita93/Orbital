@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class Receipts extends Activity {
@@ -47,13 +48,27 @@ public class Receipts extends Activity {
 			}
 		});
 		
+		// changes the bluebox image to tickinbox image  
+		if (true) {
+			ImageView iv1 = (ImageView) findViewById(R.id.imageView1);
+			iv1.setImageResource(R.drawable.tickinbox);
+		}
+		
+		if (true) {
+			ImageView iv2 = (ImageView) findViewById(R.id.imageView2);
+			iv2.setImageResource(R.drawable.tickinbox);
+		}
+		
+		if(true) {
+			ImageView iv3 = (ImageView) findViewById(R.id.imageView3);
+			iv3.setImageResource(R.drawable.tickinbox);
+		}
+		
 		/* has errors!!
 		// to update the total spent
 		TextView tv = (TextView) findViewById(R.id.textView2);
 		double amt = Double.parseDouble((String) tv.getText());
 		amt += Double.parseDouble(getIntent().getExtras().getString("amount"));
-		// String amt = tv.getText() + getIntent().getExtras().getString("amount");
-		// tv.setText(amt);
 		*/
 		
 	}
