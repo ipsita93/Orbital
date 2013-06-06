@@ -22,7 +22,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main"></activity>
+        <activity android:name=".Receipt1"></activity>
         <activity android:name=".Receipt2"></activity>
         <activity android:name=".Receipt3"></activity>
     </application>

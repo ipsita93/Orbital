@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:clickable="false" >
 
     <Button
         android:id="@+id/button3"
@@ -20,6 +20,8 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="45dp"
+        android:clickable="false"
+        android:linksClickable="false"
         android:text="You cannot redeem yet." />
 
     <Button
@@ -53,22 +55,6 @@
         android:inputType="number|numberDecimal"
         android:text="0.00" />
 
-    <GridLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/button1"
-        android:layout_marginRight="24dp" >
-
-    </GridLayout>
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_toRightOf="@+id/button4"
-        android:src="@drawable/bluebox" />
-
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
@@ -91,8 +77,16 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button3"
-        android:layout_alignRight="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignLeft="@+id/imageView1"
+        android:src="@drawable/bluebox" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button2"
+        android:layout_toRightOf="@+id/button4"
         android:src="@drawable/bluebox" />
 
 </RelativeLayout>

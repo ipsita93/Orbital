@@ -36,9 +36,9 @@ public final class R {
         public static final int editText1=0x7f080003;
         public static final int editText2=0x7f080007;
         public static final int editText3=0x7f080008;
-        public static final int imageView1=0x7f08000b;
-        public static final int imageView2=0x7f08000d;
-        public static final int imageView3=0x7f08000c;
+        public static final int imageView1=0x7f08000d;
+        public static final int imageView2=0x7f08000c;
+        public static final int imageView3=0x7f08000b;
         public static final int textView1=0x7f080004;
         public static final int textView2=0x7f080006;
         public static final int textView3=0x7f080001;
