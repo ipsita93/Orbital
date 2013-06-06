@@ -21,8 +21,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="45dp"
         android:clickable="false"
-        android:linksClickable="false"
-        android:text="You cannot redeem yet." />
+        android:height="50dp"
+        android:text="You cannot redeem yet."
+        android:width="250dp" />
 
     <Button
         android:id="@+id/button1"
@@ -34,16 +35,6 @@
         android:minWidth="250dp"
         android:text="Receipt 1"
         android:width="100dp" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button4"
-        android:layout_alignLeft="@+id/button4"
-        android:layout_marginBottom="26dp"
-        android:text="Total Spent : $"
-        android:textSize="15sp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -65,28 +56,65 @@
         android:text="Receipt 2"
         android:width="250dp" />
 
-    <ImageView
-        android:id="@+id/imageView3"
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button3"
-        android:layout_alignLeft="@+id/imageView2"
-        android:src="@drawable/bluebox" />
+        android:layout_below="@+id/button3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:text="Total Spent : $"
+        android:textSize="15sp" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button2"
-        android:layout_alignLeft="@+id/imageView1"
+        android:layout_alignRight="@+id/button1"
+        android:layout_alignTop="@+id/button1"
+        android:layout_marginTop="14dp"
         android:src="@drawable/bluebox" />
 
     <ImageView
         android:id="@+id/imageView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button2"
-        android:layout_toRightOf="@+id/button4"
+        android:layout_alignLeft="@+id/imageView4"
+        android:layout_alignTop="@+id/imageView4"
+        android:src="@drawable/bluebox" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignRight="@+id/button2"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/bluebox" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageView5"
+        android:layout_alignTop="@+id/imageView5"
+        android:src="@drawable/bluebox" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/button3"
+        android:layout_alignTop="@+id/button3"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/bluebox" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imageView6"
+        android:layout_alignTop="@+id/imageView6"
         android:src="@drawable/bluebox" />
 
 </RelativeLayout>

@@ -12,8 +12,6 @@ import android.widget.EditText;
 // This is Receipt1 page
 public class Receipt1 extends Activity {
 
-	protected static final int FLAG_ACTIVITY_REORDER_TO_FRONT = 131072;
-
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
@@ -33,7 +31,7 @@ public class Receipt1 extends Activity {
 			});
 	       
 	   	// to click on submit button
-			final EditText et = (EditText) findViewById(R.id.editText3);
+			EditText et = (EditText) findViewById(R.id.editText3);
 	        Button b2 = (Button) findViewById(R.id.button2);			
 			
 	        b2.setOnClickListener(new OnClickListener() {											
@@ -45,13 +43,23 @@ public class Receipt1 extends Activity {
 						receiptNum.setError(null);
 						if (validateShop(shopName.getText().toString())){
 							shopName.setError(null);
-							Intent intent = new Intent(Receipt1.this, Receipts.class); // Going to back Receipts
-							intent.putExtra("amount", Double.parseDouble(et.getText().toString()));
-							intent.putExtra("isValid", true);
-							intent.setFlags(FLAG_ACTIVITY_REORDER_TO_FRONT); 
+							EditText et = (EditText) findViewById(R.id.editText3);
+							
+							Intent returnIntent = new Intent(Receipt1.this, Receipts.class); // Going to back Receipts
+							returnIntent.putExtra("amount", Double.parseDouble(et.getText().toString()));
+							returnIntent.putExtra("isValid1", true);
+							returnIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT); 
 							// bring an existing instance of the called activity type present in the current stack to the 
 							// foreground instead of creating a new instance
-							startActivity(intent);
+							setResult(RESULT_OK,returnIntent);   
+							startActivity(returnIntent);
+							
+							// if back button is pressed and no data is returned to Receipts
+							/*
+							 * Intent returnIntent = new Intent();
+							 * setResult(RESULT_CANCELED, returnIntent);        
+							 * finish();
+							 */
 						}
 						else{
 							shopName.setError("Invalid shop");
