@@ -8,6 +8,11 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.app.Dialog;
+import android.app.AlertDialog.Builder;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+
 
 // This is Receipt1 page
 public class Receipt1 extends Activity {
@@ -43,16 +48,33 @@ public class Receipt1 extends Activity {
 						receiptNum.setError(null);
 						if (validateShop(shopName.getText().toString())){
 							shopName.setError(null);
-							EditText et = (EditText) findViewById(R.id.editText3);
 							
-							Intent returnIntent = new Intent(Receipt1.this, Receipts.class); // Going to back Receipts
-							returnIntent.putExtra("amount", Double.parseDouble(et.getText().toString()));
-							returnIntent.putExtra("isValid1", true);
-							returnIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT); 
-							// bring an existing instance of the called activity type present in the current stack to the 
-							// foreground instead of creating a new instance
-							setResult(RESULT_OK,returnIntent);   
-							startActivity(returnIntent);
+							// Brings up dialog to ask if want to submit
+							AlertDialog.Builder toContinue = new AlertDialog.Builder(Receipt1.this);
+							toContinue.setTitle("Confirm submission");
+							toContinue.setMessage("You may not edit once you submit!");
+							toContinue.setPositiveButton("Submit", new DialogInterface.OnClickListener(){
+								// Changes edittext to textview, then continues to submit
+								public void onClick(DialogInterface cont, int id){
+									EditText et = (EditText) findViewById(R.id.editText3);
+									Intent returnIntent = new Intent(Receipt1.this, Receipts.class); // Going to back Receipts
+									returnIntent.putExtra("amount", Double.parseDouble(et.getText().toString()));
+									returnIntent.putExtra("isValid1", true);
+									returnIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT); 
+									// bring an existing instance of the called activity type present in the current stack to the 
+									// foreground instead of creating a new instance
+									setResult(RESULT_OK,returnIntent);   
+									startActivity(returnIntent);}
+							})
+							.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
+								// Cancel and go back to Receipts1 page
+								// SMALL ERROR: touching anywhere else on the screen dismisses the dialog as well
+								public void onClick(DialogInterface cancel, int id){
+									if (id == Dialog.BUTTON_NEGATIVE)
+										cancel.dismiss();
+								}
+							});
+							toContinue.show();
 							
 							// if back button is pressed and no data is returned to Receipts
 							/*
@@ -100,7 +122,7 @@ public class Receipt1 extends Activity {
 	// returns true if receipt number is valid
 	// right now assume that the first character must be a letter 
 	// followed by 3 numbers for receipt to be valid
-	// to do: research on security, hashing, etc.
+	// TO DO: research on security, hashing, etc.
 	private boolean validateNum(String receiptNum){
 		char[] CreceiptNum = receiptNum.toCharArray();
 		
@@ -116,7 +138,7 @@ public class Receipt1 extends Activity {
 	
 	// returns true if shop is valid
 	// right now assume only 3 shops called abc, def and ghi
-	// to do: make a database of shops, ignore case and enhance searching
+	// TO DO: make a database of shops, ignore case and enhance searching
 	private boolean validateShop(String SshopName){
 		int numShops = 3;
 		String[] shops = {"abc", "def", "ghi"};
