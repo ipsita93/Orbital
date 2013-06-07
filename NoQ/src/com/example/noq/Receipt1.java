@@ -54,7 +54,7 @@ public class Receipt1 extends Activity {
 							toContinue.setTitle("Confirm submission");
 							toContinue.setMessage("You may not edit once you submit!");
 							toContinue.setPositiveButton("Submit", new DialogInterface.OnClickListener(){
-								// Changes edittext to textview, then continues to submit
+								// Changes edittext to textview (does not work yet), then continues to submit
 								public void onClick(DialogInterface cont, int id){
 									EditText et = (EditText) findViewById(R.id.editText3);
 									Intent returnIntent = new Intent(Receipt1.this, Receipts.class); // Going to back Receipts
