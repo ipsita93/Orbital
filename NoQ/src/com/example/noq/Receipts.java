@@ -99,7 +99,7 @@ public class Receipts extends Activity {
 	 	checkRedeemNow();
 	}
 	
-	// To check if the total amount spent has exceed $100
+	// To check if the total amount spent has exceeded $100
 	// If yes, then change button to "Redeem Now" and green
 	private void checkRedeemNow() {
 	 	TextView tv1 = (TextView) findViewById(R.id.textView2);
