@@ -22,9 +22,19 @@ public class Receipts extends Activity {
 		b1.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(Receipts.this, Receipt1.class); // Going to Receipt1
-				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				startActivityForResult(intent, 1);
+				// clicking again to view info on Receipt 1
+				if (getIntent().getBooleanExtra("isValid1", false)) {
+					Intent viewIntent = new Intent(Receipts.this, Receipt1.class);
+					viewIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+					startActivity(viewIntent);
+				}
+				else{// first time clicking to key in Receipt 1
+					Intent intent = new Intent(Receipts.this, Receipt1.class); // Going to Receipt1
+					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					startActivityForResult(intent, 1);
+				}
+				
+				
 			}
 	
 		});
@@ -75,7 +85,8 @@ public class Receipts extends Activity {
       
         setIntent(intent);
     }
-	  // Activity being restarted from stopped state    
+	
+	// Activity being restarted from stopped state    
 	protected void onRestart() {
 	    super.onRestart();  // Always call the superclass method first
 	    onNewIntent(getIntent());
@@ -95,7 +106,6 @@ public class Receipts extends Activity {
 	 	}		
 	 	
 	 	updateAmt(getIntent());
-	 	
 	 	checkRedeemNow();
 	}
 	

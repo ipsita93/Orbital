@@ -22,9 +22,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Receipt1"></activity>
-        <activity android:name=".Receipt2"></activity>
-        <activity android:name=".Receipt3"></activity>
+        <activity android:name="com.example.noq.Receipt1" >
+        </activity>
+        <activity android:name="com.example.noq.Receipt2" >
+        </activity>
+        <activity android:name="com.example.noq.Receipt3" >
+        </activity>
+        <activity
+            android:name="com.example.noq.Receipt1Display"
+            android:label="@string/title_activity_receipt1_display"
+            android:parentActivityName="com.example.noq.Receipts" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.noq.Receipts" />
+        </activity>
+        <activity
+            android:name="com.example.noq.Receipt1View"
+            android:label="@string/title_activity_receipt1_view"
+            android:parentActivityName="com.example.noq.Receipts" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.noq.Receipts" />
+        </activity>
     </application>
 
 </manifest>
