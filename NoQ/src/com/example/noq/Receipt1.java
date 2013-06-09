@@ -48,16 +48,17 @@ public class Receipt1 extends Activity {
 						receiptNum.setError(null);
 						if (validateShop(shopName.getText().toString())){
 							shopName.setError(null);
-							
 							// Brings up dialog to ask if want to submit
 							AlertDialog.Builder toContinue = new AlertDialog.Builder(Receipt1.this);
 							toContinue.setTitle("Confirm submission");
 							toContinue.setMessage("You may not edit once you submit!");
 							toContinue.setPositiveButton("Submit", new DialogInterface.OnClickListener(){
-								// Changes edittext to textview (does not work yet), then continues to submit
+								// Changes edittext to textview, then continues to submit
 								public void onClick(DialogInterface cont, int id){
 									EditText et = (EditText) findViewById(R.id.editText3);
-									Intent returnIntent = new Intent(Receipt1.this, Receipts.class); // Going to back Receipts
+									Fixtext();
+									Disablebuttons();
+									Intent returnIntent = new Intent(Receipt1.this, Receipts.class); // Going back to Receipts
 									returnIntent.putExtra("amount", Double.parseDouble(et.getText().toString()));
 									returnIntent.putExtra("isValid1", true);
 									returnIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT); 
@@ -68,7 +69,7 @@ public class Receipt1 extends Activity {
 							})
 							.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
 								// Cancel and go back to Receipts1 page
-								// SMALL ERROR: touching anywhere else on the screen dismisses the dialog as well
+								// SMALL NOTE/ERROR: touching anywhere else on the screen dismisses the dialog as well
 								public void onClick(DialogInterface cancel, int id){
 									if (id == Dialog.BUTTON_NEGATIVE)
 										cancel.dismiss();
@@ -108,9 +109,14 @@ public class Receipt1 extends Activity {
 	
 	// called by system when second activity is created
 	protected void onStop() {
-	    super.onStop();  // Always call the superclass method first
-	    
+	    super.onStop();  // Always call the superclass method first	    
 	} // end of onStop
+	
+	// Activity being restarted from stopped state    
+	protected void onRestart() {
+	    super.onRestart();  // Always call the superclass method first
+	    onNewIntent(getIntent());
+	}
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -149,5 +155,32 @@ public class Receipt1 extends Activity {
 			}
 		}	
 		return false;
+	}
+	
+	private void Fixtext(){
+		EditText et1 = (EditText) findViewById(R.id.editText1);
+		et1.setEnabled(false);
+		et1.setFocusable(false);
+		et1.setFocusableInTouchMode(false);
+		et1.setClickable(false);
+		EditText et2 = (EditText) findViewById(R.id.editText2);
+		et2.setEnabled(false);
+		et2.setFocusable(false);
+		et2.setFocusableInTouchMode(false);
+		et2.setClickable(false);
+		EditText et3 = (EditText) findViewById(R.id.editText3);	
+		et3.setEnabled(false);
+		et3.setFocusable(false);
+		et3.setFocusableInTouchMode(false);
+		et3.setClickable(false);
+	}
+	
+	private void Disablebuttons(){
+		Button clear = (Button) findViewById(R.id.button1);
+		clear.setVisibility(View.INVISIBLE);
+		clear.setEnabled(false);
+		Button submit = (Button) findViewById(R.id.button2);
+		submit.setVisibility(View.INVISIBLE);
+		submit.setEnabled(false);
 	}
 }

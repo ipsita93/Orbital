@@ -48,7 +48,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/textView2"
         android:layout_marginTop="17dp"
-        android:text="Receipt 2"
+        android:text="Receipt 1"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
