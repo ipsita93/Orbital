@@ -2,7 +2,6 @@ package com.example.noq;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -82,7 +81,6 @@ public class Receipts extends Activity {
 	// To make sure getIntent() always return the most recent intent
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
-      
         setIntent(intent);
     }
 	
@@ -93,16 +91,19 @@ public class Receipts extends Activity {
 	    
 	    // changes the bluebox image to tickinbox image  
 	 	if (getIntent().getBooleanExtra("isValid1", false)) {
-	 		ImageView iv1 = (ImageView) findViewById(R.id.imageView1);
-	 		iv1.setImageResource(R.drawable.tick1);
+	 		ImageView tick1 = (ImageView) findViewById(R.id.imageView4);
+	 		tick1.setVisibility(View.VISIBLE);
+	 		tick1.setImageResource(R.drawable.tick1);
 	 	}
 	 	if (getIntent().getBooleanExtra("isValid2", false)) {
-	 		ImageView iv2 = (ImageView) findViewById(R.id.imageView2);
-	 		iv2.setImageResource(R.drawable.tick1);
+	 		ImageView tick2 = (ImageView) findViewById(R.id.imageView5);
+	 		tick2.setVisibility(View.VISIBLE);
+	 		tick2.setImageResource(R.drawable.tick1);
 	 	}
 	 	if (getIntent().getBooleanExtra("isValid3", false)) {
-	 		ImageView iv3 = (ImageView) findViewById(R.id.imageView3);
-	 		iv3.setImageResource(R.drawable.tick1);
+	 		ImageView tick3 = (ImageView) findViewById(R.id.imageView6);
+	 		tick3.setVisibility(View.VISIBLE);
+	 		tick3.setImageResource(R.drawable.tick1);
 	 	}		
 	 	
 	 	updateAmt(getIntent());
