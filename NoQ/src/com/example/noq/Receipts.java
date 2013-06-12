@@ -92,25 +92,29 @@ public class Receipts extends Activity {
 	    super.onRestart();  // Always call the superclass method first
 	    onNewIntent(getIntent());
 	    
-	    // changes the bluebox image to tickinbox image  
-	 	if (getIntent().getBooleanExtra("isValid1", false)) {
+	    TextView tv1 = (TextView) findViewById(R.id.textView2);
+	    double oldAmt = Double.parseDouble(tv1.getText().toString());
+		double newAmt = updateAmt(getIntent());
+	 	checkRedeemNow();
+	    
+	    // inserts tick2 image if a valid receipt was entered  
+	 	if (getIntent().getBooleanExtra("isValid1", false) && oldAmt != newAmt) {
 	 		ImageView tick1 = (ImageView) findViewById(R.id.imageView4);
 	 		tick1.setVisibility(View.VISIBLE);
 	 		tick1.setImageResource(R.drawable.tick1);
 	 	}
-	 	if (getIntent().getBooleanExtra("isValid2", false)) {
+	 	if (getIntent().getBooleanExtra("isValid2", false) && oldAmt != newAmt) {
 	 		ImageView tick2 = (ImageView) findViewById(R.id.imageView5);
 	 		tick2.setVisibility(View.VISIBLE);
 	 		tick2.setImageResource(R.drawable.tick1);
 	 	}
-	 	if (getIntent().getBooleanExtra("isValid3", false)) {
+	 	if (getIntent().getBooleanExtra("isValid3", false) && oldAmt != newAmt) {
 	 		ImageView tick3 = (ImageView) findViewById(R.id.imageView6);
 	 		tick3.setVisibility(View.VISIBLE);
 	 		tick3.setImageResource(R.drawable.tick1);
 	 	}		
 	 	
-	 	updateAmt(getIntent());
-	 	checkRedeemNow();
+	 
 	}
 	
 	// To check if the total amount spent has exceeded $100
@@ -126,12 +130,13 @@ public class Receipts extends Activity {
 	}
 	
 	// To update the total spent
-	private void updateAmt(Intent data) {
+	private double updateAmt(Intent data) {
 		TextView tv = (TextView) findViewById(R.id.textView2);
 		double newAmt = data.getDoubleExtra("amount", 0.00);
 		double amt = Double.parseDouble(tv.getText().toString());
 		amt += newAmt;
 		tv.setText(String.valueOf(amt));
+		return amt;
 	}
 	
 }
