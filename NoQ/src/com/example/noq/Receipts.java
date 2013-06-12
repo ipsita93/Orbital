@@ -8,6 +8,8 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import java.text.DateFormat;
+import java.util.Date;
 
 public class Receipts extends Activity {
 	
@@ -16,6 +18,10 @@ public class Receipts extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.receipts);
 		
+		// shows the current date
+		TextView date = (TextView) findViewById(R.id.date);
+		date.setText(DateFormat.getDateInstance().format(new Date()));
+	
 		// clicking on receipt1 button 
 		Button b1 = (Button) findViewById(R.id.button1);
 		b1.setOnClickListener(new OnClickListener() {
@@ -31,11 +37,8 @@ public class Receipts extends Activity {
 					Intent intent = new Intent(Receipts.this, Receipt1.class); // Going to Receipt1
 					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					startActivityForResult(intent, 1);
-				}
-				
-				
+				}	
 			}
-	
 		});
 		
 		// clicking on receipt2 button 

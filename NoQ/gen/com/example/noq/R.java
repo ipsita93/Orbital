@@ -27,11 +27,12 @@ public final class R {
         public static final int tick1=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f080011;
+        public static final int action_settings=0x7f080012;
         public static final int button1=0x7f080000;
         public static final int button2=0x7f080002;
         public static final int button3=0x7f080009;
         public static final int button4=0x7f08000a;
+        public static final int date=0x7f080011;
         public static final int editText1=0x7f080003;
         public static final int editText2=0x7f080007;
         public static final int editText3=0x7f080008;

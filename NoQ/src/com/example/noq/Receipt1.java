@@ -88,7 +88,8 @@ public class Receipt1 extends Activity {
 			}); 
 	}// end of onCreate()			
 	
-	@Override //if (hardware) back button is pressed and no data is returned to Receipts
+	//Override of hardware back button
+	@Override 
 	public void onBackPressed(){
 		Intent returnIntent = new Intent(Receipt1.this, Receipts.class);
 		returnIntent.putExtra("isValid1", true);
@@ -97,9 +98,6 @@ public class Receipt1 extends Activity {
 		// foreground instead of creating a new instance
 		setResult(RESULT_OK,returnIntent);   
 		startActivity(returnIntent);
-		
-	//	setResult(RESULT_CANCELED, returnIntent);        
-	//	finish();
 	} 
 	
 	// activity is partially visible
