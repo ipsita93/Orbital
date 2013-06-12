@@ -16,7 +16,7 @@ import android.content.DialogInterface;
 
 // This is Receipt1 page
 public class Receipt1 extends Activity {
-
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
@@ -35,7 +35,7 @@ public class Receipt1 extends Activity {
 				}
 			});
 	       
-	   	// to click on submit button
+			// to click on submit button
 			EditText et = (EditText) findViewById(R.id.editText3);
 	        Button b2 = (Button) findViewById(R.id.button2);			
 			
@@ -53,7 +53,7 @@ public class Receipt1 extends Activity {
 							toContinue.setTitle("Confirm submission");
 							toContinue.setMessage("You may not edit once you submit!");
 							toContinue.setPositiveButton("Submit", new DialogInterface.OnClickListener(){
-								// Changes edittext to textview, then continues to submit
+								// Changes edittext to textview, hides and disables buttons, then continues to submit
 								public void onClick(DialogInterface cont, int id){
 									EditText et = (EditText) findViewById(R.id.editText3);
 									Fixtext();
@@ -65,24 +65,17 @@ public class Receipt1 extends Activity {
 									// bring an existing instance of the called activity type present in the current stack to the 
 									// foreground instead of creating a new instance
 									setResult(RESULT_OK,returnIntent);   
-									startActivity(returnIntent);}
+									startActivity(returnIntent);
+								}
 							})
 							.setNegativeButton("Cancel", new DialogInterface.OnClickListener(){
 								// Cancel and go back to Receipts1 page
-								// SMALL NOTE/ERROR: touching anywhere else on the screen dismisses the dialog as well
 								public void onClick(DialogInterface cancel, int id){
 									if (id == Dialog.BUTTON_NEGATIVE)
 										cancel.dismiss();
 								}
 							});
 							toContinue.show();
-							
-							// if back button is pressed and no data is returned to Receipts
-							/*
-							 * Intent returnIntent = new Intent();
-							 * setResult(RESULT_CANCELED, returnIntent);        
-							 * finish();
-							 */
 						}
 						else{
 							shopName.setError("Invalid shop");
@@ -91,15 +84,27 @@ public class Receipt1 extends Activity {
 					else{
 						receiptNum.setError("Invalid receipt code");
 					}
-				}
+				}		
 			}); 
-	        
-	} // end of onCreate()
+	}// end of onCreate()			
+	
+	@Override //if (hardware) back button is pressed and no data is returned to Receipts
+	public void onBackPressed(){
+		Intent returnIntent = new Intent(Receipt1.this, Receipts.class);
+		returnIntent.putExtra("isValid1", true);
+		returnIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT); 
+		// bring an existing instance of the called activity type present in the current stack to the 
+		// foreground instead of creating a new instance
+		setResult(RESULT_OK,returnIntent);   
+		startActivity(returnIntent);
+		
+	//	setResult(RESULT_CANCELED, returnIntent);        
+	//	finish();
+	} 
 	
 	// activity is partially visible
 	public void onPause() {
-	    super.onPause();  // Always call the superclass method first
-	    
+	    super.onPause();  // Always call the superclass method first    
 	} // end of onPause    
 	
 	// called by system when first creating activity as well as when resuming from 'paused' state
@@ -116,6 +121,7 @@ public class Receipt1 extends Activity {
 	protected void onRestart() {
 	    super.onRestart();  // Always call the superclass method first
 	    onNewIntent(getIntent());
+		
 	}
 	
 	@Override
