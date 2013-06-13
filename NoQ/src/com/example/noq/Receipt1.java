@@ -1,4 +1,4 @@
- package com.example.noq;
+package com.example.noq;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -56,7 +56,7 @@ public class Receipt1 extends Activity {
 							// Brings up dialog to ask if want to submit
 							AlertDialog.Builder toContinue = new AlertDialog.Builder(Receipt1.this);
 							toContinue.setTitle("Confirm submission");
-							toContinue.setMessage("You may not edit once you submit !");
+							toContinue.setMessage("Submit Now?");
 							toContinue.setPositiveButton("Submit", new DialogInterface.OnClickListener(){
 								// Changes edittext to textview, hides and disables buttons, then continues to submit
 								public void onClick(DialogInterface cont, int id){
@@ -193,18 +193,13 @@ public class Receipt1 extends Activity {
 	}
 
 	public class DecimalDigitsInputFilter implements InputFilter {
-
 		  private final int decimalDigits;
-
-		  /**
-		   * Constructor.
-		   * 
+		  /**Constructor.
 		   * @param decimalDigits maximum decimal digits
 		   */
 		  public DecimalDigitsInputFilter(int decimalDigits) {
 		    this.decimalDigits = decimalDigits;
 		  }
-
 		  @Override
 		  public CharSequence filter(CharSequence source,
 		      int start,
@@ -212,8 +207,6 @@ public class Receipt1 extends Activity {
 		      Spanned dest,
 		      int dstart,
 		      int dend) {
-
-
 		    int dotPos = -1;
 		    int len = dest.length();
 		    for (int i = 0; i < len; i++) {
@@ -224,7 +217,6 @@ public class Receipt1 extends Activity {
 		      }
 		    }
 		    if (dotPos >= 0) {
-
 		      // protects against many dots
 		      if (source.equals(".") || source.equals(","))
 		      {
@@ -238,9 +230,7 @@ public class Receipt1 extends Activity {
 		        return "";
 		      }
 		    }
-
 		    return null;
 		  }
-
 		}
 }

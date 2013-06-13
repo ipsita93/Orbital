@@ -68,13 +68,11 @@ public class Receipts extends Activity {
 	    super.onPause();  // Always call the superclass method first
 	    
 	} // end of onPause    
-	
-	
+		
 	// called by system when first creating activity as well as when resuming from 'paused' state
 	public void onResume() {
 	    super.onResume();  // Always call the superclass method first
 	}// end of onResume
-	
 	
 	// called by system when another activity is created
 	protected void onStop() {
@@ -95,9 +93,9 @@ public class Receipts extends Activity {
 	    TextView tv1 = (TextView) findViewById(R.id.textView2);
 	    double oldAmt = Double.parseDouble(tv1.getText().toString());
 		double newAmt = updateAmt(getIntent());
-	 	checkRedeemNow();
+	 	boolean canRedeem = checkRedeemNow();
 	    
-	    // inserts tick2 image if a valid receipt was entered  
+	    // inserts tick1 image if a valid receipt was entered  
 	 	if (getIntent().getBooleanExtra("isValid1", false) && oldAmt != newAmt) {
 	 		ImageView tick1 = (ImageView) findViewById(R.id.imageView4);
 	 		tick1.setVisibility(View.VISIBLE);
@@ -114,19 +112,31 @@ public class Receipts extends Activity {
 	 		tick3.setImageResource(R.drawable.tick1);
 	 	}		
 	 	
-	 
+	 	final Button redeem = (Button) findViewById(R.id.button4);
+	 	if (canRedeem) {
+	 		redeem.setOnClickListener(new OnClickListener() {
+	 			@Override
+				public void onClick(View v) {
+	 				redeem.setVisibility(View.INVISIBLE);
+	 				TextView et3 = (TextView) findViewById(R.id.editText3);
+	 				// et3.setVisibility(View.VISIBLE);
+	 			}
+	 		});
+	 	}
 	}
 	
 	// To check if the total amount spent has exceeded $100
 	// If yes, then change button to "Redeem Now" and green
-	private void checkRedeemNow() {
+	private boolean checkRedeemNow() {
 	 	TextView tv1 = (TextView) findViewById(R.id.textView2);
 	 	Button b4 = (Button) findViewById(R.id.button4);
 	 	if (Double.parseDouble(tv1.getText().toString()) >= 100.00) {	
 	 		b4.setText("Redeem Now!");
 	 		b4.setClickable(true);
 	 		b4.setBackgroundColor(0xFF1BE04C);
+	 		return true;
 	 	}
+	 	return false;
 	}
 	
 	// To update the total spent
