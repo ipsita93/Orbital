@@ -1,15 +1,16 @@
-package com.example.noq;
+ package com.example.noq;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.app.Dialog;
-import android.app.AlertDialog.Builder;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 
@@ -20,6 +21,10 @@ public class Receipt1 extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+
+		
+		EditText amtSpent = (EditText) findViewById(R.id.editText3);
+		amtSpent.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});
 		
 		// to click on clear all button
 		Button b1 = (Button) findViewById(R.id.button1);
@@ -36,14 +41,14 @@ public class Receipt1 extends Activity {
 			});
 	       
 			// to click on submit button
-			EditText et = (EditText) findViewById(R.id.editText3);
-	        Button b2 = (Button) findViewById(R.id.button2);			
+	        Button submit = (Button) findViewById(R.id.button2);			
 			
-	        b2.setOnClickListener(new OnClickListener() {											
+	        submit.setOnClickListener(new OnClickListener() {											
 				@Override
 				public void onClick(View arg0) {
 					EditText receiptNum = (EditText) findViewById(R.id.editText1);
 					EditText shopName = (EditText) findViewById(R.id.editText2);
+					
 					if (validateNum(receiptNum.getText().toString())){
 						receiptNum.setError(null);
 						if (validateShop(shopName.getText().toString())){
@@ -119,7 +124,6 @@ public class Receipt1 extends Activity {
 	protected void onRestart() {
 	    super.onRestart();  // Always call the superclass method first
 	    onNewIntent(getIntent());
-		
 	}
 	
 	@Override
@@ -187,4 +191,56 @@ public class Receipt1 extends Activity {
 		submit.setVisibility(View.INVISIBLE);
 		submit.setEnabled(false);
 	}
+
+	public class DecimalDigitsInputFilter implements InputFilter {
+
+		  private final int decimalDigits;
+
+		  /**
+		   * Constructor.
+		   * 
+		   * @param decimalDigits maximum decimal digits
+		   */
+		  public DecimalDigitsInputFilter(int decimalDigits) {
+		    this.decimalDigits = decimalDigits;
+		  }
+
+		  @Override
+		  public CharSequence filter(CharSequence source,
+		      int start,
+		      int end,
+		      Spanned dest,
+		      int dstart,
+		      int dend) {
+
+
+		    int dotPos = -1;
+		    int len = dest.length();
+		    for (int i = 0; i < len; i++) {
+		      char c = dest.charAt(i);
+		      if (c == '.' || c == ',') {
+		        dotPos = i;
+		        break;
+		      }
+		    }
+		    if (dotPos >= 0) {
+
+		      // protects against many dots
+		      if (source.equals(".") || source.equals(","))
+		      {
+		          return "";
+		      }
+		      // if the text is entered before the dot
+		      if (dend <= dotPos) {
+		        return null;
+		      }
+		      if (len - dotPos > decimalDigits) {
+		        return "";
+		      }
+		    }
+
+		    return null;
+		  }
+
+		}
 }

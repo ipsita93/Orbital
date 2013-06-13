@@ -87,7 +87,7 @@
         android:layout_alignBottom="@+id/textView3"
         android:layout_alignLeft="@+id/editText2"
         android:ems="10"
-        android:inputType="numberDecimal" />
+        android:inputType="numberDecimal|time" />
 
     <TextView
         android:id="@+id/textView3"
