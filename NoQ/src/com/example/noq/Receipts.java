@@ -90,7 +90,7 @@ public class Receipts extends Activity {
 	    super.onRestart();  // Always call the superclass method first
 	    onNewIntent(getIntent());
 	    
-	    TextView tv1 = (TextView) findViewById(R.id.textView2);
+	    TextView tv1 = (TextView) findViewById(R.id.textView6);
 	    double oldAmt = Double.parseDouble(tv1.getText().toString());
 		double newAmt = updateAmt(getIntent());
 	 	boolean canRedeem = checkRedeemNow();
@@ -128,7 +128,7 @@ public class Receipts extends Activity {
 	// To check if the total amount spent has exceeded $100
 	// If yes, then change button to "Redeem Now" and green
 	private boolean checkRedeemNow() {
-	 	TextView tv1 = (TextView) findViewById(R.id.textView2);
+	 	TextView tv1 = (TextView) findViewById(R.id.textView6);
 	 	Button b4 = (Button) findViewById(R.id.button4);
 	 	if (Double.parseDouble(tv1.getText().toString()) >= 100.00) {	
 	 		b4.setText("Redeem Now!");
@@ -141,7 +141,7 @@ public class Receipts extends Activity {
 	
 	// To update the total spent
 	private double updateAmt(Intent data) {
-		TextView tv = (TextView) findViewById(R.id.textView2);
+		TextView tv = (TextView) findViewById(R.id.textView6);
 		double newAmt = data.getDoubleExtra("amount", 0.00);
 		double amt = Double.parseDouble(tv.getText().toString());
 		amt += newAmt;

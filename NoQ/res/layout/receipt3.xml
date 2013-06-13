@@ -46,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignRight="@+id/textView2"
+        android:layout_alignRight="@+id/textView6"
         android:layout_marginTop="17dp"
         android:text="Receipt 3"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -63,7 +63,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/editText2"
@@ -94,8 +94,8 @@
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_below="@+id/textView6"
         android:layout_marginTop="50dp"
         android:text="Amount Spent"
         android:textAppearance="?android:attr/textAppearanceMedium" />
