@@ -1,7 +1,8 @@
 package com.example.noq;
  
 public class User {
-     
+    
+	private int _id;
     private String _name;
     private String _NRIC;
     private String _contactNo;
@@ -12,8 +13,9 @@ public class User {
     
     public User(){}
     
-    public User(String name, String NRIC, String contactNo, String email, String vehNo, String IU, String password) {
-    	setName(name);
+    public User(int id, String name, String NRIC, String contactNo, String email, String vehNo, String IU, String password) {
+    	setId(id);
+		setName(name);
     	setNRIC(NRIC);
     	setContact(contactNo);
     	setEmail(email);
@@ -22,54 +24,67 @@ public class User {
     	setPassword(password);
     }
 
+	public void setId(int id){
+		_id = id;
+	}
+	
+	public int getId(){
+		return _id;
+	}
+	
     public void setName(String name){
-        this._name = name;
+        _name = name;
     }
      
     public String getName(){
-        return this._name;
+        return _name;
     }
     
     public void setNRIC(String NRIC){
-        this._NRIC = NRIC;
+        _NRIC = NRIC;
     }
      
     public String getNRIC(){
-        return this._NRIC;
+        return _NRIC;
     }
     
     public void setContact(String contactNo){
-        this._contactNo = contactNo;
+        _contactNo = contactNo;
     }
      
     public String getContact(){
-        return this._contactNo;
+        return _contactNo;
     }
     
     public void setEmail(String email){
-        this._email = email;
+        _email = email;
     }
      
     public String getEmail(){
-        return this._email;
+        return _email;
     }
 
     public void setVehNo(String vehNo){
-        this._vehNo = vehNo;
+        _vehNo = vehNo;
     }
      
     public String getVehNo(){
-        return this._vehNo;
+        return _vehNo;
     }
     
     public void setIU(String IU){
-        this._IUNo = IU;
+        _IUNo = IU;
     }
      
     public String getIU(){
-        return this._IUNo;
+        return _IUNo;
     }
     public void setPassword(String pw) {
-    	this._password = pw;
+    	_password = pw;
     }
+	
+	// here is where crypto comes in
+	public String getPassword(){
+		return _password;
+	}
 }

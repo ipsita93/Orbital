@@ -11,7 +11,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
-        android:text=" Full Name :"
+        android:text="Full Name :"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <TextView
