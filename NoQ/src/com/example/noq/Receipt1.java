@@ -13,15 +13,29 @@ import android.widget.EditText;
 import android.app.Dialog;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.text.TextWatcher;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 
 
 // This is Receipt1 page
 public class Receipt1 extends Activity {
 	
+	private static final int numShops = 3;
+	private static final String[] shops = new String[] {
+		"abc", "def", "ghi"
+	};
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		
+		// autocomplete for the shop name
+		AutoCompleteTextView autocompShops = (AutoCompleteTextView) findViewById(R.id.editText2);
+		autocompShops.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, shops));
+		autocompShops.performCompletion();
+		
+		// limits input of amount spent
 		EditText amtSpent = (EditText) findViewById(R.id.editText3);
 		amtSpent.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});
 		
@@ -142,9 +156,6 @@ public class Receipt1 extends Activity {
 	// right now assume only 3 shops called abc, def and ghi
 	// TO DO: make a database of shops, ignore case and enhance searching
 	private boolean validateShop(String SshopName){
-		int numShops = 3;
-		String[] shops = {"abc", "def", "ghi"};
-
 		for (int i=0; i<numShops; i++){
 			if (SshopName.equals(shops[i])){
 				return true;
@@ -153,6 +164,7 @@ public class Receipt1 extends Activity {
 		return false;
 	}
 	
+	// Converts all editable text fields to textview only
 	private void Fixtext(){
 		EditText et1 = (EditText) findViewById(R.id.editText1);
 		et1.setEnabled(false);
@@ -171,6 +183,7 @@ public class Receipt1 extends Activity {
 		et3.setClickable(false);
 	}
 	
+	// Disables buttons
 	private void Disablebuttons(){
 		Button clear = (Button) findViewById(R.id.button1);
 		clear.setVisibility(View.INVISIBLE);
