@@ -19,7 +19,7 @@ public class SignUp extends Activity {
 		final DatabaseHandler db = new DatabaseHandler(this);
 			
 		Button signup = (Button) findViewById(R.id.button2);
-		signup.setOnClickListener(new onClickListener() {
+		signup.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
 				String name = ((EditText)findViewById(R.id.editText1)).getText().toString();
@@ -29,15 +29,14 @@ public class SignUp extends Activity {
 				String vehNum = ((EditText)findViewById(R.id.editText5)).getText().toString();
 				String iu = ((EditText)findViewById(R.id.editText6)).getText().toString();
 				String password = ((EditText)findViewById(R.id.editText7)).getText().toString();
-				db.addUser(new User(1, name, nric, contact, email, vehNum, iu, password));
+				db.addUser(new User(1, name, nric, contact, email, vehNum, iu, password)); // error!!!
 				Log.d("Insert: ", "Inserting...");
 				Intent intent = new Intent(SignUp.this, Receipts.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivityForResult(intent, 1);
+				clearAll();
 			}
 		});
-		
-		clearAll();
 		
 		final CheckBox responseCheckbox = (CheckBox) findViewById(R.id.checkBox1);  
 		boolean requiresEmail = responseCheckbox.isChecked();		
