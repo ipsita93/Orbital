@@ -38,7 +38,7 @@ public class SignUp extends Activity {
 				
 				inputValidation();
 				
-				db.addUser(new User(1, name, nric, contact, email, vehNum, iu, password)); // error!!!
+				db.addUser(new User(1, name, nric, contact, email, vehNum, iu, password)); 
 				Log.d("Insert: ", "Inserting...");
 				Intent intent = new Intent(SignUp.this, Receipts.class);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
