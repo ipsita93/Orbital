@@ -58,7 +58,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
  
         ContentValues values = new ContentValues();
-        values.put(KEY_ID, 1 + getUsersCount());
+        values.put(KEY_ID, 1 + getUsersCount()); // I THINK THERE'S AN ERROR HERE!! 
 		values.put(KEY_NAME, user.getName()); 
 		values.put(KEY_NRIC, user.getNRIC());
         values.put(KEY_CONTACT_NO, user.getContact()); 
@@ -146,10 +146,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
  
     // Getting users Count
     public int getUsersCount() {
-        String countQuery = "SELECT  * FROM " + TABLE_USERS;
+        String countQuery = "SELECT  * FROM " + TABLE_USERS; // PROB IS SOMEWHR HEREE!
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(countQuery, null);
-        cursor.close();
+        // cursor.close();
  
         // return count
         return cursor.getCount();

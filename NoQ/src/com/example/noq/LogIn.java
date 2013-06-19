@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class LogIn extends Activity {
 
@@ -15,12 +17,8 @@ public class LogIn extends Activity {
 		setContentView(R.layout.log_in);
 		
 		signUp();
-		
 		clearAll();
-		
-		// TO DO: Verify information when clicking on Log in button!!  
-		logIn();
-		
+		logIn();	
 	}
 	
 	private void signUp() {
@@ -30,6 +28,10 @@ public class LogIn extends Activity {
 			public void onClick(View v) {
 				Intent intent = new Intent(LogIn.this, SignUp.class); // Going to SignUp page
 				startActivity(intent);
+				EditText et1 = (EditText) findViewById(R.id.editText1);
+				et1.setText("");
+				EditText et2 = (EditText) findViewById(R.id.editText2);
+				et2.setText("");
 				// intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			}
 		});	
@@ -43,6 +45,10 @@ public class LogIn extends Activity {
 				Intent intent = new Intent(LogIn.this, HomePg.class); // Going to Home page 
 				startActivity(intent);
 				// intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				EditText et1 = (EditText) findViewById(R.id.editText1);
+				et1.setText("");
+				EditText et2 = (EditText) findViewById(R.id.editText2);
+				et2.setText("");
 			}
 		});	
 	}

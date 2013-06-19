@@ -16,13 +16,37 @@ public class HomePg extends Activity {
 		
 		customUserName();
 		redeemToday();
+		logOut();
 	} 
 
+	// To make sure getIntent() always return the most recent intent
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
+    
+	private void logOut() {
+		Button logOut = (Button) findViewById(R.id.button4);
+		logOut.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(HomePg.this, LogIn.class); // Going to Home page 
+				intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT); 
+				// bring an existing instance of the called activity type present in the current stack to the 
+				// foreground instead of creating a new instance
+				setResult(RESULT_OK, intent);   
+				startActivity(intent);
+				// intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			}
+		});
+	}
+	
 	private void customUserName() {
-		
 		TextView name = (TextView) findViewById(R.id.textView2);
-		name.append(", !");
-		// TO DO: WL!! Please access the name from the db and append here! 
+		onNewIntent(getIntent());
+		name.append(", ");
+		name.append(getIntent().getCharSequenceExtra("name"));
+		name.append("!");
 	}
 	
 	private void redeemToday() {

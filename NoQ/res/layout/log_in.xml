@@ -37,17 +37,6 @@
         android:inputType="textPassword"
         android:width="150dp" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="70dp"
-        android:layout_toLeftOf="@+id/editText1"
-        android:text="Vehicle No :"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
@@ -58,22 +47,44 @@
         android:text="Log In" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
         android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/editText2"
         android:layout_marginBottom="30dp"
-        android:text="Clear All" />
+        android:text="New User? Sign up here!" />
 
-    <Button
-        android:id="@+id/button3"
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_alignRight="@+id/editText2"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="96dp"
+        android:layout_toLeftOf="@+id/editText1"
+        android:text="Vehicle No :"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/editText1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="Welcome to No Q!"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textView1"
         android:layout_below="@+id/editText2"
-        android:layout_marginTop="69dp"
-        android:text="New User? Sign up here!" />
+        android:layout_marginTop="43dp"
+        android:text="Clear All" />
 
 </RelativeLayout>

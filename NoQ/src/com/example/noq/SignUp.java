@@ -36,38 +36,91 @@ public class SignUp extends Activity {
 				String iu = ((EditText)findViewById(R.id.editText6)).getText().toString();
 				String password = ((EditText)findViewById(R.id.editText7)).getText().toString();
 				
-				inputValidation();
-				
-				db.addUser(new User(1, name, nric, contact, email, vehNum, iu, password)); 
-				Log.d("Insert: ", "Inserting...");
-				Intent intent = new Intent(SignUp.this, Receipts.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				startActivityForResult(intent, 1);
+				if (inputValidation()) {
+					db.addUser(new User(1, name, nric, contact, email, vehNum, iu, password)); 
+					Log.d("Insert: ", "Inserting...");
+					Intent intent = new Intent(SignUp.this, HomePg.class);
+					intent.putExtra("name", name);
+					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					startActivityForResult(intent, 1);
+				}
 			}
 		});
 	}
 	
-	private void inputValidation() {
+	private boolean inputValidation() {
 		EditText pw1 = (EditText) findViewById(R.id.editText7);
 		EditText pw2 = (EditText) findViewById(R.id.editText8);
+		EditText et1 = (EditText) findViewById(R.id.editText1);
+		EditText et2 = (EditText) findViewById(R.id.editText2);
+		EditText et3 = (EditText) findViewById(R.id.editText3);
+		EditText et4 = (EditText) findViewById(R.id.editText4);
+		EditText et5 = (EditText) findViewById(R.id.editText5);
+		EditText et6 = (EditText) findViewById(R.id.editText6);
 		
+		// if any of the required fields are left blank, there will be an error and the password fields will be cleared out. 
+		if (et1.getText().length() == 0) {
+			pw1.setText("");
+			pw2.setText("");
+			et1.setError("Required field cannot be left blank");
+			return false;
+		}
+		
+		if (et4.getText().length() == 0) {
+			pw1.setText("");
+			pw2.setText("");
+			et4.setError("Required field cannot be left blank");
+			return false;
+		}
+		
+		if (et3.getText().length() == 0) {
+			pw1.setText("");
+			pw2.setText("");
+			et3.setError("Required field cannot be left blank");
+			return false;
+		}
+		
+		if (et2.getText().length() == 0) {
+			pw1.setText("");
+			pw2.setText("");
+			et2.setError("Required field cannot be left blank");
+			return false;
+		}
+		
+		if (et5.getText().length() == 0) {
+			pw1.setText("");
+			pw2.setText("");
+			et5.setError("Required field cannot be left blank");
+			return false;
+		}
+		
+		if (et6.getText().length() == 0) {
+			pw1.setText("");
+			pw2.setText("");
+			et6.setError("Required field cannot be left blank");
+			return false;
+		}
 		// if either the passwords typed don't match or either password field is left blank, show an error. 
 		if (pw1.getText().length() == 0) {
 			pw1.setText("");
 			pw2.setText("");
 			pw1.setError("Required field cannot be left blank");
+			return false;
 		}
 		if (pw2.getText().length() == 0) {
 			pw1.setText("");
 			pw2.setText("");
 			pw2.setError("Required field cannot be left blank");
+			return false;
 		}
 		if (!pw1.getText().toString().equals(pw2.getText().toString())) {
 			pw1.setText("");
 			pw2.setText("");
 			pw1.setError("Passwords do not match");
-			pw2.setError("");
+			pw2.setError("Passwords do not match");
+			return false;
 		}
+		return true;
 	
 	}
 	
