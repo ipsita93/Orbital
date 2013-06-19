@@ -27,20 +27,20 @@ public final class R {
         public static final int tick1=0x7f020003;
     }
     public static final class id {
-        public static final int action_settings=0x7f08001a;
-        public static final int button1=0x7f080005;
+        public static final int action_settings=0x7f08001b;
+        public static final int button1=0x7f080000;
         public static final int button2=0x7f080004;
-        public static final int button3=0x7f08000a;
-        public static final int button4=0x7f08000b;
-        public static final int checkBox1=0x7f080019;
+        public static final int button3=0x7f080005;
+        public static final int button4=0x7f080003;
         public static final int date=0x7f080012;
-        public static final int editText1=0x7f080002;
-        public static final int editText2=0x7f080003;
-        public static final int editText3=0x7f080009;
+        public static final int editText1=0x7f080006;
+        public static final int editText2=0x7f080007;
+        public static final int editText3=0x7f08000b;
         public static final int editText4=0x7f080015;
         public static final int editText5=0x7f080016;
         public static final int editText6=0x7f080017;
         public static final int editText7=0x7f080018;
+        public static final int editText8=0x7f080019;
         public static final int imageView1=0x7f08000c;
         public static final int imageView2=0x7f08000e;
         public static final int imageView3=0x7f080010;
@@ -48,20 +48,22 @@ public final class R {
         public static final int imageView5=0x7f08000f;
         public static final int imageView6=0x7f080011;
         public static final int textView1=0x7f080001;
-        public static final int textView2=0x7f080000;
-        public static final int textView3=0x7f080006;
+        public static final int textView2=0x7f080002;
+        public static final int textView3=0x7f080008;
         public static final int textView4=0x7f080013;
-        public static final int textView5=0x7f080007;
-        public static final int textView6=0x7f080008;
+        public static final int textView5=0x7f080009;
+        public static final int textView6=0x7f08000a;
         public static final int textView7=0x7f080014;
+        public static final int textView8=0x7f08001a;
     }
     public static final class layout {
-        public static final int log_in=0x7f030000;
-        public static final int main=0x7f030001;
-        public static final int receipt2=0x7f030002;
-        public static final int receipt3=0x7f030003;
-        public static final int receipts=0x7f030004;
-        public static final int sign_up=0x7f030005;
+        public static final int home_pg=0x7f030000;
+        public static final int log_in=0x7f030001;
+        public static final int main=0x7f030002;
+        public static final int receipt2=0x7f030003;
+        public static final int receipt3=0x7f030004;
+        public static final int receipts=0x7f030005;
+        public static final int sign_up=0x7f030006;
     }
     public static final class menu {
         public static final int main=0x7f070000;

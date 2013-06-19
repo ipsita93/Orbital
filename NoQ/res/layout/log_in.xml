@@ -66,4 +66,14 @@
         android:layout_marginBottom="30dp"
         android:text="Clear All" />
 
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_alignRight="@+id/editText2"
+        android:layout_below="@+id/editText2"
+        android:layout_marginTop="69dp"
+        android:text="New User? Sign up here!" />
+
 </RelativeLayout>

@@ -14,7 +14,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.noq.SignUp"
+            android:name="com.example.noq.LogIn"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,6 +27,10 @@
         <activity android:name="com.example.noq.Receipt2" >
         </activity>
         <activity android:name="com.example.noq.Receipt3" >
+        </activity>
+        <activity android:name="com.example.noq.SignUp" >
+        </activity>
+        <activity android:name="com.example.noq.HomePg" >
         </activity>
         <activity
             android:name="com.example.noq.Receipt1Display"

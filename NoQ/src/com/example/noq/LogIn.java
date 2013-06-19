@@ -1,6 +1,7 @@
 package com.example.noq;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -13,9 +14,39 @@ public class LogIn extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.log_in);
 		
+		signUp();
+		
 		clearAll();
 		
+		// TO DO: Verify information when clicking on Log in button!!  
+		logIn();
+		
 	}
+	
+	private void signUp() {
+		Button newUser = (Button) findViewById(R.id.button3);
+		newUser.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(LogIn.this, SignUp.class); // Going to SignUp page
+				startActivity(intent);
+				// intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			}
+		});	
+	}
+	
+	private void logIn() {
+		Button logIn = (Button) findViewById(R.id.button2);
+		logIn.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(LogIn.this, HomePg.class); // Going to Home page 
+				startActivity(intent);
+				// intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			}
+		});	
+	}
+	
 	private void clearAll() {
 		Button b1 = (Button) findViewById(R.id.button1);
 		b1.setOnClickListener(new OnClickListener() {
