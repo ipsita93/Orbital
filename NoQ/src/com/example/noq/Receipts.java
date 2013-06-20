@@ -8,6 +8,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.app.Dialog;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import java.text.DateFormat;
 import java.util.Date;
 
@@ -33,7 +36,8 @@ public class Receipts extends Activity {
 					viewIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 					startActivity(viewIntent);
 				}
-				else{// first time clicking to key in Receipt 1
+				// first time clicking to key in Receipt 1
+				else{
 					Intent intent = new Intent(Receipts.this, Receipt1.class); // Going to Receipt1
 					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					startActivityForResult(intent, 1);
@@ -63,6 +67,12 @@ public class Receipts extends Activity {
 		
 	} // end of onCreate()
 	
+/*	//Override of hardware back button
+	@Override 
+	public void onBackPressed(){
+		// do nothing
+	} 
+*/	
 	// activity is partially visible
 	public void onPause() {
 	    super.onPause();  // Always call the superclass method first
@@ -118,11 +128,26 @@ public class Receipts extends Activity {
 	 			@Override
 				public void onClick(View v) {
 	 				redeem.setVisibility(View.INVISIBLE);
-	 				TextView et3 = (TextView) findViewById(R.id.editText3);
-	 				// et3.setVisibility(View.VISIBLE);
+	 				// Supposedly enters some extra receipt validation
+					// Brings up dialog 
+					AlertDialog.Builder redeem = new AlertDialog.Builder(Receipts.this);
+					redeem.setMessage("Validation successful!");
+					redeem.setPositiveButton("Back to Home", new DialogInterface.OnClickListener(){
+						public void onClick(DialogInterface r, int id){
+							Intent goHome = new Intent(Receipts.this, HomePg.class);
+							goHome.putExtra("claimToday", true);
+							goHome.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+							setResult(RESULT_OK, goHome);
+							startActivity(goHome);
+						}
+					});
+					redeem.show();
 	 			}
 	 		});
 	 	}
+		else{
+			redeem.setEnabled(false);
+		}
 	}
 	
 	// To check if the total amount spent has exceeded $100

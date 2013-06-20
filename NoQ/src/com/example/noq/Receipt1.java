@@ -21,9 +21,17 @@ import android.widget.AutoCompleteTextView;
 // This is Receipt1 page
 public class Receipt1 extends Activity {
 	
-	private static final int numShops = 3;
+	private static final int numShops = 12;
 	private static final String[] shops = new String[] {
-		"abc", "def", "ghi"
+		"Bakerzin", "Ben & Jerry's",
+		"Daiso", "Desigual",
+		"Golden Village",
+		"Honeymoon Dessert", "Hang Ten", 
+		"Mango", 
+		"Old Chang Kee", 
+		"Prima Deli",
+		"Starbucks Coffee", 
+		"Toys \"R\" Us"
 	};
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +41,7 @@ public class Receipt1 extends Activity {
 		// autocomplete for the shop name
 		AutoCompleteTextView autocompShops = (AutoCompleteTextView) findViewById(R.id.editText2);
 		autocompShops.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, shops));
+		autocompShops.setDropDownHeight(200);
 		autocompShops.performCompletion();
 		
 		// limits input of amount spent
@@ -153,8 +162,7 @@ public class Receipt1 extends Activity {
 	}
 	
 	// returns true if shop is valid
-	// right now assume only 3 shops called abc, def and ghi
-	// TO DO: make a database of shops, ignore case and enhance searching
+	// TO DO: make a database of shops and enhance searching
 	private boolean validateShop(String SshopName){
 		for (int i=0; i<numShops; i++){
 			if (SshopName.equals(shops[i])){

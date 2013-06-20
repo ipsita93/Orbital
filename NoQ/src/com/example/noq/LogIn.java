@@ -38,17 +38,22 @@ public class LogIn extends Activity {
 	}
 	
 	private void logIn() {
+		// final DatabaseHandler db = new DatabaseHandler(this);
 		Button logIn = (Button) findViewById(R.id.button2);
 		logIn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
+				EditText vehNum = (EditText) findViewById(R.id.editText1);
+				EditText pass = (EditText) findViewById(R.id.editText2);
+				String name = "human"; // temporary fix; TODO: search db for matching vehNum and password, then return name
+				
 				Intent intent = new Intent(LogIn.this, HomePg.class); // Going to Home page 
-				startActivity(intent);
-				// intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				EditText et1 = (EditText) findViewById(R.id.editText1);
-				et1.setText("");
-				EditText et2 = (EditText) findViewById(R.id.editText2);
-				et2.setText("");
+				intent.putExtra("name", name);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				startActivityForResult(intent, 1);
+
+				vehNum.setText("");
+				pass.setText("");
 			}
 		});	
 	}
