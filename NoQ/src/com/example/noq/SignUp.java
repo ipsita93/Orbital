@@ -14,7 +14,7 @@ public class SignUp extends Activity {
 
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.sign_up);
+		setContentView(R.layout.sign_up1);
 		
 		clearAll(); 
 		signUp();
@@ -29,9 +29,9 @@ public class SignUp extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				String name = ((EditText)findViewById(R.id.editText1)).getText().toString();
-				String nric = ((EditText)findViewById(R.id.editText4)).getText().toString();
+				String nric = ((EditText)findViewById(R.id.editText2)).getText().toString();
 				String contact = ((EditText)findViewById(R.id.editText3)).getText().toString();
-				String email = ((EditText)findViewById(R.id.editText2)).getText().toString();
+				String email = ((EditText)findViewById(R.id.editText4)).getText().toString();
 				String vehNum = ((EditText)findViewById(R.id.editText5)).getText().toString();
 				String iu = ((EditText)findViewById(R.id.editText6)).getText().toString();
 				String password = ((EditText)findViewById(R.id.editText7)).getText().toString();
@@ -66,7 +66,7 @@ public class SignUp extends Activity {
 			return false;
 		}
 		
-		if (et4.getText().length() == 0) {
+		if (et2.getText().length() == 0) {
 			pw1.setText("");
 			pw2.setText("");
 			et4.setError("Required field cannot be left blank");
@@ -80,7 +80,7 @@ public class SignUp extends Activity {
 			return false;
 		}
 		
-		if (et2.getText().length() == 0) {
+		if (et4.getText().length() == 0) {
 			pw1.setText("");
 			pw2.setText("");
 			et2.setError("Required field cannot be left blank");
