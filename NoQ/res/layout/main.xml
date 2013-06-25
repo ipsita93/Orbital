@@ -78,7 +78,7 @@
         android:layout_below="@+id/editText1"
         android:layout_marginTop="30dp"
         android:ems="10"
-        android:inputType="textNoSuggestions"/>
+        android:inputType="textNoSuggestions" style="android:autoCompleteTextViewStyle"/>
     
     <EditText
         android:id="@+id/editText3"

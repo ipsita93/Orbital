@@ -8,7 +8,6 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.app.Dialog;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import java.text.DateFormat;
@@ -103,7 +102,6 @@ public class Receipts extends Activity {
 	    TextView tv1 = (TextView) findViewById(R.id.textView6);
 	    double oldAmt = Double.parseDouble(tv1.getText().toString());
 		double newAmt = updateAmt(getIntent());
-	 	boolean canRedeem = checkRedeemNow();
 	    
 	    // inserts tick1 image if a valid receipt was entered  
 	 	if (getIntent().getBooleanExtra("isValid1", false) && oldAmt != newAmt) {
@@ -123,7 +121,7 @@ public class Receipts extends Activity {
 	 	}		
 	 	
 	 	final Button redeem = (Button) findViewById(R.id.button4);
-	 	if (canRedeem) {
+	 	if (canRedeem()) {
 	 		redeem.setOnClickListener(new OnClickListener() {
 	 			@Override
 				public void onClick(View v) {
@@ -146,13 +144,13 @@ public class Receipts extends Activity {
 	 		});
 	 	}
 		else{
-			redeem.setEnabled(false);
+			redeem.setClickable(false);
 		}
 	}
 	
 	// To check if the total amount spent has exceeded $100
 	// If yes, then change button to "Redeem Now" and green
-	private boolean checkRedeemNow() {
+	private boolean canRedeem() {
 	 	TextView tv1 = (TextView) findViewById(R.id.textView6);
 	 	Button b4 = (Button) findViewById(R.id.button4);
 	 	if (Double.parseDouble(tv1.getText().toString()) >= 100.00) {	

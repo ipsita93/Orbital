@@ -71,14 +71,15 @@
         android:text="Shop Name"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <EditText
+     <AutoCompleteTextView
         android:id="@+id/editText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editText1"
         android:layout_below="@+id/editText1"
         android:layout_marginTop="30dp"
-        android:ems="10" />
+        android:ems="10"
+        android:inputType="textNoSuggestions" style="android:autoCompleteTextViewStyle"/>
 
     <EditText
         android:id="@+id/editText3"

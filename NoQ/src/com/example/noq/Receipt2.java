@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.app.Dialog;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
@@ -75,7 +74,7 @@ public class Receipt2 extends Activity {
 								Disablebuttons();
 								Intent returnIntent = new Intent(Receipt2.this, Receipts.class); // Going back to Receipts
 								returnIntent.putExtra("amount", Double.parseDouble(et.getText().toString()));
-								returnIntent.putExtra("isValid1", true);
+								returnIntent.putExtra("isValid2", true);
 								returnIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT); 
 								// bring an existing instance of the called activity type present in the current stack to the 
 								// foreground instead of creating a new instance
