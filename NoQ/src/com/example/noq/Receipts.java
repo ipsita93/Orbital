@@ -49,8 +49,18 @@ public class Receipts extends Activity {
 		b2.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(Receipts.this, Receipt2.class);
-				startActivity(intent);
+				// clicking again to view info on Receipt 2
+				if (getIntent().getBooleanExtra("isValid2", false)) {
+					Intent viewIntent = new Intent(Receipts.this, Receipt2.class);
+					viewIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+					startActivity(viewIntent);
+				}
+				// first time clicking to key in Receipt 2
+				else{
+					Intent intent = new Intent(Receipts.this, Receipt2.class); // Going to Receipt2
+					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					startActivityForResult(intent, 1);
+				}	
 			}
 		});
 		
@@ -59,8 +69,18 @@ public class Receipts extends Activity {
 		b3.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(Receipts.this, Receipt3.class);
-				startActivity(intent);
+				// clicking again to view info on Receipt 3
+				if (getIntent().getBooleanExtra("isValid3", false)) {
+					Intent viewIntent = new Intent(Receipts.this, Receipt3.class);
+					viewIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+					startActivity(viewIntent);
+				}
+				// first time clicking to key in Receipt 3
+				else{
+					Intent intent = new Intent(Receipts.this, Receipt3.class); // Going to Receipt3
+					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					startActivityForResult(intent, 1);
+				}	
 			}
 		});
 		
