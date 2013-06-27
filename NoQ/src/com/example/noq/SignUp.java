@@ -69,7 +69,7 @@ public class SignUp extends Activity {
 		if (et2.getText().length() == 0) {
 			pw1.setText("");
 			pw2.setText("");
-			et4.setError("Required field cannot be left blank");
+			et2.setError("Required field cannot be left blank");
 			return false;
 		}
 		
@@ -83,7 +83,7 @@ public class SignUp extends Activity {
 		if (et4.getText().length() == 0) {
 			pw1.setText("");
 			pw2.setText("");
-			et2.setError("Required field cannot be left blank");
+			et4.setError("Required field cannot be left blank");
 			return false;
 		}
 		
