@@ -23,7 +23,20 @@ public class Receipts extends Activity {
 		// shows the current date
 		TextView date = (TextView) findViewById(R.id.date);
 		date.setText(DateFormat.getDateInstance().format(new Date()));
-	
+		
+		// greys out the "You cannot redeem yet" button
+		if (!canRedeem()) {
+			Button redeem = (Button) findViewById(R.id.button4);
+			redeem.setClickable(false);
+			redeem.setEnabled(false);
+		}
+		
+		// greys out receipt2 and 3 when the activity is first created
+		Button r2 = (Button) findViewById(R.id.button2);
+		Button r3 = (Button) findViewById(R.id.button3);
+		r2.setEnabled(false);
+		r3.setEnabled(false);
+		
 		// clicking on receipt1 button 
 		Button b1 = (Button) findViewById(R.id.button1);
 		b1.setOnClickListener(new OnClickListener() {
@@ -123,17 +136,23 @@ public class Receipts extends Activity {
 	    double oldAmt = Double.parseDouble(tv1.getText().toString());
 		double newAmt = updateAmt(getIntent());
 	    
-	    // inserts tick1 image if a valid receipt was entered  
+	    // inserts tick1 image if a valid receipt1 was entered  
 	 	if (getIntent().getBooleanExtra("isValid1", false) && oldAmt != newAmt) {
 	 		ImageView tick1 = (ImageView) findViewById(R.id.imageView4);
 	 		tick1.setVisibility(View.VISIBLE);
 	 		tick1.setImageResource(R.drawable.tick1);
+	 		Button r2 = (Button) findViewById(R.id.button2);
+	 		r2.setEnabled(true);
 	 	}
+	 	// inserts tick1 image if a valid receipt2 was entered 
 	 	if (getIntent().getBooleanExtra("isValid2", false) && oldAmt != newAmt) {
 	 		ImageView tick2 = (ImageView) findViewById(R.id.imageView5);
 	 		tick2.setVisibility(View.VISIBLE);
 	 		tick2.setImageResource(R.drawable.tick1);
+			Button r3 = (Button) findViewById(R.id.button3);
+	 		r3.setEnabled(true);
 	 	}
+	 	// inserts tick1 image if a valid receipt3 was entered 
 	 	if (getIntent().getBooleanExtra("isValid3", false) && oldAmt != newAmt) {
 	 		ImageView tick3 = (ImageView) findViewById(R.id.imageView6);
 	 		tick3.setVisibility(View.VISIBLE);
@@ -165,6 +184,7 @@ public class Receipts extends Activity {
 	 	}
 		else{
 			redeem.setClickable(false);
+			redeem.setEnabled(false);
 		}
 	}
 	
@@ -172,11 +192,12 @@ public class Receipts extends Activity {
 	// If yes, then change button to "Redeem Now" and green
 	private boolean canRedeem() {
 	 	TextView tv1 = (TextView) findViewById(R.id.textView6);
-	 	Button b4 = (Button) findViewById(R.id.button4);
+	 	Button redeem = (Button) findViewById(R.id.button4);
 	 	if (Double.parseDouble(tv1.getText().toString()) >= 100.00) {	
-	 		b4.setText("Redeem Now!");
-	 		b4.setClickable(true);
-	 		b4.setBackgroundColor(0xFF1BE04C);
+	 		redeem.setText("Redeem Now!");
+	 		redeem.setEnabled(true);
+	 		redeem.setClickable(true);
+	 		redeem.setBackgroundColor(0xFF1BE04C);
 	 		return true;
 	 	}
 	 	return false;

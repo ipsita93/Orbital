@@ -16,8 +16,11 @@ public class SignUp extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.sign_up1);
 		
+		EditText name = (EditText) findViewById(R.id.editText1);
+		name.setCursorVisible(true);
 		clearAll(); 
 		signUp();
+		
 	} 	
 	
 	// sets up the sign up button

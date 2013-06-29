@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView1"
         android:layout_alignBottom="@+id/textView1"
-        android:layout_alignLeft="@+id/button2"
+        android:layout_toRightOf="@+id/textView3"
         android:ems="10" >
 
         <requestFocus />
@@ -82,15 +82,36 @@
         android:inputType="textNoSuggestions" style="android:autoCompleteTextViewStyle"/>
     
 
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/textView3"
-        android:layout_alignBottom="@+id/textView3"
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
         android:layout_alignLeft="@+id/editText2"
-        android:ems="10"
-        android:inputType="numberDecimal" />
+        android:layout_below="@+id/editText2"
+        android:layout_marginTop="53dp"
+        android:background="@android:drawable/editbox_background" >
+
+        <TextView
+            android:id="@+id/constant_text"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="S$"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/editText3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/constant_text"
+            android:ems="10"
+            android:inputType="numberDecimal|time"
+            android:paddingLeft="10dp" />
+
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/textView3"
@@ -98,7 +119,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView6"
         android:layout_below="@+id/textView6"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="67dp"
         android:text="Amount Spent"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 

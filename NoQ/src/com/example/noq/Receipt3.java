@@ -66,7 +66,7 @@ public class Receipt3 extends Activity {
 						// Brings up dialog to ask if want to submit
 						AlertDialog.Builder toContinue = new AlertDialog.Builder(Receipt3.this);
 						toContinue.setTitle("Confirm submission");
-						toContinue.setMessage("Are you sure you want to submit now?");
+						toContinue.setMessage("Submit Now?");
 						toContinue.setPositiveButton("Submit", new DialogInterface.OnClickListener(){
 							// Changes edittext to textview, hides and disables buttons, then continues to submit
 							public void onClick(DialogInterface cont, int id){
