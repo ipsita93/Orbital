@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.app.Dialog;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
@@ -58,6 +57,7 @@ public class Receipt3 extends Activity {
 			public void onClick(View arg0) {
 				EditText receiptNum = (EditText) findViewById(R.id.editText1);
 				EditText shopName = (EditText) findViewById(R.id.editText2);
+				EditText amtSpent = (EditText) findViewById(R.id.editText3);
 				
 				if (validateNum(receiptNum.getText().toString())){
 					receiptNum.setError(null);
@@ -98,6 +98,15 @@ public class Receipt3 extends Activity {
 				}
 				else{
 					receiptNum.setError("Invalid receipt code");
+				}
+				if (amtSpent.getText().length() == 0) {
+					amtSpent.setError("Required field cannot be left blank");
+				}
+				if (shopName.getText().length() == 0) {
+					shopName.setError("Required field cannot be left blank");
+				}
+				if (receiptNum.getText().length() == 0) {
+					receiptNum.setError("Required field cannot be left blank");
 				}
 			}		
 		}); 

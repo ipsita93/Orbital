@@ -1,5 +1,6 @@
 package com.example.noq;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +14,7 @@ import android.content.DialogInterface;
 import java.text.DateFormat;
 import java.util.Date;
 
+@SuppressLint("CutPasteId") // what is this?
 public class Receipts extends Activity {
 	
 	@Override

@@ -6,5 +6,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_receipt1_display">Receipt1Display</string>
     <string name="title_activity_receipt1_view">Receipt1View</string>
+    <string name="redeem_today_">Redeem Today!</string>
+    <string name="hello">Hello</string>
+    <string name="log_out">Log Out</string>
 
 </resources>
