@@ -1,5 +1,13 @@
 package com.example.noq;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.NameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -8,118 +16,120 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.util.Log;
+import android.app.ProgressDialog;
+import android.os.AsyncTask;
 
 public class SignUp extends Activity {
-
+	
+	private ProgressDialog pDialog;
+	JSONParser jsonParser = new JSONParser();
+	EditText name; 
+	EditText nric;
+	EditText contact;
+	EditText email; 
+	EditText vehNum; 
+	EditText iu;
+	EditText password1;
+	EditText password2;
+	
+	// url to create a new user
+	private static String url_create_user = "http://api.noq.info/android_connect/create_product.php";
+	
+	// JSON Node names
+	private static final String TAG_SUCCESS = "success";
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.sign_up1);
 		
-		EditText name = (EditText) findViewById(R.id.editText1);
+		name = (EditText) findViewById(R.id.editText1);
+		nric = (EditText) findViewById(R.id.editText2);
+		contact = (EditText) findViewById(R.id.editText3);
+		email = (EditText) findViewById(R.id.editText4);
+		vehNum = (EditText) findViewById(R.id.editText5);
+		iu = (EditText) findViewById(R.id.editText6);
+		password1 = (EditText) findViewById(R.id.editText7);
+		password2 = (EditText) findViewById(R.id.editText8);
+		
 		name.setCursorVisible(true);
 		clearAll(); 
 		signUp();
-		
 	} 	
 	
 	// sets up the sign up button
 	private void signUp() {
-		final DatabaseHandler db = new DatabaseHandler(this);
-		
 		Button signup = (Button) findViewById(R.id.button2);
 		signup.setOnClickListener(new OnClickListener() {
 			@Override
-			public void onClick(View arg0) {
-				String name = ((EditText)findViewById(R.id.editText1)).getText().toString();
-				String nric = ((EditText)findViewById(R.id.editText2)).getText().toString();
-				String contact = ((EditText)findViewById(R.id.editText3)).getText().toString();
-				String email = ((EditText)findViewById(R.id.editText4)).getText().toString();
-				String vehNum = ((EditText)findViewById(R.id.editText5)).getText().toString();
-				String iu = ((EditText)findViewById(R.id.editText6)).getText().toString();
-				String password = ((EditText)findViewById(R.id.editText7)).getText().toString();
-				
+			public void onClick(View arg0) {				
 				if (inputValidation()) {
-					db.addUser(new User(1, name, nric, contact, email, vehNum, iu, password)); 
-					Log.d("Insert: ", "Inserting...");
-					Intent intent = new Intent(SignUp.this, HomePg.class);
-					intent.putExtra("name", name);
-					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-					startActivityForResult(intent, 1);
+					new CreateNewUser().execute();
 				}
 			}
 		});
 	}
 	
 	private boolean inputValidation() {
-		EditText pw1 = (EditText) findViewById(R.id.editText7);
-		EditText pw2 = (EditText) findViewById(R.id.editText8);
-		EditText et1 = (EditText) findViewById(R.id.editText1);
-		EditText et2 = (EditText) findViewById(R.id.editText2);
-		EditText et3 = (EditText) findViewById(R.id.editText3);
-		EditText et4 = (EditText) findViewById(R.id.editText4);
-		EditText et5 = (EditText) findViewById(R.id.editText5);
-		EditText et6 = (EditText) findViewById(R.id.editText6);
-		
 		// if any of the required fields are left blank, there will be an error and the password fields will be cleared out. 
-		if (et1.getText().length() == 0) {
-			pw1.setText("");
-			pw2.setText("");
-			et1.setError("Required field cannot be left blank");
+		if (name.getText().length() == 0) {
+			password1.setText("");
+			password2.setText("");
+			name.setError("Required field cannot be left blank");
 			return false;
 		}
 		
-		if (et2.getText().length() == 0) {
-			pw1.setText("");
-			pw2.setText("");
-			et2.setError("Required field cannot be left blank");
+		if (nric.getText().length() == 0) {
+			password1.setText("");
+			password2.setText("");
+			nric.setError("Required field cannot be left blank");
 			return false;
 		}
 		
-		if (et3.getText().length() == 0) {
-			pw1.setText("");
-			pw2.setText("");
-			et3.setError("Required field cannot be left blank");
+		if (contact.getText().length() == 0) {
+			password1.setText("");
+			password2.setText("");
+			contact.setError("Required field cannot be left blank");
 			return false;
 		}
 		
-		if (et4.getText().length() == 0) {
-			pw1.setText("");
-			pw2.setText("");
-			et4.setError("Required field cannot be left blank");
+		if (email.getText().length() == 0) {
+			password1.setText("");
+			password2.setText("");
+			email.setError("Required field cannot be left blank");
 			return false;
 		}
 		
-		if (et5.getText().length() == 0) {
-			pw1.setText("");
-			pw2.setText("");
-			et5.setError("Required field cannot be left blank");
+		if (vehNum.getText().length() == 0) {
+			password1.setText("");
+			password2.setText("");
+			vehNum.setError("Required field cannot be left blank");
 			return false;
 		}
 		
-		if (et6.getText().length() == 0) {
-			pw1.setText("");
-			pw2.setText("");
-			et6.setError("Required field cannot be left blank");
+		if (iu.getText().length() == 0) {
+			password1.setText("");
+			password2.setText("");
+			iu.setError("Required field cannot be left blank");
 			return false;
 		}
 		// if either the passwords typed don't match or either password field is left blank, show an error. 
-		if (pw1.getText().length() == 0) {
-			pw1.setText("");
-			pw2.setText("");
-			pw1.setError("Required field cannot be left blank");
+		if (password1.getText().length() == 0) {
+			password1.setText("");
+			password2.setText("");
+			password1.setError("Required field cannot be left blank");
 			return false;
 		}
-		if (pw2.getText().length() == 0) {
-			pw1.setText("");
-			pw2.setText("");
-			pw2.setError("Required field cannot be left blank");
+		if (password2.getText().length() == 0) {
+			password1.setText("");
+			password2.setText("");
+			password2.setError("Required field cannot be left blank");
 			return false;
 		}
-		if (!pw1.getText().toString().equals(pw2.getText().toString())) {
-			pw1.setText("");
-			pw2.setText("");
-			pw1.setError("Passwords do not match");
-			pw2.setError("Passwords do not match");
+		if (!password1.getText().toString().equals(password2.getText().toString())) {
+			password1.setText("");
+			password2.setText("");
+			password1.setError("Passwords do not match");
+			password2.setError("Passwords do not match");
 			return false;
 		}
 		return true;
@@ -132,22 +142,82 @@ public class SignUp extends Activity {
 		b1.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				EditText et1 = (EditText) findViewById(R.id.editText1);
-				et1.setText("");
-				EditText et2 = (EditText) findViewById(R.id.editText2);
-				et2.setText("");
-				EditText et3 = (EditText) findViewById(R.id.editText3);
-				et3.setText("");
-				EditText et4 = (EditText) findViewById(R.id.editText4);
-				et4.setText("");
-				EditText et5 = (EditText) findViewById(R.id.editText5);
-				et5.setText("");
-				EditText et6 = (EditText) findViewById(R.id.editText6);
-				et6.setText("");
-				EditText et7 = (EditText) findViewById(R.id.editText7);
-				et7.setText("");
+				name.setText("");
+				nric.setText("");
+				contact.setText("");
+				email.setText("");
+				vehNum.setText("");
+				iu.setText("");
+				password1.setText("");
+				password2.setText("");
 			}
 		});	
 	
+	}
+	
+	// Background Async Task to create new user
+	class CreateNewUser extends AsyncTask<String, String, String> {
+		// Before starting background thread Show Progress Dialog
+		
+		@Override
+		protected void onPreExecute(){
+			super.onPreExecute();
+			pDialog = new ProgressDialog(SignUp.this);
+			pDialog.setMessage("Creating User...");
+			pDialog.setIndeterminate(false);
+			pDialog.setCancelable(true);
+			pDialog.show();
+		}
+		
+		// Creating user
+		protected String doInBackground(String... args){
+			String sname = name.getText().toString(); 
+			String snric = nric.getText().toString(); 
+			String scontact = contact.getText().toString(); 
+			String semail = email.getText().toString(); 
+			String svehNum = vehNum.getText().toString(); 
+			String siu = iu.getText().toString(); 
+			String spassword = password1.getText().toString(); 
+			
+			// Building parameters
+			List<NameValuePair> params = new ArrayList<NameValuePair>();
+            params.add(new BasicNameValuePair("name", sname));
+            params.add(new BasicNameValuePair("nric", snric));
+            params.add(new BasicNameValuePair("contact_num", scontact));
+			params.add(new BasicNameValuePair("email", semail));
+			params.add(new BasicNameValuePair("vehicle_num", svehNum));
+			params.add(new BasicNameValuePair("iu_num", siu));
+			params.add(new BasicNameValuePair("password", spassword));
+			
+			// Getting JSON object
+			JSONObject json = jsonParser.makeHttpRequest(url_create_user, "POST", params)
+			
+			// Check log for response
+			Log.d("Create Response", json.toString());
+			
+			// Check for success tag
+			try {
+				int success = json.getInt(TAG_SUCCESS);
+				if (success == 1){
+					Intent intent = new Intent(SignUp.this, HomePg.class);
+					intent.putExtra("name", sname);
+					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					startActivityForResult(intent, 1);
+				}
+				else{
+					// failed to add user
+				}
+			} catch (JSONException e){
+				e.printStackTrace();
+			}
+			
+			return null;
+		}
+		
+		// After completing background task, dismiss the progress dialog
+		protected void onPostExecute(String file_url){
+			// dismiss the dialog
+			pDialog.dismiss();
+		}
 	}
 }
