@@ -3,6 +3,7 @@ package com.example.noq;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.NameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +34,7 @@ public class SignUp extends Activity {
 	EditText password2;
 	
 	// url to create a new user
-	private static String url_create_user = "http://api.noq.info/android_connect/create_product.php";
+	private static String url_create_user = "http://api.noq.info/android_connect/create_user.php";
 	
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";
@@ -63,7 +64,11 @@ public class SignUp extends Activity {
 			@Override
 			public void onClick(View arg0) {				
 				if (inputValidation()) {
-					new CreateNewUser().execute();
+//					new CreateNewUser().execute();
+					Intent intent = new Intent(SignUp.this, HomePg.class); // Going to Home page 
+					intent.putExtra("name", "human");
+					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					startActivityForResult(intent, 1);
 				}
 			}
 		});
@@ -156,9 +161,8 @@ public class SignUp extends Activity {
 	}
 	
 	// Background Async Task to create new user
-	class CreateNewUser extends AsyncTask<String, String, String> {
+	private class CreateNewUser extends AsyncTask<String, String, String> {
 		// Before starting background thread Show Progress Dialog
-		
 		@Override
 		protected void onPreExecute(){
 			super.onPreExecute();
@@ -170,7 +174,7 @@ public class SignUp extends Activity {
 		}
 		
 		// Creating user
-		protected String doInBackground(String... args){
+		protected String doInBackground(String... args){ 
 			String sname = name.getText().toString(); 
 			String snric = nric.getText().toString(); 
 			String scontact = contact.getText().toString(); 
@@ -188,10 +192,10 @@ public class SignUp extends Activity {
 			params.add(new BasicNameValuePair("vehicle_num", svehNum));
 			params.add(new BasicNameValuePair("iu_num", siu));
 			params.add(new BasicNameValuePair("password", spassword));
-			
-			// Getting JSON object
-			JSONObject json = jsonParser.makeHttpRequest(url_create_user, "POST", params)
-			
+	
+			// Getting JSON object, null pointer here as json is null from JSONParser
+			JSONObject json = jsonParser.makeHttpRequest(url_create_user, "POST", params);
+
 			// Check log for response
 			Log.d("Create Response", json.toString());
 			
