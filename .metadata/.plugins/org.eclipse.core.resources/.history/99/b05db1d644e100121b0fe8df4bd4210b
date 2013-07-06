@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AbsoluteLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_x="33dp"
+        android:layout_y="150dp"
+        android:text="@string/redeem_today_" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_x="24dp"
+        android:layout_y="23dp"
+        android:text="Hello"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/button4"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:layout_x="226dp"
+        android:layout_y="19dp"
+        android:gravity="center_vertical|center_horizontal|top"
+        android:text="Log Out" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="248dp"
+        android:layout_height="wrap_content"
+        android:layout_x="33dp"
+        android:layout_y="246dp"
+        android:text="Help" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="248dp"
+        android:layout_height="wrap_content"
+        android:layout_x="33dp"
+        android:layout_y="336dp"
+        android:text="Settings" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_x="33dp"
+        android:layout_y="72dp"
+        android:gravity="center"
+        android:text="Welcome to No Q! "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</AbsoluteLayout>

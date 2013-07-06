@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Change Layout" description="Change Layout" file="/NoQ/res/layout/log_in.xml" flags="6" flatten="true" id="com.android.ide.eclipse.adt.refactoring.convert" proj="/NoQ" sel-end="3295" sel-start="40" stamp="1371634311093" type="android.widget.AbsoluteLayout"/>
+</session>
