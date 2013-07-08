@@ -56,7 +56,7 @@ public class LogIn extends Activity {
 	}
 	
 	private void signUp() {
-		Button newUser = (Button) findViewById(R.id.button3);
+		Button newUser = (Button) findViewById(R.id.ocrButton);
 		newUser.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

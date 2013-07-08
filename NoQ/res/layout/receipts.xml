@@ -4,7 +4,7 @@
     android:clickable="false" >
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/ocrButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button2"
@@ -87,7 +87,7 @@
         android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button3"
+        android:layout_above="@+id/ocrButton"
         android:layout_alignRight="@+id/button2"
         android:src="@drawable/bluebox" />
 
@@ -104,15 +104,15 @@
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/button3"
-        android:layout_alignRight="@+id/button3"
+        android:layout_alignBottom="@+id/ocrButton"
+        android:layout_alignRight="@+id/ocrButton"
         android:src="@drawable/bluebox" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_alignBottom="@+id/button3"
+        android:layout_alignBottom="@+id/ocrButton"
         android:layout_alignLeft="@+id/imageView3"
         android:src="@drawable/tick1"
         android:visibility="invisible" />

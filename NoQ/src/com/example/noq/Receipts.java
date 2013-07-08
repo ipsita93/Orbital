@@ -35,7 +35,7 @@ public class Receipts extends Activity {
 		
 		// greys out receipt2 and 3 when the activity is first created
 		Button r2 = (Button) findViewById(R.id.button2);
-		Button r3 = (Button) findViewById(R.id.button3);
+		Button r3 = (Button) findViewById(R.id.ocrButton);
 		r2.setEnabled(false);
 		r3.setEnabled(false);
 		
@@ -80,7 +80,7 @@ public class Receipts extends Activity {
 		});
 		
 		// clicking on receipt3 button 
-		Button b3 = (Button) findViewById(R.id.button3);
+		Button b3 = (Button) findViewById(R.id.ocrButton);
 		b3.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -151,7 +151,7 @@ public class Receipts extends Activity {
 	 		ImageView tick2 = (ImageView) findViewById(R.id.imageView5);
 	 		tick2.setVisibility(View.VISIBLE);
 	 		tick2.setImageResource(R.drawable.tick1);
-			Button r3 = (Button) findViewById(R.id.button3);
+			Button r3 = (Button) findViewById(R.id.ocrButton);
 	 		r3.setEnabled(true);
 	 	}
 	 	// inserts tick1 image if a valid receipt3 was entered 

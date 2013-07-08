@@ -14,11 +14,11 @@ public final class R {
         public static final int icon=0x7f020000;
     }
     public static final class id {
-        public static final int apiKey=0x7f050004;
-        public static final int convert=0x7f050005;
-        public static final int imageName=0x7f050003;
-        public static final int lanuageCode=0x7f050002;
-        public static final int picImagebutton=0x7f050001;
+        public static final int captureImageButton=0x7f050005;
+        public static final int chosenImage=0x7f050004;
+        public static final int convert=0x7f050003;
+        public static final int imageName=0x7f050002;
+        public static final int pickImagebutton=0x7f050001;
         public static final int relativeLayout=0x7f050000;
     }
     public static final class layout {

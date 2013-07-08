@@ -1,5 +1,7 @@
 package com.example.noq;
 
+import com.smartmobilesofware.ocrapiservice.OCR;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -16,8 +18,6 @@ import android.content.DialogInterface;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
-
-// This is Receipt1 page
 public class Receipt1 extends Activity {
 	
 	private static final int numShops = 12;
@@ -36,6 +36,15 @@ public class Receipt1 extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		
+		Button ocrButton = (Button) findViewById(R.id.ocrButton);	
+		ocrButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent(Receipt1.this, OCR.class); // Going to OCR page
+				startActivity(intent);
+			}
+		});
 		
 		// autocomplete for the shop name
 		AutoCompleteTextView autocompShops = (AutoCompleteTextView) findViewById(R.id.editText2);

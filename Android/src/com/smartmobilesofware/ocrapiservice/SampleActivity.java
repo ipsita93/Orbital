@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -15,18 +16,16 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class SampleActivity extends Activity implements OnClickListener {
 	private final int RESPONSE_OK = 200;
-	
 	private final int IMAGE_PICKER_REQUEST = 1;
-	
+	private static final int CAMERA_REQUEST = 1888; 
+    private ImageView imageView;
 	private TextView picNameText;
-	private EditText langCodeField;
-	private EditText apiKeyFiled;
 	
 	private String apiKey;
 	private String langCode;
@@ -37,12 +36,22 @@ public class SampleActivity extends Activity implements OnClickListener {
 		super.onCreate(savedInstanceState);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.main);
+		
+		this.imageView = (ImageView)this.findViewById(R.id.chosenImage);
+	    Button captureButton = (Button) this.findViewById(R.id.captureImageButton);
+	    captureButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE); 
+                startActivityForResult(cameraIntent, CAMERA_REQUEST); 
+            }
+        });
+	    
+	    picNameText = (TextView) findViewById(R.id.imageName);
+		apiKey = "QdgJmSnWjK";
+		langCode = "en";
 
-		picNameText = (TextView) findViewById(R.id.imageName);
-		langCodeField = (EditText) findViewById(R.id.lanuageCode);
-		apiKeyFiled = (EditText) findViewById(R.id.apiKey);
-
-		final Button pickButton = (Button) findViewById(R.id.picImagebutton);
+		final Button pickButton = (Button) findViewById(R.id.pickImagebutton);
 		pickButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -57,12 +66,12 @@ public class SampleActivity extends Activity implements OnClickListener {
 	
 	@Override
 	public void onClick(View v) {
-		apiKey = apiKeyFiled.getText().toString();
-		langCode = langCodeField.getText().toString();
+		// apiKey = apiKeyField.getText().toString();
+		// langCode = langCodeField.getText().toString();
 		
 		// Checking are all fields set
 		if (fileName != null && !apiKey.equals("") && !langCode.equals("")) {
-			final ProgressDialog dialog = ProgressDialog.show( SampleActivity.this, "Loading ...", "Converting to text.", true, false);
+			final ProgressDialog dialog = ProgressDialog.show( SampleActivity.this, "Loading ...", "Converting to text ...", true, false);
 			final Thread thread = new Thread(new Runnable() {
 				@Override
 				public void run() {
@@ -111,7 +120,19 @@ public class SampleActivity extends Activity implements OnClickListener {
 		if (requestCode == IMAGE_PICKER_REQUEST && resultCode == RESULT_OK) {
 			fileName = getRealPathFromURI(data.getData());
 			picNameText.setText("Selected: en" + getStringNameFromRealPath(fileName));
+			
+			//BUG!! Cannot get photo to display after pressing "select image"
+			Bitmap photo = (Bitmap) data.getExtras().get("data"); 
+            imageView.setImageBitmap(photo);
+			// to show the selected photo **not working!!**
 		}
+	    if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {  
+	    	fileName = getRealPathFromURI(data.getData());
+			picNameText.setText("Selected: en" + getStringNameFromRealPath(fileName));
+			
+            Bitmap photo = (Bitmap) data.getExtras().get("data"); 
+            imageView.setImageBitmap(photo);
+	    }  
 	}
 
 	/*
