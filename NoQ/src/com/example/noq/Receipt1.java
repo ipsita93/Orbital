@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.InputFilter;
+import android.text.InputType;
 import android.text.Spanned;
 import android.view.Menu;
 import android.view.View;
@@ -54,6 +55,7 @@ public class Receipt1 extends Activity {
 		
 		// limits input of amount spent
 		EditText amtSpent = (EditText) findViewById(R.id.editText3);
+		// amtSpent.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
 		amtSpent.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});
 		
 		// to click on clear all button

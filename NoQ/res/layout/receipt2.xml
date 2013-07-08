@@ -36,6 +36,7 @@
         android:layout_alignBaseline="@+id/textView1"
         android:layout_alignBottom="@+id/textView1"
         android:layout_toRightOf="@+id/textView3"
+        android:singleLine="true"
         android:ems="10" >
 
         <requestFocus />
@@ -79,6 +80,7 @@
         android:layout_below="@+id/editText1"
         android:layout_marginTop="30dp"
         android:ems="10"
+        android:singleLine="true"
         android:inputType="textNoSuggestions" style="android:autoCompleteTextViewStyle"/>
     
 
@@ -108,7 +110,9 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/constant_text"
             android:ems="10"
+            android:singleLine="true"
             android:inputType="numberDecimal|time"
+            android:digits="0123456789"
             android:paddingLeft="10dp" />
 
     </RelativeLayout>
