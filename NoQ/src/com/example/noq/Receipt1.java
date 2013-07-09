@@ -193,8 +193,8 @@ public class Receipt1 extends Activity {
 	       	}
 	    	
 	    	int amt = Integer.parseInt(text.substring(startIndex, endIndex)); // not sure if it works
-	    	amtSpent.setText(amt);
-	    	*/
+	      	amtSpent.setText(amt);
+	      	*/
 	    }
 
 	}
