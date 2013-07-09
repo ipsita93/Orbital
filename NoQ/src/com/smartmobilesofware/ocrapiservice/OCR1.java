@@ -75,7 +75,7 @@ public class OCR1 extends Activity implements OnClickListener {
 		
 		// Checking are all fields set
 		if (fileName != null && !apiKey.equals("") && !langCode.equals("")) {
-			final ProgressDialog dialog = ProgressDialog.show( OCR1.this, "Loading ...", "Converting to text ...", true, false);
+			final ProgressDialog dialog = ProgressDialog.show( OCR1.this, "Loading ...", "Converting to text ... (may take up to one minute)", true, false);
 			final Thread thread = new Thread(new Runnable() {
 				@Override
 				public void run() {

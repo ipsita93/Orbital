@@ -182,6 +182,7 @@ public class Receipt1 extends Activity {
 	    	amtSpent.setError("Please fill in manually.");
 	    }
 	    else {
+	    	/*
 	    	int startIndex = text.indexOf("TOTAL")+5;
 	    	while (text.charAt(startIndex) == ' ') {
 	    		startIndex++;
@@ -193,6 +194,7 @@ public class Receipt1 extends Activity {
 	    	
 	    	int amt = Integer.parseInt(text.substring(startIndex, endIndex)); // not sure if it works
 	    	amtSpent.setText(amt);
+	    	*/
 	    }
 
 	}
