@@ -43,9 +43,9 @@ public class SignUp extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.sign_up1);
 		
-		name = (EditText) findViewById(R.id.editText1);
-		nric = (EditText) findViewById(R.id.editText2);
-		contact = (EditText) findViewById(R.id.editText3);
+		name = (EditText) findViewById(R.id.receiptCode);
+		nric = (EditText) findViewById(R.id.shopName);
+		contact = (EditText) findViewById(R.id.amtSpent);
 		email = (EditText) findViewById(R.id.editText4);
 		vehNum = (EditText) findViewById(R.id.editText5);
 		iu = (EditText) findViewById(R.id.editText6);

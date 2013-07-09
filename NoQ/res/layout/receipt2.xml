@@ -30,7 +30,7 @@
         android:text="Submit" />
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/receiptCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView1"
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/textView6"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="14dp"
         android:text="Receipt 2"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -67,17 +67,17 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/editText2"
+        android:layout_alignBottom="@+id/shopName"
         android:layout_alignLeft="@+id/textView1"
         android:text="Shop Name"
         android:textAppearance="?android:attr/textAppearanceMedium" />
     
      <AutoCompleteTextView
-        android:id="@+id/editText2"
+        android:id="@+id/shopName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText1"
-        android:layout_below="@+id/editText1"
+        android:layout_alignLeft="@+id/receiptCode"
+        android:layout_below="@+id/receiptCode"
         android:layout_marginTop="30dp"
         android:ems="10"
         android:singleLine="true"
@@ -88,8 +88,8 @@
         android:id="@+id/relativeLayout1"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:layout_alignLeft="@+id/editText2"
-        android:layout_below="@+id/editText2"
+        android:layout_alignLeft="@+id/shopName"
+        android:layout_below="@+id/shopName"
         android:layout_marginTop="53dp"
         android:background="@android:drawable/editbox_background" >
 
@@ -105,7 +105,7 @@
             android:textStyle="bold" />
 
         <EditText
-            android:id="@+id/editText3"
+            android:id="@+id/amtSpent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/constant_text"

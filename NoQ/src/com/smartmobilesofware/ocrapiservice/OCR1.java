@@ -1,6 +1,9 @@
 package com.smartmobilesofware.ocrapiservice;
 
+import com.example.noq.HomePg;
 import com.example.noq.R;
+import com.example.noq.Receipt1;
+import com.example.noq.Receipts;
 import com.smartmobilesofware.ocrapiservice.*;
 
 import android.app.Activity;
@@ -21,7 +24,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class OCR extends Activity implements OnClickListener {
+public class OCR1 extends Activity implements OnClickListener {
 	private final int RESPONSE_OK = 200;
 	private final int IMAGE_PICKER_REQUEST = 1;
 	private static final int CAMERA_REQUEST = 1888; 
@@ -72,7 +75,7 @@ public class OCR extends Activity implements OnClickListener {
 		
 		// Checking are all fields set
 		if (fileName != null && !apiKey.equals("") && !langCode.equals("")) {
-			final ProgressDialog dialog = ProgressDialog.show( OCR.this, "Loading ...", "Converting to text ...", true, false);
+			final ProgressDialog dialog = ProgressDialog.show( OCR1.this, "Loading ...", "Converting to text ...", true, false);
 			final Thread thread = new Thread(new Runnable() {
 				@Override
 				public void run() {
@@ -86,12 +89,17 @@ public class OCR extends Activity implements OnClickListener {
 							dialog.dismiss();
 							
 							// Showing response dialog
-							final AlertDialog.Builder alert = new AlertDialog.Builder(OCR.this);
+							final AlertDialog.Builder alert = new AlertDialog.Builder(OCR1.this);
 							// alert.setMessage(apiClient.getResponseText());
 							alert.setPositiveButton(
 								"OK",
 								new DialogInterface.OnClickListener() {
 									public void onClick( DialogInterface dialog, int id) {
+										Intent goBack = new Intent(OCR1.this, Receipt1.class);
+										goBack.putExtra("text", apiClient.getResponseText());
+										goBack.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+										setResult(RESULT_OK, goBack);
+										startActivity(goBack);
 									}
 								});
 							
@@ -99,11 +107,10 @@ public class OCR extends Activity implements OnClickListener {
 							if (apiClient.getResponseCode() == RESPONSE_OK) {
 								alert.setTitle("Success");
 								alert.setMessage(apiClient.getResponseText());
-								
-							} else {
+							} 
+							else {
 								alert.setTitle("Failed");
 							}
-							
 							alert.show();
 						}
 					});
@@ -111,7 +118,7 @@ public class OCR extends Activity implements OnClickListener {
 			});
 			thread.start();
 		} else {
-			Toast.makeText(OCR.this, "All data are required.", Toast.LENGTH_SHORT).show();
+			Toast.makeText(OCR1.this, "All data are required.", Toast.LENGTH_SHORT).show();
 		}
 	}
 

@@ -49,7 +49,7 @@
         </activity>
         <activity android:name="com.example.noq.Receipt1" >
         </activity>
-        <activity android:name="com.smartmobilesofware.ocrapiservice.OCR" >
+        <activity android:name="com.smartmobilesofware.ocrapiservice.OCR1" >
         </activity>
         <activity android:name="com.example.noq.Receipt2" >
         </activity>

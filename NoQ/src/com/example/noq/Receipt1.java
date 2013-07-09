@@ -1,6 +1,6 @@
 package com.example.noq;
 
-import com.smartmobilesofware.ocrapiservice.OCR;
+import com.smartmobilesofware.ocrapiservice.OCR1;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -33,7 +33,7 @@ public class Receipt1 extends Activity {
 		"Starbucks Coffee", 
 		"Toys \"R\" Us"
 	};
-	
+
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
@@ -42,19 +42,19 @@ public class Receipt1 extends Activity {
 		ocrButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				Intent intent = new Intent(Receipt1.this, OCR.class); // Going to OCR page
+				Intent intent = new Intent(Receipt1.this, OCR1.class); // Going to OCR page
 				startActivity(intent);
 			}
 		});
 		
 		// autocomplete for the shop name
-		AutoCompleteTextView autocompShops = (AutoCompleteTextView) findViewById(R.id.editText2);
+		AutoCompleteTextView autocompShops = (AutoCompleteTextView) findViewById(R.id.shopName);
 		autocompShops.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, shops));
 		autocompShops.setDropDownHeight(200);
 		autocompShops.performCompletion();
 		
 		// limits input of amount spent
-		EditText amtSpent = (EditText) findViewById(R.id.editText3);
+		EditText amtSpent = (EditText) findViewById(R.id.amtSpent);
 		// amtSpent.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
 		amtSpent.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});
 		
@@ -63,14 +63,14 @@ public class Receipt1 extends Activity {
 	 
 		// to click on submit button
         Button submit = (Button) findViewById(R.id.button2);			
-		
+    	    		
         submit.setOnClickListener(new OnClickListener() {											
 			@Override
 			public void onClick(View arg0) {
-				EditText receiptNum = (EditText) findViewById(R.id.editText1);
-				EditText shopName = (EditText) findViewById(R.id.editText2);
-				EditText amtSpent = (EditText) findViewById(R.id.editText3);
-				
+				EditText receiptNum = (EditText) findViewById(R.id.receiptCode);
+		    	EditText shopName = (EditText) findViewById(R.id.shopName);
+		    	EditText amtSpent = (EditText) findViewById(R.id.amtSpent);
+		    	
 				if (validateNum(receiptNum.getText().toString())){
 					receiptNum.setError(null);
 					if (validateShop(shopName.getText().toString())){
@@ -82,7 +82,7 @@ public class Receipt1 extends Activity {
 						toContinue.setPositiveButton("Submit", new DialogInterface.OnClickListener(){
 							// Changes edittext to textview, hides and disables buttons, then continues to submit
 							public void onClick(DialogInterface cont, int id){
-								EditText et = (EditText) findViewById(R.id.editText3);
+								EditText et = (EditText) findViewById(R.id.amtSpent);
 								Fixtext();
 								Disablebuttons();
 								Intent returnIntent = new Intent(Receipt1.this, Receipts.class); // Going back to Receipts
@@ -151,10 +151,28 @@ public class Receipt1 extends Activity {
 	    super.onStop();  // Always call the superclass method first	    
 	} // end of onStop
 	
-	// Activity being restarted from stopped state    
+	// To make sure getIntent() always return the most recent intent
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
+
+    // Activity being restarted from stopped state    
 	protected void onRestart() {
 	    super.onRestart();  // Always call the superclass method first
 	    onNewIntent(getIntent());
+	    
+		EditText receiptNum = (EditText) findViewById(R.id.receiptCode);
+    	EditText shopName = (EditText) findViewById(R.id.shopName);
+    	EditText amtSpent = (EditText) findViewById(R.id.amtSpent);
+    	
+	    if (!getIntent().getExtras().containsKey("GST No:")) {
+	    	receiptNum.setError("Please fill this in manually.");
+	    }
+	    if (!getIntent().getExtras().containsKey("TOTAL")) {
+	    	amtSpent.setError("Please fill this in manually.");
+	    }
+
 	}
 	
 	@Override
@@ -194,17 +212,17 @@ public class Receipt1 extends Activity {
 	
 	// Converts all editable text fields to textview only
 	private void Fixtext(){
-		EditText et1 = (EditText) findViewById(R.id.editText1);
+		EditText et1 = (EditText) findViewById(R.id.receiptCode);
 		et1.setEnabled(false);
 		et1.setFocusable(false);
 		et1.setFocusableInTouchMode(false);
 		et1.setClickable(false);
-		EditText et2 = (EditText) findViewById(R.id.editText2);
+		EditText et2 = (EditText) findViewById(R.id.shopName);
 		et2.setEnabled(false);
 		et2.setFocusable(false);
 		et2.setFocusableInTouchMode(false);
 		et2.setClickable(false);
-		EditText et3 = (EditText) findViewById(R.id.editText3);	
+		EditText et3 = (EditText) findViewById(R.id.amtSpent);	
 		et3.setEnabled(false);
 		et3.setFocusable(false);
 		et3.setFocusableInTouchMode(false);
@@ -226,11 +244,11 @@ public class Receipt1 extends Activity {
 		b1.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				EditText et1 = (EditText) findViewById(R.id.editText1);
+				EditText et1 = (EditText) findViewById(R.id.receiptCode);
 				et1.setText("");
-				EditText et2 = (EditText) findViewById(R.id.editText2);
+				EditText et2 = (EditText) findViewById(R.id.shopName);
 				et2.setText("");
-				EditText et3 = (EditText) findViewById(R.id.editText3);
+				EditText et3 = (EditText) findViewById(R.id.amtSpent);
 				et3.setText("");
 			}
 		});	
