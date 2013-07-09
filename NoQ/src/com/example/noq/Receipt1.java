@@ -165,12 +165,24 @@ public class Receipt1 extends Activity {
 		EditText receiptNum = (EditText) findViewById(R.id.receiptCode);
     	EditText shopName = (EditText) findViewById(R.id.shopName);
     	EditText amtSpent = (EditText) findViewById(R.id.amtSpent);
+    	String text = getIntent().getCharSequenceExtra("text").toString();
     	
-	    if (!getIntent().getExtras().containsKey("GST No:")) {
-	    	receiptNum.setError("Please fill this in manually.");
+    	// if gst num cannot be found
+	    if (!text.contains("GST No:")) {
+	    	receiptNum.setError("Please fill in manually.");
 	    }
-	    if (!getIntent().getExtras().containsKey("TOTAL")) {
-	    	amtSpent.setError("Please fill this in manually.");
+	    else {  // if gst num found
+	    	int startIndex = text.indexOf("GST No:")+8;
+	    	CharSequence receiptCode = text.subSequence(startIndex, startIndex+12);
+	    	receiptNum.setText(receiptCode);
+	    }
+	    
+	    // if total amt cannot be found
+	    if (!text.contains("TOTAL")) {
+	    	amtSpent.setError("Please fill in manually.");
+	    }
+	    else {
+	    	int startIndex = text.indexOf("TOTAL")+5;
 	    }
 
 	}
