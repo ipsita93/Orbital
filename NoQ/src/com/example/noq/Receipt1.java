@@ -183,6 +183,16 @@ public class Receipt1 extends Activity {
 	    }
 	    else {
 	    	int startIndex = text.indexOf("TOTAL")+5;
+	    	while (text.charAt(startIndex) == ' ') {
+	    		startIndex++;
+	    	}
+	    	int endIndex = startIndex;
+	    	while(text.charAt(endIndex) != ' ') {
+	    		endIndex++;
+	       	}
+	    	
+	    	int amt = Integer.parseInt(text.substring(startIndex, endIndex)); // not sure if it works
+	    	amtSpent.setText(amt);
 	    }
 
 	}
