@@ -34,7 +34,7 @@ public class SignUp extends Activity {
 	EditText password2;
 	
 	// url to create a new user
-	private static String url_create_user = "http://api.noq.info/android_connect/create_user.php";
+	private static String url_create_user = "http://192.168.1.7/android_connect/create_user.php";
 	
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";
@@ -64,9 +64,9 @@ public class SignUp extends Activity {
 			@Override
 			public void onClick(View arg0) {				
 				if (inputValidation()) {
-//					new CreateNewUser().execute();
+					new CreateNewUser().execute();
 					Intent intent = new Intent(SignUp.this, HomePg.class); // Going to Home page 
-					intent.putExtra("name", "human");
+					intent.putExtra("name", name.getText().toString());
 					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					startActivityForResult(intent, 1);
 				}

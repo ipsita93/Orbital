@@ -26,10 +26,9 @@ public class LogIn extends Activity {
 	JSONParser jsonParser = new JSONParser();
 	EditText vehNum;
 	EditText password;
-	String id;
 	
 	// url to create a new user
-	private static final String url_user_details = "http://api.noq.info/android_connect/get_user_details.php";
+	private static final String url_user_details = "http://192.168.1.7/android_connect/get_user_details.php";
 	
 	// JSON node names
 	private static final String TAG_SUCCESS = "success";
@@ -74,13 +73,8 @@ public class LogIn extends Activity {
 		logIn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {				
-//				new CheckUserDetails().execute();
+				new CheckUserDetails().execute();
 				
-				Intent intent = new Intent(LogIn.this, HomePg.class); // Going to Home page 
-				intent.putExtra("name", "human");
-				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				startActivityForResult(intent, 1);
-
 				vehNum.setText("");
 				password.setText("");
 			}
@@ -99,14 +93,14 @@ public class LogIn extends Activity {
 	
 	}
 
-/*	// Background Async Task to check user log in information
+	// Background Async Task to check user log in information
 	class CheckUserDetails extends AsyncTask<String, String, String>{
 		// Before starting background thread Show Progress Dialog
 		@Override
 		protected void onPreExecute(){
 			super.onPreExecute();
 			pDialog = new ProgressDialog(LogIn.this);
-			pDialog.setMessage("Checking user details...");
+			pDialog.setMessage("Logging in...");
 			pDialog.setIndeterminate(false);
 			pDialog.setCancelable(true);
 			pDialog.show();
@@ -116,31 +110,40 @@ public class LogIn extends Activity {
 		protected String doInBackground(String... params){
 			// updating UI from Background Thread
 			runOnUiThread(new Runnable(){
-				// check for success tag
-				int success;
-				try{
-					// building parameters N0T FINISHED
-					String svehNum = vehNum.getText().toString();
-					List<NameValuePair> params = new ArrayList<NameValuePair>();
-					
-					params.add(new BasicNameValuePair("id", id);
-					
-					// getting user details by making HTTP request
-					JSONObject json = jsonParser.makeHttpRequest{url_user_details, "GET", params);
-					
-					// check log for json response
-					Log.d("Single user details", json.toString());
-					
-					// json success tag
-					success = json.getInt(TAG_SUCCESS);
-					if (success == 1){
-						JSONArray userObj = json.getJSONArray(TAG_USER);
+				public void run(){
+					// check for success tag
+					int success;
+					try{
+						String svehNum = vehNum.getText().toString();
+						String spassword = password.getText().toString();
+						
+						List<NameValuePair> params = new ArrayList<NameValuePair>();
+						params.add(new BasicNameValuePair("vehicle_num", svehNum));
+						params.add(new BasicNameValuePair("password", spassword));
+						
+						// getting user details by making HTTP request
+						JSONObject json = jsonParser.makeHttpRequest(url_user_details, "GET", params);
+						
+						// check log for json response
+						Log.d("Single user details", json.toString());
+						
+						// json success tag
+						success = json.getInt(TAG_SUCCESS);
+						if (success == 1){
+							JSONArray userObj = json.getJSONArray(TAG_USER);
+							JSONObject user = userObj.getJSONObject(0);
+							
+							Intent intent = new Intent(LogIn.this, HomePg.class); // Going to Home page 
+							intent.putExtra("name", user.getString(TAG_NAME));
+							intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+							startActivityForResult(intent, 1);
+						}
+						else{
+							// user not found
+						}
+					} catch (JSONException e){
+						e.printStackTrace();
 					}
-					else{
-						// user with the id is not found
-					}
-				} catch (JSONException e){
-					e.printStackTrace();
 				}
 			});
 			return null;
@@ -150,5 +153,5 @@ public class LogIn extends Activity {
 			// dismiss the dialog
 			pDialog.dismiss();
 		}
-	}*/
+	}
 }

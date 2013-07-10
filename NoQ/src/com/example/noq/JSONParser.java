@@ -40,7 +40,7 @@ public class JSONParser{
 			if (method.equals("POST")){
 				// defaultHttpClient
 				DefaultHttpClient httpClient = new DefaultHttpClient();
-				HttpPost httpPost = new HttpPost();
+				HttpPost httpPost = new HttpPost(url);
 				httpPost.setEntity(new UrlEncodedFormEntity(params));
 				
 				HttpResponse httpResponse = httpClient.execute(httpPost);
@@ -51,7 +51,7 @@ public class JSONParser{
 				DefaultHttpClient httpClient = new DefaultHttpClient();
 				String paramString = URLEncodedUtils.format(params, "utf-8");
 				url += "?" + paramString;
-				HttpGet httpGet = new HttpGet();
+				HttpGet httpGet = new HttpGet(url);
 				
 				HttpResponse httpResponse = httpClient.execute(httpGet);
 				HttpEntity httpEntity = httpResponse.getEntity();
@@ -77,14 +77,14 @@ public class JSONParser{
 			}
 			is.close();
 			json = sb.toString();
-//			json = json.replaceAll("db_connect.php", "");
+			json = "{" + json.substring(7) + "}";
 		} catch (Exception e){
 			Log.e("Buffer Error", "Error converting result " + e.toString());
 		}
 		
 		// try to parse the string to a JSON object
 		try{
-			jObj = new JSONObject(json);
+			jObj = new JSONObject(json); 
 		} catch (JSONException e){
 			Log.e("JSON Parser", "Error parsing data " + e.toString());
 		}
