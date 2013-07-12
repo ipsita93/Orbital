@@ -26,6 +26,7 @@ public class LogIn extends Activity {
 	JSONParser jsonParser = new JSONParser();
 	EditText vehNum;
 	EditText password;
+	String uName = "";
 	
 	// url to create a new user
 	private static final String url_user_details = "http://192.168.1.7/android_connect/get_user_details.php";
@@ -33,13 +34,8 @@ public class LogIn extends Activity {
 	// JSON node names
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_USER = "user";
-	private static final String TAG_ID = "id";
 	private static final String TAG_NAME = "name";
-	private static final String TAG_NRIC = "nric";
-	private static final String TAG_CONTACT = "contact_num";
-	private static final String TAG_EMAIL = "email";
 	private static final String TAG_VEHNUM = "vehicle_num";
-	private static final String TAG_IU = "iu_num";
 	private static final String TAG_PASSWORD = "password";
 	
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +71,11 @@ public class LogIn extends Activity {
 			public void onClick(View v) {				
 				new CheckUserDetails().execute();
 				
+/*				Intent intent = new Intent(LogIn.this, HomePg.class); // Going to Home page 
+				intent.putExtra("name", uName);
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				startActivityForResult(intent, 1);
+*/				
 				vehNum.setText("");
 				password.setText("");
 			}
@@ -105,7 +106,15 @@ public class LogIn extends Activity {
 			pDialog.setCancelable(true);
 			pDialog.show();
 		}
+
+		// Getting user details
+		protected String doInBackground(String... args){
+			// Building parameters
 		
+		
+		
+		
+		/*		
 		// Checking user details in background thread
 		protected String doInBackground(String... params){
 			// updating UI from Background Thread
@@ -133,10 +142,7 @@ public class LogIn extends Activity {
 							JSONArray userObj = json.getJSONArray(TAG_USER);
 							JSONObject user = userObj.getJSONObject(0);
 							
-							Intent intent = new Intent(LogIn.this, HomePg.class); // Going to Home page 
-							intent.putExtra("name", user.getString(TAG_NAME));
-							intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-							startActivityForResult(intent, 1);
+							uName = user.getString(TAG_NAME);
 						}
 						else{
 							// user not found
@@ -153,5 +159,6 @@ public class LogIn extends Activity {
 			// dismiss the dialog
 			pDialog.dismiss();
 		}
+	*/
 	}
 }
