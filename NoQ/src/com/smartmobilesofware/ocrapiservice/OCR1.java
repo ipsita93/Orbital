@@ -126,14 +126,19 @@ public class OCR1 extends Activity implements OnClickListener {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (requestCode == IMAGE_PICKER_REQUEST && resultCode == RESULT_OK) {
-			fileName = getRealPathFromURI(data.getData());
+			Uri selectedImageUri = data.getData();
+			fileName = getRealPathFromURI(selectedImageUri);
 			picNameText.setText("Selected: en" + getStringNameFromRealPath(fileName));
-			
+			imageView.setImageURI(selectedImageUri);
+            			
+			/*
 			//BUG!! Cannot get photo to display after pressing "select image"
 			Bitmap photo = (Bitmap) data.getExtras().get("data"); 
             imageView.setImageBitmap(photo);
 			// to show the selected photo **not working!!**
+			 */
 		}
+		
 	    if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {  
 	    	fileName = getRealPathFromURI(data.getData());
 			picNameText.setText("Selected: en" + getStringNameFromRealPath(fileName));

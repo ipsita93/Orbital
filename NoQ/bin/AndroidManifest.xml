@@ -60,6 +60,8 @@
         </activity>
         <activity android:name="com.example.noq.HomePg" >
         </activity>
+        <activity android:name="com.example.noq.HelpPg" >
+        </activity>
         <activity
             android:name="com.example.noq.Receipt1Display"
             android:label="@string/title_activity_receipt1_display"

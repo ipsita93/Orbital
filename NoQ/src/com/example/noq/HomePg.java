@@ -17,7 +17,18 @@ public class HomePg extends Activity {
 		customUserName();
 		redeemToday();
 		logOut();
+		
+		Button homepg = (Button) findViewById(R.id.button2);
+		homepg.setOnClickListener(new OnClickListener() {
+				@Override
+				public void onClick(View v) {		
+					Intent intent = new Intent(HomePg.this, HelpPg.class);
+					startActivity(intent);
+					// intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				}
+		});
 	} 
+	
 	// activity is partially visible
 	public void onPause() {
 	    super.onPause();  // Always call the superclass method first

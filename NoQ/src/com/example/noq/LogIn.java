@@ -69,13 +69,12 @@ public class LogIn extends Activity {
 		logIn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {				
-				new CheckUserDetails().execute();
+				// new CheckUserDetails().execute();
 				
-/*				Intent intent = new Intent(LogIn.this, HomePg.class); // Going to Home page 
+				Intent intent = new Intent(LogIn.this, HomePg.class); // Going to Home page 
 				intent.putExtra("name", uName);
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				startActivityForResult(intent, 1);
-*/				
+				startActivityForResult(intent, 1);				
 				vehNum.setText("");
 				password.setText("");
 			}
@@ -93,7 +92,9 @@ public class LogIn extends Activity {
 		});	
 	
 	}
-
+	
+	 
+	/*
 	// Background Async Task to check user log in information
 	class CheckUserDetails extends AsyncTask<String, String, String>{
 		// Before starting background thread Show Progress Dialog
@@ -106,13 +107,15 @@ public class LogIn extends Activity {
 			pDialog.setCancelable(true);
 			pDialog.show();
 		}
-
+	*/
+		/*
 		// Getting user details
 		protected String doInBackground(String... args){
+			return uName;
 			// Building parameters
 		
-		
-		
+		}
+		*/
 		
 		/*		
 		// Checking user details in background thread
@@ -160,5 +163,4 @@ public class LogIn extends Activity {
 			pDialog.dismiss();
 		}
 	*/
-	}
 }

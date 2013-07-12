@@ -9,5 +9,6 @@
     <string name="redeem_today_">Redeem Today!</string>
     <string name="hello">Hello</string>
     <string name="log_out">Log Out</string>
+    <color name="black">#000000</color>
 
 </resources>
