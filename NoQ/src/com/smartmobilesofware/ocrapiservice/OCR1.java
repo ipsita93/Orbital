@@ -1,25 +1,37 @@
 package com.smartmobilesofware.ocrapiservice;
 
 import com.example.noq.HomePg;
+import com.example.noq.JSONParser;
 import com.example.noq.R;
 import com.example.noq.Receipt1;
 import com.example.noq.Receipts;
 import com.smartmobilesofware.ocrapiservice.*;
-
+import java.util.ArrayList;
+import java.util.List;
+ 
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+ 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
-import android.os.Bundle;
 import android.provider.MediaStore;
-import android.view.View;
 import android.view.WindowManager;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -34,8 +46,8 @@ public class OCR1 extends Activity implements OnClickListener {
 	private String apiKey;
 	private String langCode;
 	private String fileName;
-
-	@Override
+	
+   	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -159,7 +171,7 @@ public class OCR1 extends Activity implements OnClickListener {
 		
 		return cursor.getString(column_index);
 	}
-
+    
 	/*
 	 * Cuts selected file name from real path to show in screen.
 	 */
@@ -167,3 +179,4 @@ public class OCR1 extends Activity implements OnClickListener {
 		return bucketName.lastIndexOf('/') > 0 ? bucketName.substring(bucketName.lastIndexOf('/') + 1) : bucketName;
 	}
 }
+
