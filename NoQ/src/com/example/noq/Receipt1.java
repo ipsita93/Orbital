@@ -245,52 +245,52 @@ public class Receipt1 extends Activity {
 	     protected String doInBackground(String... params) {
 
 	         // updating UI from Background Thread
-	         runOnUiThread(new Runnable() {
-	             public void run() {
+	         // runOnUiThread(new Runnable() {
+	             // public void run() {
 	                // Check for success tag
-	                int success;
-	                // Edit Text
-                    EditText receiptNum = (EditText) findViewById(R.id.receiptCode);
-                  	EditText shopName = (EditText) findViewById(R.id.shopName);
-                  	EditText amtSpent = (EditText) findViewById(R.id.amtSpent);
-	                try {
-	                     // Building Parameters
-	                     List<NameValuePair> params = new ArrayList<NameValuePair>();
-	                     params.add(new BasicNameValuePair("receiptNo", receiptNo)); 
+	    	 // Building Parameters
+            List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+            params1.add(new BasicNameValuePair("receiptNo", receiptNo)); 
+            int success;
+            
+            // Edit Text
+            EditText receiptNum = (EditText) findViewById(R.id.receiptCode);
+          	EditText shopName = (EditText) findViewById(R.id.shopName);
+          	EditText amtSpent = (EditText) findViewById(R.id.amtSpent);
+            
+          	// getting receipt details by making HTTP request
+            // Note that receipt details url will use GET request
+            JSONObject json = jsonParser.makeHttpRequest(url_receipt_details, "GET", params1);
 
-	                     // getting receipt details by making HTTP request
-	                     // Note that receipt details url will use GET request
-	                     JSONObject json = jsonParser.makeHttpRequest(url_receipt_details, "GET", params);
+            // check your log for json response
+            Log.d("Single Receipt Details", json.toString());
+            
+            try {
+            	// json success tag
+                success = json.getInt(TAG_SUCCESS);
+                if (success == 1) {
+                    // successfully received product details
+                    JSONArray receiptObj = json.getJSONArray(TAG_RECEIPT_NUM); // JSON Array
 
-	                     // check your log for json response
-	                     Log.d("Single Receipt Details", json.toString());
+                    // get first receipt object from JSON Array
+                    JSONObject receipt = receiptObj.getJSONObject(0);
 
-	                     // json success tag
-	                     success = json.getInt(TAG_SUCCESS);
-	                     if (success == 1) {
-	                        // successfully received product details
-	                        JSONArray receiptObj = json.getJSONArray(TAG_RECEIPT_NUM); // JSON Array
-
-	                        // get first receipt object from JSON Array
-	                        JSONObject receipt = receiptObj.getJSONObject(0);
-
-	                        // receipt with this receiptNo found                        
-	                     	// display receipt data in EditText
-	                        receiptNum.setText(receipt.getString(TAG_RECEIPT_NUM));
-	                        shopName.setText(receipt.getString(TAG_SHOP_NAME));
-	                        amtSpent.setText(receipt.getString(TAG_AMT_SPENT));
-	                     }
-	                     else {
-	                        // product with receiptNo not found
-	                       	receiptNum.setError("Please fill in manually.");
-	            	    	shopName.setError("Please fill in manually.");
-	            	    	amtSpent.setError("Please fill in manually.");	                    
-	            	    }
-	                 } catch (JSONException e) {
-	                     e.printStackTrace();
-	                 }
-	             }
-	         });
+                    // receipt with this receiptNo found                        
+                 	// display receipt data in EditText
+                    receiptNum.setText(receipt.getString(TAG_RECEIPT_NUM));
+                    shopName.setText(receipt.getString(TAG_SHOP_NAME));
+                    amtSpent.setText(receipt.getString(TAG_AMT_SPENT));
+                 }
+                 else {
+                    // product with receiptNo not found
+                   	receiptNum.setError("Please fill in manually.");
+        	    	shopName.setError("Please fill in manually.");
+        	    	amtSpent.setError("Please fill in manually.");	                    
+        	    }
+             } catch (JSONException e) {
+                 e.printStackTrace();
+             }
+	         // });
 
 	         return null;
 	     }

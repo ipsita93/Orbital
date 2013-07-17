@@ -139,7 +139,7 @@ public class LogIn extends Activity {
 			}
 			
 			return null;			
-			}
+		}
 		
 		// After completing background task, dismiss the progress dialog
 		protected void onPostExecute(String file_url){
