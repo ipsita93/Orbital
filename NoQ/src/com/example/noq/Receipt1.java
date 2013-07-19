@@ -32,7 +32,10 @@ import android.widget.AutoCompleteTextView;
 
 public class Receipt1 extends Activity {
 	
-	String receiptNo;
+	String receiptNo = "";
+	EditText amtSpent;
+	EditText receiptNum;
+	EditText shopName;
 	private static final int numShops = 12;
 	private static final String[] shops = new String[] {
 		"Bakerzin", "Ben & Jerry's",
@@ -52,7 +55,7 @@ public class Receipt1 extends Activity {
     private ProgressDialog pDialog;
  
     // JSON parser class
-    JSONParser jsonParser = new JSONParser();
+    JSONParserR jsonParser = new JSONParserR();
  
     // single receipt url
     private static final String url_receipt_details = "http://192.168.1.153/android_connect/get_receipt_details.php";
@@ -66,6 +69,11 @@ public class Receipt1 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
+		
+		receiptNum = (EditText) findViewById(R.id.receiptCode);
+		shopName = (EditText) findViewById(R.id.shopName);
+		amtSpent = (EditText) findViewById(R.id.amtSpent);
+		amtSpent.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});	// limits input of amount spent
 		
 		Button ocrButton = (Button) findViewById(R.id.ocrButton);	
 		ocrButton.setOnClickListener(new OnClickListener() {
@@ -82,11 +90,6 @@ public class Receipt1 extends Activity {
 		autocompShops.setDropDownHeight(200);
 		autocompShops.performCompletion();
 		
-		// limits input of amount spent
-		EditText amtSpent = (EditText) findViewById(R.id.amtSpent);
-		// amtSpent.setInputType(InputType.TYPE_NUMBER_FLAG_DECIMAL);
-		amtSpent.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});
-		
 		// to click on clear all button
 		clearAll();
 	 
@@ -96,10 +99,6 @@ public class Receipt1 extends Activity {
         submit.setOnClickListener(new OnClickListener() {											
 			@Override
 			public void onClick(View arg0) {
-				EditText receiptNum = (EditText) findViewById(R.id.receiptCode);
-		    	EditText shopName = (EditText) findViewById(R.id.shopName);
-		    	EditText amtSpent = (EditText) findViewById(R.id.amtSpent);
-		    	
 				if (validateNum(receiptNum.getText().toString())){
 					receiptNum.setError(null);
 					if (validateShop(shopName.getText().toString())){
@@ -190,10 +189,7 @@ public class Receipt1 extends Activity {
 	protected void onRestart() {
 	    super.onRestart();  // Always call the superclass method first
 	    onNewIntent(getIntent());
-	    
-		EditText receiptNum = (EditText) findViewById(R.id.receiptCode);
-    	EditText shopName = (EditText) findViewById(R.id.shopName);
-    	EditText amtSpent = (EditText) findViewById(R.id.amtSpent);
+
     	String text = getIntent().getCharSequenceExtra("text").toString();
     	
     	// if gst num cannot be found
@@ -208,15 +204,7 @@ public class Receipt1 extends Activity {
 	    	receiptNum.setText(receiptCode);
 	    	receiptNo = receiptCode.toString();
 	    	
-	    	/*
-	    	// getting product details from intent
-	        Intent i = getIntent();
-
-	        // getting product id (pid) from intent
-	        pid = i.getStringExtra(TAG_PID);
-			*/
-	    	
-	        // Getting complete product details in background thread
+	        // Getting complete receipt details in background thread
 	        new GetReceiptDetails().execute();
 	    }
 	}
@@ -243,20 +231,10 @@ public class Receipt1 extends Activity {
 	      * Getting receipt details in background thread
 	      * */
 	     protected String doInBackground(String... params) {
-
-	         // updating UI from Background Thread
-	         // runOnUiThread(new Runnable() {
-	             // public void run() {
-	                // Check for success tag
 	    	 // Building Parameters
             List<NameValuePair> params1 = new ArrayList<NameValuePair>();
             params1.add(new BasicNameValuePair("receiptNo", receiptNo)); 
             int success;
-            
-            // Edit Text
-            EditText receiptNum = (EditText) findViewById(R.id.receiptCode);
-          	EditText shopName = (EditText) findViewById(R.id.shopName);
-          	EditText amtSpent = (EditText) findViewById(R.id.amtSpent);
             
           	// getting receipt details by making HTTP request
             // Note that receipt details url will use GET request
@@ -341,21 +319,18 @@ public class Receipt1 extends Activity {
 	
 	// Converts all editable text fields to textview only
 	private void Fixtext(){
-		EditText et1 = (EditText) findViewById(R.id.receiptCode);
-		et1.setEnabled(false);
-		et1.setFocusable(false);
-		et1.setFocusableInTouchMode(false);
-		et1.setClickable(false);
-		EditText et2 = (EditText) findViewById(R.id.shopName);
-		et2.setEnabled(false);
-		et2.setFocusable(false);
-		et2.setFocusableInTouchMode(false);
-		et2.setClickable(false);
-		EditText et3 = (EditText) findViewById(R.id.amtSpent);	
-		et3.setEnabled(false);
-		et3.setFocusable(false);
-		et3.setFocusableInTouchMode(false);
-		et3.setClickable(false);
+		receiptNum.setEnabled(false);
+		receiptNum.setFocusable(false);
+		receiptNum.setFocusableInTouchMode(false);
+		receiptNum.setClickable(false);
+		shopName.setEnabled(false);
+		shopName.setFocusable(false);
+		shopName.setFocusableInTouchMode(false);
+		shopName.setClickable(false);
+		amtSpent.setEnabled(false);
+		amtSpent.setFocusable(false);
+		amtSpent.setFocusableInTouchMode(false);
+		amtSpent.setClickable(false);
 	}
 	
 	// Disables buttons
@@ -373,12 +348,9 @@ public class Receipt1 extends Activity {
 		b1.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				EditText et1 = (EditText) findViewById(R.id.receiptCode);
-				et1.setText("");
-				EditText et2 = (EditText) findViewById(R.id.shopName);
-				et2.setText("");
-				EditText et3 = (EditText) findViewById(R.id.amtSpent);
-				et3.setText("");
+				receiptNum.setText("");
+				shopName.setText("");
+				amtSpent.setText("");
 			}
 		});	
 	
