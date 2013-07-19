@@ -21,14 +21,14 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
-public class JSONParser{
+public class JSONParserR{
 	
 
 	static InputStream is = null;
 	static JSONObject jObj = null;
 	static String json = "";
 	
-	public JSONParser(){
+	public JSONParserR(){
 	}
 	
 	// Gets json from url by making HTTP POST or GET method
