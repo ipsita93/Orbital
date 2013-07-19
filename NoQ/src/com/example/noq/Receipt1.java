@@ -58,10 +58,10 @@ public class Receipt1 extends Activity {
     JSONParserR jsonParser = new JSONParserR();
  
     // single receipt url
-    private static final String url_receipt_details = "http://192.168.1.7/android_connect/get_receipt_details.php";
+    private static final String url_receipt_details = "http://192.168.1.153/android_connect/get_receipt_details.php";
  
     // JSON Node names
-    private static final String TAG_SUCCESS = "uccess\"";
+    private static final String TAG_SUCCESS = "success";
 	private static final String TAG_RECEIPT = "receipt";
     private static final String TAG_RECEIPT_NUM = "receipt_no";
     private static final String TAG_SHOP_NAME = "shop_name";
@@ -72,9 +72,9 @@ public class Receipt1 extends Activity {
 		setContentView(R.layout.main);
 		
 		receiptNum = (EditText) findViewById(R.id.receiptCode);
-		receiptNum.setText("20-0201554-C");
 		shopName = (EditText) findViewById(R.id.shopName);
 		amtSpent = (EditText) findViewById(R.id.amtSpent);
+		// receiptNum.setText("20-0201554-C");
 		amtSpent.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});	// limits input of amount spent
 		
 		Button ocrButton = (Button) findViewById(R.id.ocrButton);	
@@ -95,7 +95,7 @@ public class Receipt1 extends Activity {
 		// to click on clear all button
 		clearAll();
 	 
-		new GetReceiptDetails().execute();
+		// new GetReceiptDetails().execute();
 	 
 		// to click on submit button
         Button submit = (Button) findViewById(R.id.button2);			    		
@@ -216,7 +216,8 @@ public class Receipt1 extends Activity {
 	  * Background Async Task to Get complete product details
 	  * */
 	 class GetReceiptDetails extends AsyncTask<String, String, String> {
-
+		 private JSONObject receipt;
+		 private int success;
 	     /**
 	      * Before starting background thread Show Progress Dialog
 	      * */
@@ -234,9 +235,12 @@ public class Receipt1 extends Activity {
 	      * Getting receipt details in background thread
 	      * */
 	     protected String doInBackground(String... params) {
-	    	 // Building Parameters
+	 		receiptNum = (EditText) findViewById(R.id.receiptCode);
+			shopName = (EditText) findViewById(R.id.shopName);
+			amtSpent = (EditText) findViewById(R.id.amtSpent);
+	    	// Building Parameters
             List<NameValuePair> params1 = new ArrayList<NameValuePair>();
-            params1.add(new BasicNameValuePair("receipt_no", "20-0201554-C")); 
+            params1.add(new BasicNameValuePair("receipt_no", receiptNo)); 
             
           	// getting receipt details by making HTTP request
             JSONObject json = jsonParser.makeHttpRequest(url_receipt_details, "GET", params1);
@@ -246,25 +250,24 @@ public class Receipt1 extends Activity {
             
             try {
             	// json success tag
-                int success = json.getInt(TAG_SUCCESS);
+                success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
                     // successfully received product details
                     JSONArray receiptObj = json.getJSONArray(TAG_RECEIPT); // JSON Array
-
+                    
 					// get first receipt object from JSON Array
-					JSONObject receipt = receiptObj.getJSONObject(0);
-
+					receipt = receiptObj.getJSONObject(0);
+					
 					// receipt with this receiptNo found                        
 					// display receipt data in EditText
+					/*
 					receiptNum.setText(receipt.getString(TAG_RECEIPT_NUM));
 					shopName.setText(receipt.getString(TAG_SHOP_NAME));
 					amtSpent.setText(receipt.getString(TAG_AMT_SPENT));
+					*/
                  }
                  else {
-                    // product with receiptNo not found
-                   	receiptNum.setError("Please fill in manually.");
-        	    	shopName.setError("Please fill in manually.");
-        	    	amtSpent.setError("Please fill in manually.");	                    
+                    return null;
         	    }
              } catch (JSONException e) {
                  e.printStackTrace();
@@ -276,8 +279,24 @@ public class Receipt1 extends Activity {
 	      * After completing background task Dismiss the progress dialog
 	      * **/
 	     protected void onPostExecute(String file_url) {
-	         // dismiss the dialog once got all details
-	         pDialog.dismiss();
+	        // dismiss the dialog once got all details
+	        pDialog.dismiss();
+	        try {
+	        	if (success == 1){
+				receiptNum.setText(receipt.getString(TAG_RECEIPT_NUM));
+				shopName.setText(receipt.getString(TAG_SHOP_NAME));
+				amtSpent.setText(receipt.getString(TAG_AMT_SPENT));
+	        	}
+	        	else {
+	        	// product with receiptNo not found
+	        	receiptNum.setError("Please fill in manually.");
+    	    	shopName.setError("Please fill in manually.");
+    	    	amtSpent.setError("Please fill in manually.");
+	        	}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 	     }
 	}
 	 
