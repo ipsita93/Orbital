@@ -31,7 +31,7 @@ public class LogIn extends Activity {
 	private static final String url_user_details = "http://192.168.1.7/android_connect/get_user_details.php";
 	
 	// JSON node names
-	private static final String TAG_SUCCESS = "success";
+	private static final String TAG_SUCCESS = "ss\"";
 	private static final String TAG_USER = "user";
 	private static final String TAG_NAME = "name";
 	private static final String TAG_VEHNUM = "vehicle_num";
@@ -69,9 +69,6 @@ public class LogIn extends Activity {
 			@Override
 			public void onClick(View v) {				
 				new CheckUserDetails().execute();
-				
-		//		vehNum.setText("");
-		//		password.setText("");
 			}
 		});	
 	}
@@ -119,7 +116,7 @@ public class LogIn extends Activity {
 			// Check for success tag
 			try {
 				int success = json.getInt(TAG_SUCCESS);
-				if (success == 1){
+				if (success != 0){
 					// successfully received user details
 					JSONArray userObj = json.getJSONArray(TAG_USER); // JSON Array
 
@@ -133,6 +130,8 @@ public class LogIn extends Activity {
 				}
 				else{
 					// failed to log in, make a dialog that asks if want to try again or sign up
+					vehNum.setText("");
+					password.setText("");
 				}
 			} catch (JSONException e){
 				e.printStackTrace();

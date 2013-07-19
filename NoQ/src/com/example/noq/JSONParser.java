@@ -77,7 +77,7 @@ public class JSONParser{
 			}
 			is.close();
 			json = sb.toString();
-			json = "{" + json.substring(7) + "}";
+			json = "{" + json.substring(0) + "}";
 		} catch (Exception e){
 			Log.e("Buffer Error", "Error converting result " + e.toString());
 		}

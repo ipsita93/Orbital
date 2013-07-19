@@ -58,11 +58,12 @@ public class Receipt1 extends Activity {
     JSONParserR jsonParser = new JSONParserR();
  
     // single receipt url
-    private static final String url_receipt_details = "http://192.168.1.153/android_connect/get_receipt_details.php";
+    private static final String url_receipt_details = "http://192.168.1.7/android_connect/get_receipt_details.php";
  
     // JSON Node names
-    private static final String TAG_SUCCESS = "success";
-    private static final String TAG_RECEIPT_NUM = "receiptNo";
+    private static final String TAG_SUCCESS = "uccess\"";
+	private static final String TAG_RECEIPT = "receipt";
+    private static final String TAG_RECEIPT_NUM = "receipt_no";
     private static final String TAG_SHOP_NAME = "shop_name";
     private static final String TAG_AMT_SPENT= "amt_spent";
 
@@ -71,6 +72,7 @@ public class Receipt1 extends Activity {
 		setContentView(R.layout.main);
 		
 		receiptNum = (EditText) findViewById(R.id.receiptCode);
+		receiptNum.setText("20-0201554-C");
 		shopName = (EditText) findViewById(R.id.shopName);
 		amtSpent = (EditText) findViewById(R.id.amtSpent);
 		amtSpent.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});	// limits input of amount spent
@@ -93,9 +95,10 @@ public class Receipt1 extends Activity {
 		// to click on clear all button
 		clearAll();
 	 
+		new GetReceiptDetails().execute();
+	 
 		// to click on submit button
-        Button submit = (Button) findViewById(R.id.button2);			
-    	    		
+        Button submit = (Button) findViewById(R.id.button2);			    		
         submit.setOnClickListener(new OnClickListener() {											
 			@Override
 			public void onClick(View arg0) {
@@ -233,11 +236,9 @@ public class Receipt1 extends Activity {
 	     protected String doInBackground(String... params) {
 	    	 // Building Parameters
             List<NameValuePair> params1 = new ArrayList<NameValuePair>();
-            params1.add(new BasicNameValuePair("receiptNo", receiptNo)); 
-            int success;
+            params1.add(new BasicNameValuePair("receipt_no", "20-0201554-C")); 
             
           	// getting receipt details by making HTTP request
-            // Note that receipt details url will use GET request
             JSONObject json = jsonParser.makeHttpRequest(url_receipt_details, "GET", params1);
 
             // check your log for json response
@@ -245,19 +246,19 @@ public class Receipt1 extends Activity {
             
             try {
             	// json success tag
-                success = json.getInt(TAG_SUCCESS);
+                int success = json.getInt(TAG_SUCCESS);
                 if (success == 1) {
                     // successfully received product details
-                    JSONArray receiptObj = json.getJSONArray(TAG_RECEIPT_NUM); // JSON Array
+                    JSONArray receiptObj = json.getJSONArray(TAG_RECEIPT); // JSON Array
 
-                    // get first receipt object from JSON Array
-                    JSONObject receipt = receiptObj.getJSONObject(0);
+					// get first receipt object from JSON Array
+					JSONObject receipt = receiptObj.getJSONObject(0);
 
-                    // receipt with this receiptNo found                        
-                 	// display receipt data in EditText
-                    receiptNum.setText(receipt.getString(TAG_RECEIPT_NUM));
-                    shopName.setText(receipt.getString(TAG_SHOP_NAME));
-                    amtSpent.setText(receipt.getString(TAG_AMT_SPENT));
+					// receipt with this receiptNo found                        
+					// display receipt data in EditText
+					receiptNum.setText(receipt.getString(TAG_RECEIPT_NUM));
+					shopName.setText(receipt.getString(TAG_SHOP_NAME));
+					amtSpent.setText(receipt.getString(TAG_AMT_SPENT));
                  }
                  else {
                     // product with receiptNo not found
@@ -268,8 +269,6 @@ public class Receipt1 extends Activity {
              } catch (JSONException e) {
                  e.printStackTrace();
              }
-	         // });
-
 	         return null;
 	     }
 
