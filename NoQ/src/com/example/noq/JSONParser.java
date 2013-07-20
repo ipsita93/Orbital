@@ -73,11 +73,14 @@ public class JSONParser{
 			StringBuilder sb = new StringBuilder();
 			String line = null;
 			while ((line = reader.readLine()) != null){
+				if (line.equals(new String("db_connect.php")) || line.equals(new String("db_config.php")) ) {
+					continue;
+				}
 				sb.append(line + "\n");
 			}
 			is.close();
 			json = sb.toString();
-			json = "{" + json.substring(0) + "}";
+		//	json = "{" + json.substring(0) + "}";
 		} catch (Exception e){
 			Log.e("Buffer Error", "Error converting result " + e.toString());
 		}
@@ -87,6 +90,7 @@ public class JSONParser{
 			jObj = new JSONObject(json); 
 		} catch (JSONException e){
 			Log.e("JSON Parser", "Error parsing data " + e.toString());
+			Log.e("JSON Parser", json);
 		}
 		
 		return jObj;

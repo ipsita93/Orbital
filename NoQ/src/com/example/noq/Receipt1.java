@@ -56,10 +56,10 @@ public class Receipt1 extends Activity {
     private ProgressDialog pDialog;
  
     // JSON parser class
-    JSONParserR jsonParser = new JSONParserR();
+    JSONParser jsonParser = new JSONParser();
  
     // single receipt url
-    private static final String url_receipt_details = "http://192.168.1.153/android_connect/get_receipt_details.php";
+    private static final String url_receipt_details = "http://192.168.1.7/android_connect/get_receipt_details.php";
  
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -75,7 +75,6 @@ public class Receipt1 extends Activity {
 		receiptNum = (EditText) findViewById(R.id.receiptCode);
 		shopName = (EditText) findViewById(R.id.shopName);
 		amtSpent = (EditText) findViewById(R.id.amtSpent);
-		// receiptNum.setText("20-0201554-C");
 		amtSpent.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});	// limits input of amount spent
 		
 		Button ocrButton = (Button) findViewById(R.id.ocrButton);	
@@ -95,8 +94,6 @@ public class Receipt1 extends Activity {
 		
 		// to click on clear all button
 		clearAll();
-	 
-		// new GetReceiptDetails().execute();
 	 
 		// to click on submit button
         Button submit = (Button) findViewById(R.id.button2);			    		
@@ -239,9 +236,6 @@ public class Receipt1 extends Activity {
 	      * Getting receipt details in background thread
 	      * */
 	     protected String doInBackground(String... params) {
-	 		receiptNum = (EditText) findViewById(R.id.receiptCode);
-			shopName = (EditText) findViewById(R.id.shopName);
-			amtSpent = (EditText) findViewById(R.id.amtSpent);
 	    	// Building Parameters
             List<NameValuePair> params1 = new ArrayList<NameValuePair>();
             params1.add(new BasicNameValuePair("receipt_no", receiptNo)); 
@@ -261,14 +255,6 @@ public class Receipt1 extends Activity {
                     
 					// get first receipt object from JSON Array
 					receipt = receiptObj.getJSONObject(0);
-					
-					// receipt with this receiptNo found                        
-					// display receipt data in EditText
-					/*
-					receiptNum.setText(receipt.getString(TAG_RECEIPT_NUM));
-					shopName.setText(receipt.getString(TAG_SHOP_NAME));
-					amtSpent.setText(receipt.getString(TAG_AMT_SPENT));
-					*/
                  }
                  else {
                     return null;
@@ -312,18 +298,17 @@ public class Receipt1 extends Activity {
 	}
 
 	// returns true if receipt number is valid
-	// right now assume that the first character must be a letter 
-	// followed by 3 numbers for receipt to be valid
-	// TO DO: CHANGE this once ocr and all work fine 
+	// TODO: check for the hyphen at char 2 and 10
 	private boolean validateNum(String receiptNum){
 		char[] CreceiptNum = receiptNum.toCharArray();
-		
-		if (CreceiptNum.length != 4)
+	
+		if (CreceiptNum.length != 12)
 			return false;
-		if (!Character.isLetter(CreceiptNum[0])) 
+		if (!Character.isLetter(CreceiptNum[11])) 
 			return false;
-		if (!Character.isDigit(CreceiptNum[1]) || 
-			!Character.isDigit(CreceiptNum[2]) || !Character.isDigit(CreceiptNum[3]))
+		if (!Character.isDigit(CreceiptNum[0]) || !Character.isDigit(CreceiptNum[1]) || !Character.isDigit(CreceiptNum[3]) || !Character.isDigit(CreceiptNum[4])
+			|| !Character.isDigit(CreceiptNum[5]) || !Character.isDigit(CreceiptNum[6]) || !Character.isDigit(CreceiptNum[7])
+				|| !Character.isDigit(CreceiptNum[8]) || !Character.isDigit(CreceiptNum[9]))
 			return false;
 		return true;
 	}
