@@ -57,24 +57,6 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
-        android:id="@+id/ocrButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp"
-        android:text="New User? Sign up here!" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ocrButton"
-        android:layout_below="@+id/shopName"
-        android:layout_marginTop="39dp"
-        android:text="Clear All" />
-
-    <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -82,5 +64,32 @@
         android:layout_alignBottom="@+id/button1"
         android:layout_alignRight="@+id/ocrButton"
         android:text="Log In" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ocrButton"
+        android:layout_below="@+id/shopName"
+        android:layout_marginTop="75dp"
+        android:text="Clear All" />
+
+    <CheckBox
+        android:id="@+id/rmbMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/shopName"
+        android:layout_below="@+id/shopName"
+        android:layout_marginTop="16dp"
+        android:text="Remember Me" />
+
+    <Button
+        android:id="@+id/ocrButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="New User? Sign up here!" />
 
 </RelativeLayout>

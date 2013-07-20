@@ -13,6 +13,7 @@ import com.smartmobilesofware.ocrapiservice.OCR1;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.InputFilter;
@@ -189,26 +190,29 @@ public class Receipt1 extends Activity {
     }
 
     // Activity being restarted from stopped state    
+	@SuppressLint("NewApi")
 	protected void onRestart() {
 	    super.onRestart();  // Always call the superclass method first
 	    onNewIntent(getIntent());
-
-    	String text = getIntent().getCharSequenceExtra("text").toString();
-    	
-    	// if gst num cannot be found
-	    if (!text.contains("GST No:")) {
-	    	receiptNum.setError("Please fill in manually.");
-	    	shopName.setError("Please fill in manually.");
-	    	amtSpent.setError("Please fill in manually.");
-	    }
-	    else {  // if gst num found
-	    	int startIndex = text.indexOf("GST No:")+8;
-	    	CharSequence receiptCode = text.subSequence(startIndex, startIndex+12);
-	    	receiptNum.setText(receiptCode);
-	    	receiptNo = receiptCode.toString();
+	    
+	    if(getIntent().getBooleanExtra("ocrDone", false)) {
+		    String text = getIntent().getCharSequenceExtra("text").toString();
 	    	
-	        // Getting complete receipt details in background thread
-	        new GetReceiptDetails().execute();
+	    	// if gst num cannot be found
+		    if (!text.contains("GST No:")) {
+		    	receiptNum.setError("Please fill in manually.");
+		    	shopName.setError("Please fill in manually.");
+		    	amtSpent.setError("Please fill in manually.");
+		    }
+		    else {  // if gst num found
+		    	int startIndex = text.indexOf("GST No:")+8;
+		    	CharSequence receiptCode = text.subSequence(startIndex, startIndex+12);
+		    	receiptNum.setText(receiptCode);
+		    	receiptNo = receiptCode.toString();
+		    	
+		        // Getting complete receipt details in background thread
+		        new GetReceiptDetails().execute();
+		    }
 	    }
 	}
 	
@@ -310,7 +314,7 @@ public class Receipt1 extends Activity {
 	// returns true if receipt number is valid
 	// right now assume that the first character must be a letter 
 	// followed by 3 numbers for receipt to be valid
-	// TO DO: research on security, hashing, etc.
+	// TO DO: CHANGE this once ocr and all work fine 
 	private boolean validateNum(String receiptNum){
 		char[] CreceiptNum = receiptNum.toCharArray();
 		

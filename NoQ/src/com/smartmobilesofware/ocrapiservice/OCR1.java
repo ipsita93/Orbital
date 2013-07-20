@@ -80,6 +80,18 @@ public class OCR1 extends Activity implements OnClickListener {
 		convertButton.setOnClickListener(this);
 	}
 	
+	//Override of hardware back button
+	@Override 
+	public void onBackPressed(){
+		Intent returnIntent = new Intent(OCR1.this, Receipt1.class);
+		returnIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT); 
+		returnIntent.putExtra("ocrDone", false);
+		// bring an existing instance of the called activity type present in the current stack to the 
+		// foreground instead of creating a new instance
+		// setResult(RESULT_OK,returnIntent);   
+		startActivity(returnIntent);
+	} 
+	
 	@Override
 	public void onClick(View v) {
 		// apiKey = apiKeyField.getText().toString();
@@ -108,6 +120,7 @@ public class OCR1 extends Activity implements OnClickListener {
 								new DialogInterface.OnClickListener() {
 									public void onClick( DialogInterface dialog, int id) {
 										Intent goBack = new Intent(OCR1.this, Receipt1.class);
+										goBack.putExtra("ocrDone", true);
 										goBack.putExtra("text", apiClient.getResponseText());
 										goBack.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
 										setResult(RESULT_OK, goBack);
