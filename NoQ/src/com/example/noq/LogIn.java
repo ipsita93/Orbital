@@ -47,7 +47,7 @@ public class LogIn extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.log_in);
 
-		vehNum = (EditText) findViewById(R.id.receiptCode);
+		vehNum = (EditText) findViewById(R.id.vehnumber);
 		password = (EditText) findViewById(R.id.shopName);
 		
 		signUp();

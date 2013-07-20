@@ -9,7 +9,7 @@
     tools:context=".Main" >
 
     <EditText
-        android:id="@+id/receiptCode"
+        android:id="@+id/vehnumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/textView1"
@@ -112,7 +112,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"
-        android:layout_alignRight="@+id/receiptCode"
+        android:layout_alignRight="@+id/vehnumber"
         android:layout_below="@+id/textView5"
         android:layout_marginTop="23dp"
         android:text="Use OCR" />

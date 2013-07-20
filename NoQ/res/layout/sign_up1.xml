@@ -23,12 +23,13 @@
       	        android:textAppearance="?android:attr/textAppearanceMedium" />
 
       	    <EditText
-      	        android:id="@+id/receiptCode"
+      	        android:id="@+id/vehnumber"
       	        android:layout_width="wrap_content"
       	        android:layout_height="wrap_content"
       	        android:layout_marginLeft="29dp"
       	        android:ems="10"
-      	        android:inputType="textPersonName" />
+      	        android:inputType="textPersonName"
+      	        android:singleLine="true" />
 
     		 <TextView
     		     android:id="@+id/textView2"
@@ -49,7 +50,8 @@
 		        android:layout_alignBottom="@+id/textView1"
 		        android:layout_marginLeft="29dp"
 		        android:layout_toRightOf="@+id/textView1"
-		        android:ems="10" >
+		        android:ems="10"
+		        android:singleLine="true" >
 
       		  	<requestFocus />
     		</EditText>
@@ -75,7 +77,8 @@
      		    android:layout_toRightOf="@+id/textView1"
      		    android:ems="10"
      		    android:inputType="phone"
-     		    android:digits="0123456789" >
+     		    android:digits="0123456789"
+     		    android:singleLine="true" >
 
       		  	<requestFocus />
     		</EditText>
@@ -101,7 +104,8 @@
      		    android:layout_toRightOf="@+id/textView1"
      		    android:ems="10"
      		    android:hint="example@abc.com"
-     		    android:inputType="textEmailAddress" >
+     		    android:inputType="textEmailAddress"
+     		    android:singleLine="true" >
 
       		  	<requestFocus />
     		</EditText>
@@ -125,7 +129,8 @@
 		        android:layout_alignBottom="@+id/textView1"
 		        android:layout_marginLeft="29dp"
 		        android:layout_toRightOf="@+id/textView1"
-		        android:ems="10" >
+		        android:ems="10"
+		        android:singleLine="true" >
 
       		  	<requestFocus />
     		</EditText>
@@ -149,7 +154,8 @@
 		        android:layout_alignBottom="@+id/textView1"
 		        android:layout_marginLeft="29dp"
 		        android:layout_toRightOf="@+id/textView1"
-		        android:ems="10" >
+		        android:ems="10"
+		        android:singleLine="true" >
 
       		  	<requestFocus />
     		</EditText>
@@ -174,7 +180,8 @@
      		    android:layout_marginLeft="29dp"
      		    android:layout_toRightOf="@+id/textView1"
      		    android:ems="10"
-     		    android:inputType="textPassword" >
+     		    android:inputType="textPassword"
+     		    android:singleLine="true" >
 
       		  	<requestFocus />
     		</EditText>
@@ -199,7 +206,8 @@
      		    android:layout_marginLeft="29dp"
      		    android:layout_toRightOf="@+id/textView1"
      		    android:ems="10"
-     		    android:inputType="textPassword" >
+     		    android:inputType="textPassword"
+     		    android:singleLine="true" >
 
       		  	<requestFocus />
     		</EditText>

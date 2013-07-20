@@ -72,7 +72,7 @@ public class Receipt1 extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
 		
-		receiptNum = (EditText) findViewById(R.id.receiptCode);
+		receiptNum = (EditText) findViewById(R.id.vehnumber);
 		shopName = (EditText) findViewById(R.id.shopName);
 		amtSpent = (EditText) findViewById(R.id.amtSpent);
 		amtSpent.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});	// limits input of amount spent

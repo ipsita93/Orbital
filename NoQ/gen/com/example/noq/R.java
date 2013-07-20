@@ -56,7 +56,6 @@ public final class R {
         public static final int imageView6=0x7f09001a;
         public static final int ocrButton=0x7f090005;
         public static final int pickImagebutton=0x7f090011;
-        public static final int receiptCode=0x7f090008;
         public static final int relativeLayout=0x7f090010;
         public static final int relativeLayout1=0x7f09000b;
         public static final int rmbMe=0x7f09000a;
@@ -69,6 +68,7 @@ public final class R {
         public static final int textView6=0x7f09000e;
         public static final int textView7=0x7f090020;
         public static final int textView8=0x7f090022;
+        public static final int vehnumber=0x7f090008;
     }
     public static final class layout {
         public static final int help_pg=0x7f030000;

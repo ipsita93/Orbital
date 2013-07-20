@@ -55,7 +55,7 @@ public class Receipt2 extends Activity {
         submit.setOnClickListener(new OnClickListener() {											
 			@Override
 			public void onClick(View arg0) {
-				EditText receiptNum = (EditText) findViewById(R.id.receiptCode);
+				EditText receiptNum = (EditText) findViewById(R.id.vehnumber);
 				EditText shopName = (EditText) findViewById(R.id.shopName);
 				EditText amtSpent = (EditText) findViewById(R.id.amtSpent);
 				
@@ -182,7 +182,7 @@ public class Receipt2 extends Activity {
 	
 	// Converts all editable text fields to textview only
 	private void Fixtext(){
-		EditText et1 = (EditText) findViewById(R.id.receiptCode);
+		EditText et1 = (EditText) findViewById(R.id.vehnumber);
 		et1.setEnabled(false);
 		et1.setFocusable(false);
 		et1.setFocusableInTouchMode(false);
@@ -214,7 +214,7 @@ public class Receipt2 extends Activity {
 		b1.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
-				EditText et1 = (EditText) findViewById(R.id.receiptCode);
+				EditText et1 = (EditText) findViewById(R.id.vehnumber);
 				et1.setText("");
 				EditText et2 = (EditText) findViewById(R.id.shopName);
 				et2.setText("");
