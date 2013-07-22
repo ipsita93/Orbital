@@ -37,7 +37,6 @@ public class Receipt1 extends Activity {
 	EditText amtSpent;
 	EditText receiptNum;
 	EditText shopName;
-	private static final int numShops = 12;
 	private static final String[] shops = new String[] {
 		"Bakerzin", "Ben & Jerry's",
 		"Cheers Store",
@@ -51,6 +50,8 @@ public class Receipt1 extends Activity {
 		"Toys \"R\" Us",
 		"ZARA"
 	};
+	private static final int numShops = shops.length;
+
 	
 	 // Progress Dialog
     private ProgressDialog pDialog;
@@ -59,7 +60,7 @@ public class Receipt1 extends Activity {
     JSONParser jsonParser = new JSONParser();
  
     // single receipt url
-    private static final String url_receipt_details = "http://192.168.1./android_connect/get_receipt_details.php";
+    private static final String url_receipt_details = "http://192.168.1.153/android_connect/get_receipt_details.php";
  
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -82,6 +83,7 @@ public class Receipt1 extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				Intent intent = new Intent(Receipt1.this, OCR1.class); // Going to OCR page
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivity(intent);
 			}
 		});

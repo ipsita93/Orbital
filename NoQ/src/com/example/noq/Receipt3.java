@@ -37,7 +37,6 @@ public class Receipt3 extends Activity {
 	EditText amtSpent;
 	EditText receiptNum;
 	EditText shopName;
-	private static final int numShops = 12;
 	private static final String[] shops = new String[] {
 		"Bakerzin", "Ben & Jerry's",
 		"Cheers Store",
@@ -51,6 +50,7 @@ public class Receipt3 extends Activity {
 		"Toys \"R\" Us",
 		"ZARA"
 	};
+	private static final int numShops = shops.length;
 	
 	 // Progress Dialog
     private ProgressDialog pDialog;

@@ -37,7 +37,6 @@ public class Receipt2 extends Activity {
 	EditText amtSpent;
 	EditText receiptNum;
 	EditText shopName;
-	private static final int numShops = 12;
 	private static final String[] shops = new String[] {
 		"Bakerzin", "Ben & Jerry's",
 		"Cheers Store",
@@ -51,6 +50,7 @@ public class Receipt2 extends Activity {
 		"Toys \"R\" Us",
 		"ZARA"
 	};
+	private static final int numShops = shops.length;
 	
 	 // Progress Dialog
     private ProgressDialog pDialog;
@@ -82,6 +82,7 @@ public class Receipt2 extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				Intent intent = new Intent(Receipt2.this, OCR2.class); // Going to OCR page
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivity(intent);
 			}
 		});
