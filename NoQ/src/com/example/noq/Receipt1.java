@@ -59,7 +59,7 @@ public class Receipt1 extends Activity {
     JSONParser jsonParser = new JSONParser();
  
     // single receipt url
-    private static final String url_receipt_details = "http://192.168.1.7/android_connect/get_receipt_details.php";
+    private static final String url_receipt_details = "http://192.168.1./android_connect/get_receipt_details.php";
  
     // JSON Node names
     private static final String TAG_SUCCESS = "success";

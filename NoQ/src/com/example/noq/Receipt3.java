@@ -1,10 +1,23 @@
 package com.example.noq;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.smartmobilesofware.ocrapiservice.OCR3;
+
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.InputFilter;
 import android.text.Spanned;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -12,6 +25,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.app.Dialog;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -19,9 +33,14 @@ import android.widget.AutoCompleteTextView;
 // This is Receipt3 page
 public class Receipt3 extends Activity {
 	
+	String receiptNo = "";
+	EditText amtSpent;
+	EditText receiptNum;
+	EditText shopName;
 	private static final int numShops = 12;
 	private static final String[] shops = new String[] {
 		"Bakerzin", "Ben & Jerry's",
+		"Cheers Store",
 		"Daiso", "Desigual",
 		"Golden Village",
 		"Honeymoon Dessert", "Hang Ten", 
@@ -29,22 +48,49 @@ public class Receipt3 extends Activity {
 		"Old Chang Kee", 
 		"Prima Deli",
 		"Starbucks Coffee", 
-		"Toys \"R\" Us"
+		"Toys \"R\" Us",
+		"ZARA"
 	};
+	
+	 // Progress Dialog
+    private ProgressDialog pDialog;
+ 
+    // JSON parser class
+    JSONParser jsonParser = new JSONParser();
+ 
+    // single receipt url
+    private static final String url_receipt_details = "http://192.168.1.153/android_connect/get_receipt_details.php";
+ 
+    // JSON Node names
+    private static final String TAG_SUCCESS = "success";
+	private static final String TAG_RECEIPT = "receipt";
+    private static final String TAG_RECEIPT_NUM = "receipt_no";
+    private static final String TAG_SHOP_NAME = "shop_name";
+    private static final String TAG_AMT_SPENT= "amt_spent";
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.receipt3);
+		
+		receiptNum = (EditText) findViewById(R.id.vehnumber);
+		shopName = (EditText) findViewById(R.id.shopName);
+		amtSpent = (EditText) findViewById(R.id.amtSpent);
+		amtSpent.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});	// limits input of amount spent
+		
+		Button ocrButton = (Button) findViewById(R.id.ocrButton);	
+		ocrButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View arg0) {
+				Intent intent = new Intent(Receipt3.this, OCR3.class); // Going to OCR page
+				startActivity(intent);
+			}
+		});
 		
 		// autocomplete for the shop name
 		AutoCompleteTextView autocompShops = (AutoCompleteTextView) findViewById(R.id.shopName);
 		autocompShops.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, shops));
 		autocompShops.setDropDownHeight(200);
 		autocompShops.performCompletion();
-		
-		// limits input of amount spent
-		EditText amtSpent = (EditText) findViewById(R.id.amtSpent);
-		amtSpent.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});
 		
 		// to click on clear all button
 		clearAll();
@@ -139,12 +185,115 @@ public class Receipt3 extends Activity {
 	    super.onStop();  // Always call the superclass method first	    
 	} // end of onStop
 	
+	// To make sure getIntent() always return the most recent intent
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        setIntent(intent);
+    }
+	
 	// Activity being restarted from stopped state    
 	protected void onRestart() {
 	    super.onRestart();  // Always call the superclass method first
 	    onNewIntent(getIntent());
+	    
+	    if(getIntent().getBooleanExtra("ocrDone", false)) {
+		    String text = getIntent().getCharSequenceExtra("text").toString();
+	    	
+	    	// if gst num cannot be found
+		    if (!text.contains("GST No:")) {
+		    	receiptNum.setError("Please fill in manually.");
+		    	shopName.setError("Please fill in manually.");
+		    	amtSpent.setError("Please fill in manually.");
+		    }
+		    else {  // if gst num found
+		    	int startIndex = text.indexOf("GST No:")+8;
+		    	CharSequence receiptCode = text.subSequence(startIndex, startIndex+12);
+		    	receiptNum.setText(receiptCode);
+		    	receiptNo = receiptCode.toString();
+		    	
+		        // Getting complete receipt details in background thread
+		        new GetReceiptDetails().execute();
+		    }
+	    }
 	}
 	
+	/**
+	  * Background Async Task to Get complete product details
+	  * */
+	 class GetReceiptDetails extends AsyncTask<String, String, String> {
+		 private JSONObject receipt;
+		 private int success;
+	     /**
+	      * Before starting background thread Show Progress Dialog
+	      * */
+	     @Override
+	     protected void onPreExecute() {
+	         super.onPreExecute();
+	         pDialog = new ProgressDialog(Receipt3.this);
+	         pDialog.setMessage("Loading receipt details. Please wait...");
+	         pDialog.setIndeterminate(false);
+	         pDialog.setCancelable(true);
+	         pDialog.show();
+	     }
+
+	     /**
+	      * Getting receipt details in background thread
+	      * */
+	     protected String doInBackground(String... params) {
+	    	// Building Parameters
+           List<NameValuePair> params1 = new ArrayList<NameValuePair>();
+           params1.add(new BasicNameValuePair("receipt_no", receiptNo)); 
+           
+         	// getting receipt details by making HTTP request
+           JSONObject json = jsonParser.makeHttpRequest(url_receipt_details, "GET", params1);
+
+           // check your log for json response
+           Log.d("Single Receipt Details", json.toString());
+           
+           try {
+           	// json success tag
+               success = json.getInt(TAG_SUCCESS);
+               if (success == 1) {
+                   // successfully received product details
+                   JSONArray receiptObj = json.getJSONArray(TAG_RECEIPT); // JSON Array
+                   
+					// get first receipt object from JSON Array
+					receipt = receiptObj.getJSONObject(0);
+                }
+                else {
+                   return null;
+       	    }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+	         return null;
+	     }
+
+	     /**
+	      * After completing background task Dismiss the progress dialog
+	      * **/
+	     protected void onPostExecute(String file_url) {
+	        // dismiss the dialog once got all details
+	        pDialog.dismiss();
+	        try {
+	        	if (success == 1){
+				receiptNum.setText(receipt.getString(TAG_RECEIPT_NUM));
+				shopName.setText(receipt.getString(TAG_SHOP_NAME));
+				amtSpent.setText(receipt.getString(TAG_AMT_SPENT));
+	        	}
+	        	else {
+	        	// product with receiptNo not found
+	        	receiptNum.setError("Please fill in manually.");
+   	    	shopName.setError("Please fill in manually.");
+   	    	amtSpent.setError("Please fill in manually.");
+	        	}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	     }
+	}
+	 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

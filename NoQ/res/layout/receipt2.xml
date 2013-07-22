@@ -110,10 +110,12 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/constant_text"
             android:ems="10"
-            android:singleLine="true"
             android:inputType="numberDecimal|time"
-            android:digits="0123456789"
-            android:paddingLeft="10dp" />
+            android:digits="0123456789."
+            android:singleLine="true"
+            android:paddingLeft="10dp" 
+            android:maxLength="5"/>
+
 
     </RelativeLayout>
 

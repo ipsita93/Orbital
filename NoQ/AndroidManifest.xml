@@ -40,12 +40,12 @@
         <activity
             android:name="com.example.noq.LogIn"
             android:label="@string/app_name" > 
+        </activity>
+        <activity android:name="com.example.noq.Receipts" > 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>                 
-        </activity>
-        <activity android:name="com.example.noq.Receipts" > 
+            </intent-filter>   
         </activity>
         <activity android:name="com.example.noq.Receipt1" >       
         </activity>
@@ -53,7 +53,11 @@
         </activity>
         <activity android:name="com.example.noq.Receipt2" >
         </activity>
+        <activity android:name="com.smartmobilesofware.ocrapiservice.OCR2" >
+        </activity>
         <activity android:name="com.example.noq.Receipt3" >
+        </activity>
+        <activity android:name="com.smartmobilesofware.ocrapiservice.OCR3" >
         </activity>
         <activity android:name="com.example.noq.SignUp" >
         </activity>

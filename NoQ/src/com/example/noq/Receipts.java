@@ -14,7 +14,7 @@ import android.content.DialogInterface;
 import java.text.DateFormat;
 import java.util.Date;
 
-@SuppressLint("CutPasteId") // what is this?
+@SuppressLint("CutPasteId") 
 public class Receipts extends Activity {
 	
 	@Override
@@ -40,8 +40,8 @@ public class Receipts extends Activity {
 		r3.setEnabled(false);
 		
 		// clicking on receipt1 button 
-		Button b1 = (Button) findViewById(R.id.button1);
-		b1.setOnClickListener(new OnClickListener() {
+		Button r1 = (Button) findViewById(R.id.button1);
+		r1.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// clicking again to view info on Receipt 1
@@ -60,8 +60,7 @@ public class Receipts extends Activity {
 		});
 		
 		// clicking on receipt2 button 
-		Button b2 = (Button) findViewById(R.id.button2);
-		b2.setOnClickListener(new OnClickListener() {
+		r2.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// clicking again to view info on Receipt 2
@@ -80,8 +79,7 @@ public class Receipts extends Activity {
 		});
 		
 		// clicking on receipt3 button 
-		Button b3 = (Button) findViewById(R.id.ocrButton);
-		b3.setOnClickListener(new OnClickListener() {
+		r3.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				// clicking again to view info on Receipt 3

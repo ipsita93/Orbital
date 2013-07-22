@@ -61,6 +61,13 @@
             android:layout_alignRight="@+id/imageName"
             android:text="Capture image" />
 
+        <ImageButton
+            android:id="@+id/crossButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/chosenImage"
+            android:layout_alignTop="@+id/chosenImage"
+            android:src="@drawable/cross_button" />
 
     </RelativeLayout>
 

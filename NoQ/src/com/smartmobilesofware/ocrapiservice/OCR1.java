@@ -1,29 +1,13 @@
 package com.smartmobilesofware.ocrapiservice;
 
-import com.example.noq.HomePg;
-import com.example.noq.JSONParser;
 import com.example.noq.R;
 import com.example.noq.Receipt1;
-import com.example.noq.Receipts;
-import com.smartmobilesofware.ocrapiservice.*;
-import java.util.ArrayList;
-import java.util.List;
- 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
- 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.database.Cursor;
@@ -53,7 +37,25 @@ public class OCR1 extends Activity implements OnClickListener {
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.ocr);
 		
+		picNameText = (TextView) findViewById(R.id.imageName);
+		apiKey = "QdgJmSnWjK";
+		langCode = "en";
 		this.imageView = (ImageView)this.findViewById(R.id.chosenImage);
+		ImageView crossButton = (ImageView) findViewById(R.id.crossButton);
+		
+		crossButton.setClickable(false);
+		crossButton.setEnabled(false);
+		crossButton.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				imageView.setImageResource(R.drawable.icon);
+				picNameText.setText("Selected: ");
+				fileName = null;
+				apiKey.equals("");
+				langCode.equals("");
+			}
+		});
+		
 	    Button captureButton = (Button) this.findViewById(R.id.captureImageButton);
 	    captureButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,11 +65,7 @@ public class OCR1 extends Activity implements OnClickListener {
             }
         });
 	    
-	    picNameText = (TextView) findViewById(R.id.imageName);
-		apiKey = "QdgJmSnWjK";
-		langCode = "en";
-
-		final Button pickButton = (Button) findViewById(R.id.pickImagebutton);
+	   	final Button pickButton = (Button) findViewById(R.id.pickImagebutton);
 		pickButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -150,11 +148,15 @@ public class OCR1 extends Activity implements OnClickListener {
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
+		ImageView crossButton = (ImageView) findViewById(R.id.crossButton);
+		
 		if (requestCode == IMAGE_PICKER_REQUEST && resultCode == RESULT_OK) {
 			Uri selectedImageUri = data.getData();
 			fileName = getRealPathFromURI(selectedImageUri);
 			picNameText.setText("Selected: en" + getStringNameFromRealPath(fileName));
 			imageView.setImageURI(selectedImageUri);
+			crossButton.setClickable(true);
+			crossButton.setEnabled(true);
 		}
 		
 	    if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK) {  
@@ -163,6 +165,8 @@ public class OCR1 extends Activity implements OnClickListener {
 			
             Bitmap photo = (Bitmap) data.getExtras().get("data"); 
             imageView.setImageBitmap(photo);
+        	crossButton.setClickable(true);
+			crossButton.setEnabled(true);
 	    }  
 	}
 
