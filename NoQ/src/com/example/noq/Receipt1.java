@@ -215,10 +215,16 @@ public class Receipt1 extends Activity {
 	    }
 	}
 	
+	
+	
+	 
 	/**
 	  * Background Async Task to Get complete product details
 	  * */
-	 class GetReceiptDetails extends AsyncTask<String, String, String> {
+	
+	
+	class GetReceiptDetails extends AsyncTask<String, String, String> {
+	 
 		 private JSONObject receipt;
 		 private int success;
 	     /**
@@ -266,10 +272,10 @@ public class Receipt1 extends Activity {
              }
 	         return null;
 	     }
-
-	     /**
+	     
+	     /*
 	      * After completing background task Dismiss the progress dialog
-	      * **/
+	      */
 	     protected void onPostExecute(String file_url) {
 	        // dismiss the dialog once got all details
 	        pDialog.dismiss();
@@ -290,7 +296,11 @@ public class Receipt1 extends Activity {
 				e.printStackTrace();
 			}
 	     }
-	}
+	 }
+	 
+	
+	 
+	
 	 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
