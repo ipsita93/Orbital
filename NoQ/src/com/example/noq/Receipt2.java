@@ -213,20 +213,17 @@ public class Receipt2 extends Activity {
 		    	receiptNo = receiptCode.toString();
 		    	
 		        // Getting complete receipt details in background thread
-		        new GetReceiptDetails().execute();
+//		        new GetReceiptDetails().execute();
 		    }
 	    }
 	}
-	
-	/**
-	  * Background Async Task to Get complete product details
-	  * */
+/*	
+	// Background Async Task to Get complete product details
 	 class GetReceiptDetails extends AsyncTask<String, String, String> {
 		 private JSONObject receipt;
 		 private int success;
-	     /**
-	      * Before starting background thread Show Progress Dialog
-	      * */
+		 
+	    // Before starting background thread Show Progress Dialog
 	     @Override
 	     protected void onPreExecute() {
 	         super.onPreExecute();
@@ -237,9 +234,7 @@ public class Receipt2 extends Activity {
 	         pDialog.show();
 	     }
 
-	     /**
-	      * Getting receipt details in background thread
-	      * */
+	    // Getting receipt details in background thread
 	     protected String doInBackground(String... params) {
 	    	// Building Parameters
            List<NameValuePair> params1 = new ArrayList<NameValuePair>();
@@ -270,9 +265,7 @@ public class Receipt2 extends Activity {
 	         return null;
 	     }
 
-	     /**
-	      * After completing background task Dismiss the progress dialog
-	      * **/
+	    // After completing background task Dismiss the progress dialog
 	     protected void onPostExecute(String file_url) {
 	        // dismiss the dialog once got all details
 	        pDialog.dismiss();
@@ -294,6 +287,7 @@ public class Receipt2 extends Activity {
 			}
 	     }
 	}
+*/	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.

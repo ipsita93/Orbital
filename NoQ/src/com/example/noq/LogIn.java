@@ -109,7 +109,34 @@ public class LogIn extends Activity {
 		logIn.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {				
-				new CheckUserDetails().execute();
+//				new CheckUserDetails().execute();
+				if (vehNum.getText().toString().equals("SDA1234A") && password.getText().toString().equals("password")){
+					Intent intent = new Intent(LogIn.this, HomePg.class); // Going to Home page 
+					intent.putExtra("name", "Peter Pan"); // changed back to uName
+					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+					startActivityForResult(intent, 1);						
+				}
+				else{
+					vehNum.setText("");
+					password.setText("");
+					
+					AlertDialog.Builder failedLogin = new AlertDialog.Builder(LogIn.this);
+					failedLogin.setMessage("Log in has failed!");
+					failedLogin.setPositiveButton("Sign up!", new DialogInterface.OnClickListener(){
+						public void onClick(DialogInterface register, int id){
+							Intent su = new Intent(LogIn.this, SignUp.class);
+							su.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+							startActivityForResult(su, 1);	
+						}
+					})
+					.setNegativeButton("Try again!", new DialogInterface.OnClickListener(){
+						public void onClick(DialogInterface cancel, int id){
+							if (id == Dialog.BUTTON_NEGATIVE)
+								cancel.dismiss();
+						}
+					});
+					failedLogin.show();				
+				}
 			}
 		});	
 	}
@@ -125,7 +152,7 @@ public class LogIn extends Activity {
 		});	
 	
 	}
-	
+/*	
 	// Background Async Task to check user log in information
 	class CheckUserDetails extends AsyncTask<String, String, String>{
 		String uName = "";
@@ -214,4 +241,5 @@ public class LogIn extends Activity {
 			}
 		}
 	}
+*/
 }
