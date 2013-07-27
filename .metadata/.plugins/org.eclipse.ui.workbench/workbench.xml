@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="19" version="2.0">
 <workbenchAdvisor/>
-<window height="870" maximized="true" width="800" x="0" y="0">
+<window height="832" maximized="true" width="800" x="1420" y="119">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="250"/>
@@ -18,7 +18,7 @@
 <coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="76" y="22"/>
 <coolItem id="org.eclipse.ui.edit.text.actionSet.presentation" itemType="typeToolBarContribution" x="107" y="22"/>
 <coolItem id="org.eclipse.wst.xml.ui.perspective.NewFileToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
-<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.wst.xml.ui.design.DesignToolBar" itemType="typeToolBarContribution" x="61" y="22"/>
 <coolItem id="org.eclipse.debug.ui.launch.toolbar" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.debug.ui.main.toolbar" itemType="typeToolBarContribution" x="38" y="22"/>
 <coolItem id="group.nav" itemType="typeGroupMarker"/>
@@ -26,7 +26,7 @@
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.browser.editor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="com.android.ide.eclipse.editors.CommonXmlEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="com.android.ide.eclipse.editors.CommonXmlEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -41,24 +41,29 @@
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
+<part id="4"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Receipt1.java" partName="Receipt1.java" path="C:/Users/Sony/Orbital/NoQ/src/com/example/noq/Receipt1.java" title="Receipt1.java" tooltip="NoQ/src/com/example/noq/Receipt1.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/NoQ/src/com/example/noq/Receipt1.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1169" selectionTopPixel="3594"/>
+</editor>
+<editor id="com.android.ide.eclipse.editors.CommonXmlEditor" name="log_in.xml" partName="log_in.xml" path="C:/Users/Sony/Orbital/NoQ/res/layout/log_in.xml" title="log_in.xml" tooltip="NoQ/res/layout/log_in.xml" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/NoQ/res/layout/log_in.xml"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LogIn.java" partName="LogIn.java" path="C:/Users/Sony/Orbital/NoQ/src/com/example/noq/LogIn.java" title="LogIn.java" tooltip="NoQ/src/com/example/noq/LogIn.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/NoQ/src/com/example/noq/LogIn.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1734" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="OCR1.java" partName="OCR1.java" path="C:/Users/Sony/Orbital/NoQ/src/com/smartmobilesofware/ocrapiservice/OCR1.java" title="OCR1.java" tooltip="NoQ/src/com/smartmobilesofware/ocrapiservice/OCR1.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/NoQ/src/com/smartmobilesofware/ocrapiservice/OCR1.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="487" selectionOffset="2809" selectionTopPixel="673"/>
+</editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Receipts.java" partName="Receipts.java" path="C:/Users/Sony/Orbital/NoQ/src/com/example/noq/Receipts.java" title="Receipts.java" tooltip="NoQ/src/com/example/noq/Receipts.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/NoQ/src/com/example/noq/Receipts.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1443" selectionTopPixel="233"/>
-</editor>
-<editor id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" partName="NoQ Manifest" path="C:/Users/Sony/Orbital/NoQ/AndroidManifest.xml" title="NoQ Manifest" tooltip="NoQ/AndroidManifest.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/NoQ/AndroidManifest.xml"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Receipt2.java" partName="Receipt2.java" path="C:/Users/Sony/Orbital/NoQ/src/com/example/noq/Receipt2.java" title="Receipt2.java" tooltip="NoQ/src/com/example/noq/Receipt2.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/NoQ/src/com/example/noq/Receipt2.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Receipt1.java" partName="Receipt1.java" path="C:/Users/Sony/Orbital/NoQ/src/com/example/noq/Receipt1.java" title="Receipt1.java" tooltip="NoQ/src/com/example/noq/Receipt1.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/NoQ/src/com/example/noq/Receipt1.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="195" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3140" selectionTopPixel="1043"/>
 </editor>
 </editors>
 <views>
@@ -89,7 +94,8 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (100 of 115 items)"/>
+<category IMemento.internal.id="Warnings (63 items)"/>
+<category IMemento.internal.id="Errors"/>
 <category IMemento.internal.id="Warnings"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
@@ -292,17 +298,17 @@
 <view id="org.eclipse.jdt.ui.JavadocView" ratio="0.3"/>
 <view id="org.eclipse.jdt.ui.SourceView" ratio="0.3"/>
 <view id="org.eclipse.team.ui.GenericHistoryView" ratio="0.3"/>
-<view id="org.eclipse.ui.console.ConsoleView" ratio="0.37124184"/>
+<view id="org.eclipse.ui.console.ConsoleView" ratio="0.3707317"/>
+</fastViews>
+</fastViewBar>
+<fastViewBar fastViewLocation="1024" id="org.eclipse.ui.internal.ViewStack@1dd0d368" orientation="256" selectedTabId="com.android.ide.eclipse.ddms.views.LogCatView" style="0">
+<fastViews>
+<view id="com.android.ide.eclipse.ddms.views.LogCatView" ratio="0.50406504"/>
 </fastViews>
 </fastViewBar>
 <fastViewBar fastViewLocation="131072" id="right" orientation="512" selectedTabId="org.eclipse.ui.views.ContentOutline" style="0">
 <fastViews>
 <view id="org.eclipse.ui.views.ContentOutline" ratio="0.3"/>
-</fastViews>
-</fastViewBar>
-<fastViewBar fastViewLocation="1024" id="org.eclipse.ui.internal.ViewStack@1dd0d368" orientation="256" selectedTabId="com.android.ide.eclipse.ddms.views.LogCatView" style="0">
-<fastViews>
-<view id="com.android.ide.eclipse.ddms.views.LogCatView" ratio="0.5045752"/>
 </fastViews>
 </fastViewBar>
 </fastViewBars>
@@ -321,7 +327,7 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@5db51cd5" ratio="0.75" ratioLeft="750" ratioRight="250" relationship="2" relative="left">
-<folder appearance="2" expanded="0">
+<folder appearance="2" expanded="2">
 <page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
 <page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
@@ -352,7 +358,7 @@
 </folder>
 </info>
 <info folder="true" part="org.eclipse.ui.internal.ViewStack@1dd0d368" ratio="0.5114379" ratioLeft="313" ratioRight="299" relationship="4" relative="org.eclipse.ui.editorss">
-<folder appearance="2" expanded="2">
+<folder appearance="2" expanded="0">
 <page content="com.android.ide.eclipse.ddms.views.LogCatView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
@@ -365,131 +371,127 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/NoQ/src/com/example/noq/HelpPg.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/NoQ/src/com/example/noq/Receipt2.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/NoQ/src/com/example/noq/Receipts.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" path="/NoQ/AndroidManifest.xml"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/NoQ/src/com/example/noq/Receipt1.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" path="/NoQ/AndroidManifest.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/NoQ/src/com/example/noq/Receipt2.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/NoQ/src/com/example/noq/Receipt3.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/NoQ/src/com/smartmobilesofware/ocrapiservice/OCR2.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/NoQ/src/com/example/noq/Receipt2.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" path="/NoQ/AndroidManifest.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/NoQ/res/layout/log_in.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/NoQ/src/com/example/noq/LogIn.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/NoQ/src/com/example/noq/HomePg.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/NoQ/res/layout/help_pg.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" path="/NoQ/res/layout/home_pg.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/NoQ/src/com/smartmobilesofware/ocrapiservice/OCR1.java"/>
 </editors>
-<item historyLabel="HelpPg.java" index="0">
-<position info="not_deleted" x="240" y="0"/>
-</item>
-<item historyLabel="Receipts.java" index="1">
-<position info="not_deleted" x="984" y="0"/>
-</item>
-<item historyLabel="Receipts.java" index="1">
+<item historyLabel="NoQ Manifest" index="2"/>
+<item historyLabel="Receipt1.java" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Receipt1.java" index="2">
+<item historyLabel="Receipt2.java" index="0">
+<position info="not_deleted" x="2715" y="0"/>
+</item>
+<item historyLabel="Receipt1.java" index="3">
+<position info="not_deleted" x="12405" y="134"/>
+</item>
+<item historyLabel="Receipt2.java" index="0">
+<position info="not_deleted" x="12776" y="0"/>
+</item>
+<item historyLabel="Receipt3.java" index="4">
+<position info="not_deleted" x="12791" y="0"/>
+</item>
+<item historyLabel="Receipt2.java" index="0">
+<position info="not_deleted" x="12776" y="0"/>
+</item>
+<item historyLabel="Receipt1.java" index="3">
+<position info="not_deleted" x="11712" y="0"/>
+</item>
+<item historyLabel="log_in.xml" index="5"/>
+<item historyLabel="LogIn.java" index="6">
+<position info="not_deleted" x="2251" y="0"/>
+</item>
+<item historyLabel="log_in.xml" index="5"/>
+<item historyLabel="LogIn.java" index="6">
+<position info="not_deleted" x="2344" y="0"/>
+</item>
+<item historyLabel="log_in.xml" index="5"/>
+<item historyLabel="LogIn.java" index="6">
+<position info="not_deleted" x="2344" y="0"/>
+</item>
+<item historyLabel="log_in.xml" index="5"/>
+<item historyLabel="LogIn.java" index="6">
+<position info="not_deleted" x="3390" y="0"/>
+</item>
+<item historyLabel="log_in.xml" index="5"/>
+<item historyLabel="LogIn.java" index="6">
+<position info="not_deleted" x="1622" y="8"/>
+</item>
+<item historyLabel="log_in.xml" index="5"/>
+<item historyLabel="LogIn.java" index="6">
+<position info="not_deleted" x="1664" y="0"/>
+</item>
+<item historyLabel="log_in.xml" index="5"/>
+<item historyLabel="LogIn.java" index="6">
+<position info="not_deleted" x="3565" y="7"/>
+</item>
+<item historyLabel="log_in.xml" index="5"/>
+<item historyLabel="LogIn.java" index="6">
+<position info="not_deleted" x="3144" y="6"/>
+</item>
+<item historyLabel="log_in.xml" index="5"/>
+<item historyLabel="LogIn.java" index="6">
+<position info="not_deleted" x="1622" y="8"/>
+</item>
+<item historyLabel="log_in.xml" index="5"/>
+<item historyLabel="LogIn.java" index="6">
+<position info="not_deleted" x="1622" y="8"/>
+</item>
+<item historyLabel="log_in.xml" index="5"/>
+<item historyLabel="LogIn.java" index="6">
+<position info="not_deleted" x="3326" y="6"/>
+</item>
+<item historyLabel="log_in.xml" index="5"/>
+<item historyLabel="LogIn.java" index="6">
+<position info="not_deleted" x="3144" y="6"/>
+</item>
+<item historyLabel="log_in.xml" index="5"/>
+<item historyLabel="LogIn.java" index="6">
+<position info="not_deleted" x="3144" y="6"/>
+</item>
+<item historyLabel="log_in.xml" index="5"/>
+<item historyLabel="LogIn.java" index="6">
+<position info="not_deleted" x="3144" y="6"/>
+</item>
+<item historyLabel="log_in.xml" index="5"/>
+<item historyLabel="Receipt1.java" index="3">
+<position info="not_deleted" x="11709" y="0"/>
+</item>
+<item historyLabel="HomePg.java" index="7">
 <position/>
 </item>
-<item historyLabel="NoQ Manifest" index="3"/>
-<item historyLabel="Receipt1.java" index="2">
+<item historyLabel="help_pg.xml" index="8"/>
+<item historyLabel="HomePg.java" index="7">
 <position/>
 </item>
-<item historyLabel="NoQ Manifest" index="3"/>
-<item historyLabel="Receipts.java" index="1">
-<position info="not_deleted" x="7143" y="0"/>
+<item historyLabel="home_pg.xml" index="9"/>
+<item historyLabel="NoQ Manifest" index="2"/>
+<item historyLabel="home_pg.xml" index="9"/>
+<item historyLabel="Receipt1.java" index="3">
+<position info="not_deleted" x="1169" y="0"/>
 </item>
-<item historyLabel="Receipt1.java" index="2">
-<position/>
-</item>
-<item historyLabel="Receipt2.java" index="4">
-<position/>
-</item>
-<item historyLabel="Receipt1.java" index="2">
-<position/>
+<item historyLabel="OCR1.java" index="10">
+<position info="not_deleted" x="2809" y="487"/>
 </item>
 <item historyLabel="Receipts.java" index="1">
-<position info="not_deleted" x="5018" y="0"/>
+<position info="not_deleted" x="3140" y="0"/>
 </item>
-<item historyLabel="Receipt1.java" index="2">
-<position info="not_deleted" x="11681" y="0"/>
+<item historyLabel="HomePg.java" index="7">
+<position info="not_deleted" x="485" y="0"/>
 </item>
-<item historyLabel="Receipt2.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Receipt3.java" index="5">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Receipt2.java" index="4">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Receipt1.java" index="2">
-<position info="not_deleted" x="1087" y="347"/>
-</item>
-<item historyLabel="Receipt2.java" index="4">
-<position info="not_deleted" x="1422" y="0"/>
-</item>
-<item historyLabel="Receipt3.java" index="5">
-<position info="not_deleted" x="1352" y="0"/>
-</item>
-<item historyLabel="Receipt2.java" index="4">
-<position info="not_deleted" x="1422" y="0"/>
-</item>
-<item historyLabel="Receipt1.java" index="2">
-<position info="not_deleted" x="1652" y="0"/>
-</item>
-<item historyLabel="Receipt2.java" index="4">
-<position info="not_deleted" x="2450" y="0"/>
-</item>
-<item historyLabel="Receipt1.java" index="2">
-<position info="not_deleted" x="1652" y="0"/>
-</item>
-<item historyLabel="Receipt2.java" index="4">
-<position info="not_deleted" x="2450" y="0"/>
-</item>
-<item historyLabel="NoQ Manifest" index="3"/>
-<item historyLabel="Receipt2.java" index="4">
-<position info="not_deleted" x="2619" y="0"/>
-</item>
-<item historyLabel="Receipt1.java" index="2">
-<position info="not_deleted" x="265" y="49"/>
-</item>
-<item historyLabel="Receipt2.java" index="4">
-<position info="not_deleted" x="373" y="0"/>
-</item>
-<item historyLabel="OCR2.java" index="6">
-<position info="not_deleted" x="1313" y="0"/>
-</item>
-<item historyLabel="Receipt2.java" index="4">
-<position info="not_deleted" x="2753" y="0"/>
-</item>
-<item historyLabel="NoQ Manifest" index="3"/>
 <item historyLabel="Receipts.java" index="1">
-<position info="not_deleted" x="1878" y="47"/>
+<position info="not_deleted" x="3140" y="0"/>
 </item>
-<item historyLabel="Receipt1.java" index="2">
-<position info="not_deleted" x="2718" y="51"/>
-</item>
-<item historyLabel="Receipt2.java" index="4">
-<position info="not_deleted" x="2798" y="0"/>
-</item>
-<item historyLabel="Receipt1.java" index="2">
-<position info="not_deleted" x="2718" y="51"/>
-</item>
-<item historyLabel="Receipt1.java" index="2">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Receipt2.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="Receipt2.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="NoQ Manifest" index="8">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item historyLabel="NoQ Manifest" index="8"/>
-<item historyLabel="Receipt2.java" index="7">
-<position info="not_deleted" x="0" y="0"/>
-</item>
-<item active="true" historyLabel="Receipt1.java" index="2">
-<position info="not_deleted" x="0" y="0"/>
+<item active="true" historyLabel="LogIn.java" index="6">
+<position info="not_deleted" x="3144" y="6"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -499,7 +501,6 @@
 <trimLayout>
 <trimArea IMemento.internal.id="131072">
 <trimItem IMemento.internal.id="right"/>
-<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@5db51cd5"/>
 </trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
@@ -515,50 +516,50 @@
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="OCR2.java" tooltip="NoQ/src/com/smartmobilesofware/ocrapiservice/OCR2.java">
-<persistable path="/NoQ/src/com/smartmobilesofware/ocrapiservice/OCR2.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Receipt1.java" tooltip="NoQ/src/com/example/noq/Receipt1.java">
-<persistable path="/NoQ/src/com/example/noq/Receipt1.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Receipt2.java" tooltip="NoQ/src/com/example/noq/Receipt2.java">
-<persistable path="/NoQ/src/com/example/noq/Receipt2.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Receipt3.java" tooltip="NoQ/src/com/example/noq/Receipt3.java">
-<persistable path="/NoQ/src/com/example/noq/Receipt3.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="NoQ/AndroidManifest.xml">
-<persistable path="/NoQ/AndroidManifest.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HomePg.java" tooltip="NoQ/src/com/example/noq/HomePg.java">
+<persistable path="/NoQ/src/com/example/noq/HomePg.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Receipts.java" tooltip="NoQ/src/com/example/noq/Receipts.java">
 <persistable path="/NoQ/src/com/example/noq/Receipts.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Receiptarchive.java" tooltip="NoQ/src/com/example/noq/Receiptarchive.java">
-<persistable path="/NoQ/src/com/example/noq/Receiptarchive.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="OCR1.java" tooltip="NoQ/src/com/smartmobilesofware/ocrapiservice/OCR1.java">
+<persistable path="/NoQ/src/com/smartmobilesofware/ocrapiservice/OCR1.java"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="HelpPg.java" tooltip="NoQ/src/com/example/noq/HelpPg.java">
-<persistable path="/NoQ/src/com/example/noq/HelpPg.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.manifest.ManifestEditor" name="AndroidManifest.xml" tooltip="NoQ/AndroidManifest.xml">
+<persistable path="/NoQ/AndroidManifest.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="home_pg.xml" tooltip="NoQ/res/layout/home_pg.xml">
+<persistable path="/NoQ/res/layout/home_pg.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="help_pg.xml" tooltip="NoQ/res/layout/help_pg.xml">
+<persistable path="/NoQ/res/layout/help_pg.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="LogIn.java" tooltip="NoQ/src/com/example/noq/LogIn.java">
+<persistable path="/NoQ/src/com/example/noq/LogIn.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="log_in.xml" tooltip="NoQ/res/layout/log_in.xml">
+<persistable path="/NoQ/res/layout/log_in.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Receipt3.java" tooltip="NoQ/src/com/example/noq/Receipt3.java">
+<persistable path="/NoQ/src/com/example/noq/Receipt3.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Receipt2.java" tooltip="NoQ/src/com/example/noq/Receipt2.java">
+<persistable path="/NoQ/src/com/example/noq/Receipt2.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Receipt1.java" tooltip="NoQ/src/com/example/noq/Receipt1.java">
+<persistable path="/NoQ/src/com/example/noq/Receipt1.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="receipt3.xml" tooltip="NoQ/res/layout/receipt3.xml">
 <persistable path="/NoQ/res/layout/receipt3.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="receipt2.xml" tooltip="NoQ/res/layout/receipt2.xml">
-<persistable path="/NoQ/res/layout/receipt2.xml"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="main.xml" tooltip="NoQ/res/layout/main.xml">
 <persistable path="/NoQ/res/layout/main.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="OCR3.java" tooltip="NoQ/src/com/smartmobilesofware/ocrapiservice/OCR3.java">
-<persistable path="/NoQ/src/com/smartmobilesofware/ocrapiservice/OCR3.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="receipt2.xml" tooltip="NoQ/res/layout/receipt2.xml">
+<persistable path="/NoQ/res/layout/receipt2.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="SampleActivity.java" tooltip="Android/src/com/smartmobilesofware/ocrapiservice/SampleActivity.java">
-<persistable path="/Android/src/com/smartmobilesofware/ocrapiservice/SampleActivity.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="ocr.xml" tooltip="NoQ/res/layout/ocr.xml">
-<persistable path="/NoQ/res/layout/ocr.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.android.ide.eclipse.editors.CommonXmlEditor" name="receipts.xml" tooltip="NoQ/res/layout/receipts.xml">
-<persistable path="/NoQ/res/layout/receipts.xml"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="OCR2.java" tooltip="NoQ/src/com/smartmobilesofware/ocrapiservice/OCR2.java">
+<persistable path="/NoQ/src/com/smartmobilesofware/ocrapiservice/OCR2.java"/>
 </file>
 </mruList>
 </workbench>

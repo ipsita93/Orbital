@@ -3,17 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="31dp"
-        android:gravity="center"
-        android:text="Welcome to No Q!"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <EditText
         android:id="@+id/vehnumber"
         android:layout_width="wrap_content"
@@ -38,7 +27,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <EditText
-        android:id="@+id/shopName"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
@@ -58,40 +47,51 @@
         android:text="Password :"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignRight="@+id/ocrButton"
-        android:text="Log In" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/ocrButton"
-        android:layout_below="@+id/shopName"
-        android:layout_marginTop="75dp"
-        android:text="Clear All" />
-
     <CheckBox
         android:id="@+id/rmbMe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/shopName"
-        android:layout_below="@+id/shopName"
+        android:layout_alignLeft="@+id/password"
+        android:layout_below="@+id/password"
         android:layout_marginTop="16dp"
         android:text="Remember Me" />
 
     <Button
-        android:id="@+id/ocrButton"
+        android:id="@+id/signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="22dp"
         android:text="New User? Sign up here!" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:gravity="center"
+        android:text="Welcome to No Q!"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_toRightOf="@+id/rmbMe"
+        android:text="Log In" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/rmbMe"
+        android:layout_below="@+id/rmbMe"
+        android:layout_marginTop="16dp"
+        android:text="Clear All" />
 
 </RelativeLayout>

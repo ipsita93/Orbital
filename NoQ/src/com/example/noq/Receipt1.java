@@ -68,11 +68,11 @@ public class Receipt1 extends Activity {
 		setContentView(R.layout.main);
 		
 		receiptNum = (EditText) findViewById(R.id.vehnumber);
-		shopName = (EditText) findViewById(R.id.shopName);
+		shopName = (EditText) findViewById(R.id.password);
 		amtSpent = (EditText) findViewById(R.id.amtSpent);
 		amtSpent.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});	// limits input of amount spent
 		
-		Button ocrButton = (Button) findViewById(R.id.ocrButton);	
+		Button ocrButton = (Button) findViewById(R.id.signUp);	
 		ocrButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -83,7 +83,7 @@ public class Receipt1 extends Activity {
 		});
 		
 		// autocomplete for the shop name
-		AutoCompleteTextView autocompShops = (AutoCompleteTextView) findViewById(R.id.shopName);
+		AutoCompleteTextView autocompShops = (AutoCompleteTextView) findViewById(R.id.password);
 		autocompShops.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, shops));
 		autocompShops.setDropDownHeight(200);
 		autocompShops.performCompletion();
@@ -341,6 +341,9 @@ public class Receipt1 extends Activity {
 		Button submit = (Button) findViewById(R.id.button2);
 		submit.setVisibility(View.INVISIBLE);
 		submit.setEnabled(false);
+		Button ocrButton = (Button) findViewById(R.id.signUp);
+		ocrButton.setVisibility(View.INVISIBLE);
+		ocrButton.setEnabled(false);
 	}
 	
 	private void clearAll() {
@@ -356,7 +359,7 @@ public class Receipt1 extends Activity {
 	
 	}
 
-	public class DecimalDigitsInputFilter implements InputFilter {
+	public class DecimalDigitsInputFilter implements InputFilter 	{
 		  private final int decimalDigits;
 		  /**Constructor.
 		   * @param decimalDigits maximum decimal digits

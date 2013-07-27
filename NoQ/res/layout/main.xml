@@ -56,7 +56,7 @@
     </RelativeLayout>
 
     <AutoCompleteTextView
-        android:id="@+id/shopName"
+        android:id="@+id/password"
         style="android:autoCompleteTextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/shopName"
+        android:layout_above="@+id/password"
         android:layout_alignLeft="@+id/textView6"
         android:layout_marginBottom="37dp"
         android:text="Receipt Code"
@@ -108,7 +108,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
-        android:id="@+id/ocrButton"
+        android:id="@+id/signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView1"

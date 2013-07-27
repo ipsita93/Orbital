@@ -9,6 +9,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.smartmobilesofware.ocrapiservice.OCR1;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.ProgressDialog;
@@ -48,12 +50,21 @@ public class LogIn extends Activity {
 		setContentView(R.layout.log_in);
 
 		vehNum = (EditText) findViewById(R.id.vehnumber);
-		password = (EditText) findViewById(R.id.shopName);
+		password = (EditText) findViewById(R.id.password);
 		
 		signUp();
 		clearAll();
 		logIn();	
 	}
+	
+	//Override of hardware back button
+	@Override 
+	public void onBackPressed() {
+		Intent closeIntent = new Intent(Intent.ACTION_MAIN);
+		closeIntent.addCategory(Intent.CATEGORY_HOME);
+		closeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		startActivity(closeIntent);
+	} 
 	
 	// activity is partially visible
 	public void onPause() {
@@ -91,7 +102,7 @@ public class LogIn extends Activity {
 	}
 	
 	private void signUp() {
-		Button newUser = (Button) findViewById(R.id.ocrButton);
+		Button newUser = (Button) findViewById(R.id.signUp);
 		newUser.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {

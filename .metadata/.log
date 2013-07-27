@@ -8390,3 +8390,83 @@ Caused by: org.eclipse.core.internal.resources.ResourceException: Resource is ou
 	at org.eclipse.core.internal.resources.File.getContents(File.java:278)
 	at com.android.ide.eclipse.adt.io.IFileWrapper.getContents(IFileWrapper.java:49)
 	... 15 more
+!SESSION 2013-07-27 12:24:51.336 -----------------------------------------------
+eclipse.buildId=v21.1.0-569685
+java.version=1.7.0_21
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_SG
+Framework arguments:  -product com.android.ide.eclipse.adt.package.product
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product com.android.ide.eclipse.adt.package.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2013-07-27 12:24:57.869
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.egit.ui 2 0 2013-07-27 12:25:15.484
+!MESSAGE Warning: The environment variable HOME is not set. The following directory will be used to store the Git
+user global configuration and to define the default location to store repositories: 'C:\Users\Sony'. If this is
+not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
+EGit might behave differently since they see different configuration options.
+This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.jface.text 2 0 2013-07-27 12:25:26.082
+!MESSAGE 
+!STACK 0
+java.lang.IllegalArgumentException: Document does not match the AST
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.handleException(ASTRewriteAnalyzer.java:3720)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.visit(ASTRewriteAnalyzer.java:1839)
+	at org.eclipse.jdt.core.dom.ReturnStatement.accept0(ReturnStatement.java:134)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2514)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.doVisit(ASTRewriteAnalyzer.java:350)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.voidVisitList(ASTRewriteAnalyzer.java:388)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.voidVisit(ASTRewriteAnalyzer.java:382)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.doVisitUnchangedChildren(ASTRewriteAnalyzer.java:395)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.visit(ASTRewriteAnalyzer.java:1810)
+	at org.eclipse.jdt.core.dom.Block.accept0(Block.java:134)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2514)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.voidVisit(ASTRewriteAnalyzer.java:374)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.voidVisit(ASTRewriteAnalyzer.java:380)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.doVisitUnchangedChildren(ASTRewriteAnalyzer.java:395)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.visit(ASTRewriteAnalyzer.java:1754)
+	at org.eclipse.jdt.core.dom.MethodDeclaration.accept0(MethodDeclaration.java:489)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2514)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.doVisit(ASTRewriteAnalyzer.java:350)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.voidVisitList(ASTRewriteAnalyzer.java:388)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.voidVisit(ASTRewriteAnalyzer.java:382)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.doVisitUnchangedChildren(ASTRewriteAnalyzer.java:395)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.visit(ASTRewriteAnalyzer.java:1598)
+	at org.eclipse.jdt.core.dom.TypeDeclaration.accept0(TypeDeclaration.java:467)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2514)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.doVisit(ASTRewriteAnalyzer.java:350)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.voidVisitList(ASTRewriteAnalyzer.java:388)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.voidVisit(ASTRewriteAnalyzer.java:382)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.doVisitUnchangedChildren(ASTRewriteAnalyzer.java:395)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.visit(ASTRewriteAnalyzer.java:1598)
+	at org.eclipse.jdt.core.dom.TypeDeclaration.accept0(TypeDeclaration.java:467)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2514)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.doVisit(ASTRewriteAnalyzer.java:350)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.doVisitList(ASTRewriteAnalyzer.java:368)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.doVisit(ASTRewriteAnalyzer.java:359)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.rewriteParagraphList(ASTRewriteAnalyzer.java:1090)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.visit(ASTRewriteAnalyzer.java:1588)
+	at org.eclipse.jdt.core.dom.CompilationUnit.accept0(CompilationUnit.java:214)
+	at org.eclipse.jdt.core.dom.ASTNode.accept(ASTNode.java:2514)
+	at org.eclipse.jdt.core.dom.rewrite.ASTRewrite.internalRewriteAST(ASTRewrite.java:291)
+	at org.eclipse.jdt.core.dom.rewrite.ASTRewrite.rewriteAST(ASTRewrite.java:280)
+	at org.eclipse.jdt.internal.corext.refactoring.structure.CompilationUnitRewrite.attachChange(CompilationUnitRewrite.java:272)
+	at org.eclipse.jdt.internal.corext.refactoring.structure.CompilationUnitRewrite.createChange(CompilationUnitRewrite.java:237)
+	at org.eclipse.jdt.internal.corext.fix.CompilationUnitRewriteOperationsFix.createChange(CompilationUnitRewriteOperationsFix.java:104)
+	at org.eclipse.jdt.internal.ui.text.correction.proposals.FixCorrectionProposal.createTextChange(FixCorrectionProposal.java:159)
+	at org.eclipse.jdt.internal.ui.text.correction.proposals.CUCorrectionProposal.createChange(CUCorrectionProposal.java:401)
+	at org.eclipse.jdt.internal.ui.text.correction.proposals.ChangeCorrectionProposal.getChange(ChangeCorrectionProposal.java:357)
+	at org.eclipse.jdt.internal.ui.text.correction.proposals.CUCorrectionProposal.getTextChange(CUCorrectionProposal.java:411)
+	at org.eclipse.jdt.internal.ui.text.correction.proposals.CUCorrectionProposal.getAdditionalProposalInfo(CUCorrectionProposal.java:153)
+	at org.eclipse.jdt.internal.ui.text.correction.proposals.FixCorrectionProposal.getAdditionalProposalInfo(FixCorrectionProposal.java:135)
+	at org.eclipse.jface.text.contentassist.AdditionalInfoController$3.run(AdditionalInfoController.java:106)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+Caused by: org.eclipse.core.runtime.CoreException: End Of File
+	at org.eclipse.jdt.internal.core.dom.rewrite.TokenScanner.readNext(TokenScanner.java:92)
+	at org.eclipse.jdt.internal.core.dom.rewrite.TokenScanner.readToToken(TokenScanner.java:149)
+	at org.eclipse.jdt.internal.core.dom.rewrite.TokenScanner.readToToken(TokenScanner.java:162)
+	at org.eclipse.jdt.internal.core.dom.rewrite.TokenScanner.getTokenEndOffset(TokenScanner.java:187)
+	at org.eclipse.jdt.internal.core.dom.rewrite.ASTRewriteAnalyzer.visit(ASTRewriteAnalyzer.java:1829)
+	... 49 more

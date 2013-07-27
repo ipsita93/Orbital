@@ -73,11 +73,13 @@ public class Receipt2 extends Activity {
 		setContentView(R.layout.receipt2);
 		
 		receiptNum = (EditText) findViewById(R.id.vehnumber);
-		shopName = (EditText) findViewById(R.id.shopName);
+		shopName = (EditText) findViewById(R.id.password);
 		amtSpent = (EditText) findViewById(R.id.amtSpent);
 		amtSpent.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2)});	// limits input of amount spent
 		
-		Button ocrButton = (Button) findViewById(R.id.ocrButton);	
+		
+		Button ocrButton = (Button) findViewById(R.id.signUp);	
+		
 		ocrButton.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View arg0) {
@@ -88,7 +90,7 @@ public class Receipt2 extends Activity {
 		});
 		
 		// autocomplete for the shop name
-		AutoCompleteTextView autocompShops = (AutoCompleteTextView) findViewById(R.id.shopName);
+		AutoCompleteTextView autocompShops = (AutoCompleteTextView) findViewById(R.id.password);
 		autocompShops.setAdapter(new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, shops));
 		autocompShops.setDropDownHeight(200);
 		autocompShops.performCompletion();
@@ -103,7 +105,7 @@ public class Receipt2 extends Activity {
 			@Override
 			public void onClick(View arg0) {
 				EditText receiptNum = (EditText) findViewById(R.id.vehnumber);
-				EditText shopName = (EditText) findViewById(R.id.shopName);
+				EditText shopName = (EditText) findViewById(R.id.password);
 				EditText amtSpent = (EditText) findViewById(R.id.amtSpent);
 				
 				if (validateNum(receiptNum.getText().toString())){
@@ -157,6 +159,7 @@ public class Receipt2 extends Activity {
 				}
 			}		
 		}); 
+		
 	}// end of onCreate()			
 	
 	//Override of hardware back button
@@ -330,7 +333,7 @@ public class Receipt2 extends Activity {
 		et1.setFocusable(false);
 		et1.setFocusableInTouchMode(false);
 		et1.setClickable(false);
-		EditText et2 = (EditText) findViewById(R.id.shopName);
+		EditText et2 = (EditText) findViewById(R.id.password);
 		et2.setEnabled(false);
 		et2.setFocusable(false);
 		et2.setFocusableInTouchMode(false);
@@ -350,6 +353,9 @@ public class Receipt2 extends Activity {
 		Button submit = (Button) findViewById(R.id.button2);
 		submit.setVisibility(View.INVISIBLE);
 		submit.setEnabled(false);
+		Button ocrButton = (Button) findViewById(R.id.signUp);
+		ocrButton.setVisibility(View.INVISIBLE);
+		ocrButton.setEnabled(false);
 	}
 	
 	private void clearAll() {
@@ -359,7 +365,7 @@ public class Receipt2 extends Activity {
 			public void onClick(View arg0) {
 				EditText et1 = (EditText) findViewById(R.id.vehnumber);
 				et1.setText("");
-				EditText et2 = (EditText) findViewById(R.id.shopName);
+				EditText et2 = (EditText) findViewById(R.id.password);
 				et2.setText("");
 				EditText et3 = (EditText) findViewById(R.id.amtSpent);
 				et3.setText("");

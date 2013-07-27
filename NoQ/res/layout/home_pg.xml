@@ -24,7 +24,7 @@
         android:id="@+id/button4"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
-        android:layout_height="34dp"
+        android:layout_height="wrap_content"
         android:layout_x="226dp"
         android:layout_y="19dp"
         android:gravity="center_vertical|center_horizontal|top"
@@ -39,7 +39,7 @@
         android:text="Help" />
 
     <Button
-        android:id="@+id/ocrButton"
+        android:id="@+id/signUp"
         android:layout_width="248dp"
         android:layout_height="wrap_content"
         android:layout_x="33dp"

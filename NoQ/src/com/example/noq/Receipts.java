@@ -14,6 +14,8 @@ import android.content.DialogInterface;
 import java.text.DateFormat;
 import java.util.Date;
 
+import com.smartmobilesofware.ocrapiservice.OCR1;
+
 @SuppressLint("CutPasteId") 
 public class Receipts extends Activity {
 	
@@ -35,7 +37,7 @@ public class Receipts extends Activity {
 		
 		// greys out receipt2 and 3 when the activity is first created
 		Button r2 = (Button) findViewById(R.id.button2);
-		Button r3 = (Button) findViewById(R.id.ocrButton);
+		Button r3 = (Button) findViewById(R.id.signUp);
 		r2.setEnabled(false);
 		r3.setEnabled(false);
 		
@@ -99,12 +101,17 @@ public class Receipts extends Activity {
 		
 	} // end of onCreate()
 	
-/*	//Override of hardware back button
+	//Override of hardware back button
 	@Override 
 	public void onBackPressed(){
-		// do nothing
+		Intent returnIntent = new Intent(Receipts.this, HomePg.class);
+		returnIntent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT); 
+		// bring an existing instance of the called activity type present in the current stack to the 
+		// foreground instead of creating a new instance
+		// setResult(RESULT_OK,returnIntent);   
+		startActivity(returnIntent);
 	} 
-*/	
+	
 	// activity is partially visible
 	public void onPause() {
 	    super.onPause();  // Always call the superclass method first
@@ -149,7 +156,7 @@ public class Receipts extends Activity {
 	 		ImageView tick2 = (ImageView) findViewById(R.id.imageView5);
 	 		tick2.setVisibility(View.VISIBLE);
 	 		tick2.setImageResource(R.drawable.tick1);
-			Button r3 = (Button) findViewById(R.id.ocrButton);
+			Button r3 = (Button) findViewById(R.id.signUp);
 	 		r3.setEnabled(true);
 	 	}
 	 	// inserts tick1 image if a valid receipt3 was entered 
