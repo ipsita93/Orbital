@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 2 elements from project &apos;NoQ&apos;&#x0D;&#x0A;- Original project: &apos;NoQ&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     com.example.noq.OCR.java&#x0D;&#x0A;     com.example.noq.OCRServiceAPI.java" description="Delete elements" element1="/src&lt;com.example.noq{OCR.java" element2="/src&lt;com.example.noq{OCRServiceAPI.java" elements="2" flags="589830" id="org.eclipse.jdt.ui.delete" resources="0" stamp="1373095947441" subPackages="false" version="1.0"/>
+</session>

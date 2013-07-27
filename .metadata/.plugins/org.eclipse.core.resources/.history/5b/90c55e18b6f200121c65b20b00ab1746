@@ -1,0 +1,7 @@
+package com.smartmobilesofware.ocrapiservice;
+
+import android.app.Activity;
+
+public class OCR2 extends Activity {
+
+}
