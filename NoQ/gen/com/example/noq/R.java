@@ -29,11 +29,12 @@ public final class R {
         public static final int help=0x7f020002;
         public static final int ic_launcher=0x7f020003;
         public static final int icon=0x7f020004;
-        public static final int square=0x7f020005;
-        public static final int tick1=0x7f020006;
+        public static final int logo=0x7f020005;
+        public static final int square=0x7f020006;
+        public static final int tick1=0x7f020007;
     }
     public static final class id {
-        public static final int action_settings=0x7f090025;
+        public static final int action_settings=0x7f090026;
         public static final int amtSpent=0x7f09000d;
         public static final int button1=0x7f090001;
         public static final int button2=0x7f090004;
@@ -56,6 +57,7 @@ public final class R {
         public static final int imageView4=0x7f090017;
         public static final int imageView5=0x7f090019;
         public static final int imageView6=0x7f09001b;
+        public static final int imgLogo=0x7f090025;
         public static final int password=0x7f090009;
         public static final int pickImagebutton=0x7f090011;
         public static final int relativeLayout=0x7f090010;
@@ -82,6 +84,7 @@ public final class R {
         public static final int receipt3=0x7f030006;
         public static final int receipts=0x7f030007;
         public static final int sign_up1=0x7f030008;
+        public static final int splashscreen=0x7f030009;
     }
     public static final class menu {
         public static final int main=0x7f080000;
